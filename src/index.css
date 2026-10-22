@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+  Design direction note (see README "Design principles" for the full
+  rationale): this is a civic wayfinding tool people will often use
+  outdoors, in daylight, sometimes on older phones. Readability and contrast
+  take priority over moodiness here, so the theme leans toward a clean,
+  high-contrast "civic" light surface by default, with a dark mode that
+  keeps the same contrast discipline rather than going low-contrast/moody.
+  Glassmorphism is used sparingly, for secondary chrome (nav, sheets) —
+  never for body text or verification status, which always sit on a solid,
+  high-contrast background.
+*/
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Civic brand: deep teal (trust, local government) + warm accent (community/local color) */
+  --color-brand-50: #eefbf7;
+  --color-brand-100: #d4f3e8;
+  --color-brand-200: #abe7d2;
+  --color-brand-300: #74d3b5;
+  --color-brand-400: #3fb896;
+  --color-brand-500: #1f9b7c;
+  --color-brand-600: #157c64;
+  --color-brand-700: #136452;
+  --color-brand-800: #124f43;
+  --color-brand-900: #0f4138;
+  --color-brand-950: #07241f;
+
+  --color-accent-400: #f5a742;
+  --color-accent-500: #ee8f1f;
+  --color-accent-600: #d6730f;
+
+  /* Verification semantics — color is always paired with icon + text, never used alone */
+  --color-verified-bg: #e8f7ee;
+  --color-verified-fg: #0f6b35;
+  --color-verified-border: #a7e3bd;
+
+  --color-community-bg: #eef3fb;
+  --color-community-fg: #1d4f8c;
+  --color-community-border: #bcd4f3;
+
+  --color-review-bg: #fdf3e3;
+  --color-review-fg: #8a5a0a;
+  --color-review-border: #f3d79c;
+
+  --color-stale-bg: #fdf0e8;
+  --color-stale-fg: #9a4a16;
+  --color-stale-border: #f3cdab;
+
+  --color-disputed-bg: #fbe9e9;
+  --color-disputed-fg: #9c2626;
+  --color-disputed-border: #f1bcbc;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    margin: 0;
+  }
+
+  :root[data-theme='dark'] body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* Visible focus rings everywhere — this is a navigation tool, keyboard/switch access matters */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/60 shadow-sm;
+  }
+  :root[data-theme='dark'] .glass-panel {
+    @apply bg-slate-900/60 border-white/10;
+  }
+
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
