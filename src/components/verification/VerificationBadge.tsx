@@ -6,7 +6,7 @@ const CONFIG: Record<
   VerificationState,
   { label: string; tone: 'verified' | 'community' | 'review' | 'stale' | 'disputed'; icon: React.ReactNode }
 > = {
-  verified: { label: 'Verified', tone: 'verified', icon: <CheckCircle2 size={14} /> },
+  verified: { label: 'Reviewed', tone: 'verified', icon: <CheckCircle2 size={14} /> },
   community_reported: { label: 'Community-reported', tone: 'community', icon: <Users size={14} /> },
   awaiting_review: { label: 'Awaiting review', tone: 'review', icon: <Clock size={14} /> },
   needs_recheck: { label: 'Needs recheck', tone: 'stale', icon: <History size={14} /> },

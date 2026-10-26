@@ -1,153 +1,109 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ClipboardEdit, MapPin, Route as RouteIcon } from 'lucide-react'
+import { ArrowLeft, MapPin } from 'lucide-react'
 import { MapPlaceholder } from '@/components/map/MapPlaceholder'
 import { AccessInfoPanel } from '@/components/places/AccessInfoPanel'
-import { LandmarkList } from '@/components/places/LandmarkList'
-import { PhotoPlaceholders } from '@/components/places/PhotoPlaceholders'
+import { PlaceSourcesPanel } from '@/components/places/PlaceSourcesPanel'
 import { CATEGORY_META } from '@/components/places/categoryMeta'
 import { VerificationBadge } from '@/components/verification/VerificationBadge'
 import { FreshnessNote } from '@/components/verification/FreshnessNote'
-import { RouteVerificationBadge } from '@/components/routes/RouteVerificationBadge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { EmptyState } from '@/components/ui/EmptyState'
-import { fetchPlaceById, fetchPlaces, fetchRoutesForPlace } from '@/lib/mockApi'
-import type { Place, WalkingRoute } from '@/types'
+import { fetchPlaceById } from '@/lib/placeApi'
+import type { Place } from '@/types'
 
 export function PlaceDetailPage() {
   const { placeId } = useParams<{ placeId: string }>()
-  const [place, setPlace] = useState<Place | null | undefined>(undefined)
-  const [allPlaces, setAllPlaces] = useState<Place[]>([])
-  const [routes, setRoutes] = useState<WalkingRoute[]>([])
+  const [loadAttempt, setLoadAttempt] = useState(0)
+  const [result, setResult] = useState<{ key: string; place: Place | null; error: boolean } | null>(null)
+  const requestKey = `${placeId ?? ''}:${loadAttempt}`
+  const loading = result?.key !== requestKey
+  const place = result?.place
+  const error = result?.error
 
   useEffect(() => {
-    if (!placeId) return
-    fetchPlaceById(placeId).then((p) => setPlace(p ?? null))
-    fetchPlaces().then(setAllPlaces)
-    fetchRoutesForPlace(placeId).then(setRoutes)
-  }, [placeId])
+    let active = true
+    const request = placeId ? fetchPlaceById(placeId) : Promise.resolve(null)
+    request.then((loaded) => { if (active) setResult({ key: requestKey, place: loaded, error: false }) })
+      .catch(() => { if (active) setResult({ key: requestKey, place: null, error: true }) })
+    return () => { active = false }
+  }, [placeId, requestKey])
 
-  if (place === undefined) {
-    return <p className="py-10 text-center text-sm text-slate-500">Loading…</p>
-  }
-
-  if (place === null) {
-    return (
-      <EmptyState
-        icon={<MapPin size={28} />}
-        title="Place not found"
-        description="This mock place doesn't exist. It may have been removed from the sample dataset."
-        action={
-          <Link to="/" className="text-sm font-medium text-brand-600">
-            Back to Explore
-          </Link>
-        }
-      />
-    )
-  }
+  if (loading) return <p role="status" className="py-10 text-center text-sm text-slate-500">Loading place...</p>
+  if (error) return (
+    <div role="alert">
+      <EmptyState title="Place unavailable" description="This place could not be loaded. Please try again."
+        action={<Button variant="secondary" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>Try again</Button>} />
+      <Link to="/" className="block text-center text-sm font-medium text-brand-700">Back to Explore</Link>
+    </div>
+  )
+  if (!place) return (
+    <EmptyState icon={<MapPin size={28} />} title="Place not found" description="This listing is unavailable or is no longer published."
+      action={<Link to="/" className="text-sm font-medium text-brand-700">Back to Explore</Link>} />
+  )
 
   const { label: categoryLabel, icon: CategoryIcon } = CATEGORY_META[place.category]
 
   return (
     <div className="space-y-5 pb-6">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">
-        <ArrowLeft size={16} />
-        Back to Explore
+      <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-800">
+        <ArrowLeft size={16} aria-hidden="true" />Back to Explore
       </Link>
-
       <div>
         <div className="flex items-start gap-3">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-            <CategoryIcon size={24} />
+            <CategoryIcon size={24} aria-hidden="true" />
           </div>
-          <div>
+          <div className="min-w-0">
             <h1 className="text-xl font-bold leading-snug text-slate-900">{place.name}</h1>
-            <p className="mt-0.5 text-sm text-slate-500">
-              {place.barangay} · {categoryLabel}
-            </p>
-            {place.alternateNames.length > 0 && (
-              <p className="mt-0.5 text-xs italic text-slate-400">
-                Also known as: {place.alternateNames.join(', ')}
-              </p>
-            )}
+            <p className="mt-0.5 text-sm text-slate-600">{place.barangay} · {categoryLabel}</p>
+            {place.alternateNames.length > 0 && <p className="mt-1 text-xs text-slate-500">Also known as: {place.alternateNames.join(', ')}</p>}
           </div>
         </div>
-
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <VerificationBadge state={place.verification.state} />
-          {place.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-600">
-              {tag}
-            </span>
-          ))}
+          {place.tags.map((tag) => <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-600">{tag}</span>)}
         </div>
       </div>
 
-      <MapPlaceholder places={[place]} selectedPlaceId={place.id} />
+      {place.location ? <MapPlaceholder places={[place]} selectedPlaceId={place.id} /> : (
+        <p className="rounded-xl bg-slate-100 p-3 text-sm text-slate-600">Map location: Not confirmed. Use the sourced address below when available.</p>
+      )}
+
+      <Card className="space-y-3 p-4">
+        <h2 className="font-semibold text-slate-900">About</h2>
+        <p className="text-sm text-slate-600">{place.description || 'Not confirmed'}</p>
+        <dl className="text-sm">
+          <dt className="font-medium text-slate-800">Address</dt>
+          <dd className="mt-1 text-slate-600">{place.address || 'Not confirmed'}</dd>
+        </dl>
+      </Card>
 
       <Card className="p-4">
-        <h2 className="mb-1 font-semibold text-slate-900">About</h2>
-        <p className="text-sm text-slate-600">{place.description}</p>
-        <p className="mt-3 flex items-start gap-2 text-sm text-slate-700">
-          <MapPin size={16} className="mt-0.5 shrink-0 text-slate-400" />
-          {place.address}
-        </p>
+        <h2 className="mb-2 font-semibold text-slate-900">Services</h2>
+        {place.services.length > 0 ? <ul className="list-disc space-y-1 pl-5 text-sm text-slate-600">
+          {place.services.map((service) => <li key={service}>{service}</li>)}
+        </ul> : <p className="text-sm text-slate-500">Not confirmed</p>}
+      </Card>
+
+      <Card className="p-4">
+        <h2 className="mb-2 font-semibold text-slate-900">Public contact</h2>
+        <dl className="space-y-3 text-sm">
+          <div><dt className="font-medium text-slate-800">Phone</dt><dd className="mt-1 break-words text-slate-600">{place.publicPhone || 'Not confirmed'}</dd></div>
+          <div><dt className="font-medium text-slate-800">Email</dt><dd className="mt-1 break-all text-slate-600">
+            {place.publicEmail ? <a className="text-brand-700 underline underline-offset-2" href={`mailto:${place.publicEmail}`}>{place.publicEmail}</a> : 'Not confirmed'}
+          </dd></div>
+        </dl>
       </Card>
 
       <AccessInfoPanel access={place.access} />
-
-      <Card className="p-4">
-        <h2 className="mb-2 font-semibold text-slate-900">Nearby landmarks</h2>
-        <LandmarkList landmarks={place.nearbyLandmarks} />
-      </Card>
-
-      <Card className="p-4">
-        <h2 className="mb-2 font-semibold text-slate-900">Photos</h2>
-        <PhotoPlaceholders count={place.photoPlaceholderCount} />
-      </Card>
-
-      <div>
-        <h2 className="mb-2 font-semibold text-slate-900">Verification</h2>
-        <FreshnessNote verification={place.verification} />
-      </div>
-
-      {routes.length > 0 && (
-        <div>
-          <h2 className="mb-2 flex items-center gap-1.5 font-semibold text-slate-900">
-            <RouteIcon size={18} className="text-slate-400" />
-            Walking routes involving this place
-          </h2>
-          <div className="space-y-2">
-            {routes.map((route) => {
-              const other = allPlaces.find(
-                (p) => p.id === (route.startPlaceId === place.id ? route.endPlaceId : route.startPlaceId),
-              )
-              return (
-                <Link key={route.id} to={`/routes/${route.id}`}>
-                  <Card interactive className="flex items-center justify-between gap-3 p-3.5">
-                    <div>
-                      <p className="text-sm font-medium text-slate-800">
-                        {route.startPlaceId === place.id ? 'To' : 'From'} {other?.name ?? 'another place'}
-                      </p>
-                      <p className="text-xs text-slate-500">
-                        {(route.distanceMeters / 1000).toFixed(1)} km · ~{route.estimatedMinutes} min
-                      </p>
-                    </div>
-                    <RouteVerificationBadge state={route.verification} />
-                  </Card>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      )}
-
-      <Link to={`/corrections/new?placeId=${place.id}`}>
-        <Button variant="secondary" icon={<ClipboardEdit size={16} />} fullWidth>
-          Suggest a correction for this place
-        </Button>
-      </Link>
+      <section aria-labelledby="verification-heading">
+        <h2 id="verification-heading" className="mb-2 font-semibold text-slate-900">Checks & review</h2>
+        <FreshnessNote verification={place.verification} sources={place.sources} />
+      </section>
+      <PlaceSourcesPanel sources={place.sources} />
+      <p className="text-xs text-slate-500">Pilot listings in progress for Tunasan and Poblacion. Confirm details with the office before a visit.</p>
     </div>
   )
 }
