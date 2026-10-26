@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
-import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+import { PlaceMap } from '@/components/map/PlaceMap'
 import { PlaceCard } from '@/components/places/PlaceCard'
 import { CATEGORY_META } from '@/components/places/categoryMeta'
 import { Button } from '@/components/ui/Button'
@@ -98,7 +98,7 @@ export function ExplorePage() {
       ) : (
         <>
           {filtered.some((place) => place.location !== null) && (
-            <MapPlaceholder places={filtered} selectedPlaceId={selectedPlaceId} onSelectPlace={setSelectedPlaceId} className="h-auto" />
+            <PlaceMap places={filtered} selectedPlaceId={selectedPlaceId} onSelectPlace={setSelectedPlaceId} />
           )}
           <div>
             <p aria-live="polite" className="mb-2 text-sm font-medium text-slate-500">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, MapPin } from 'lucide-react'
-import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+import { PlaceMap } from '@/components/map/PlaceMap'
 import { AccessInfoPanel } from '@/components/places/AccessInfoPanel'
 import { PlaceSourcesPanel } from '@/components/places/PlaceSourcesPanel'
 import { CATEGORY_META } from '@/components/places/categoryMeta'
@@ -67,7 +67,7 @@ export function PlaceDetailPage() {
         </div>
       </div>
 
-      {place.location ? <MapPlaceholder places={[place]} selectedPlaceId={place.id} /> : (
+      {place.location ? <PlaceMap places={[place]} selectedPlaceId={place.id} /> : (
         <p className="rounded-xl bg-slate-100 p-3 text-sm text-slate-600">Map location: Not confirmed. Use the sourced address below when available.</p>
       )}
 
