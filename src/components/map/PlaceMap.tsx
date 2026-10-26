@@ -106,10 +106,10 @@ export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: 
       for (const place of group) {
         const item = document.createElement(group.length > 1 && onSelectPlace ? 'button' : 'p')
         item.textContent = place.name
-        item.className = 'block text-sm font-medium text-slate-900'
+        item.className = 'block text-sm font-medium text-map-on-canvas'
         if (item instanceof HTMLButtonElement) {
           item.type = 'button'
-          item.className += ' tap-target w-full rounded-lg px-2 text-left hover:bg-slate-100'
+          item.className += ' tap-target w-full rounded-lg px-2 text-left hover:bg-map-popup-hover'
           item.setAttribute('aria-pressed', String(place.id === selectedPlaceId))
           item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup(); marker.getElement()?.focus({ preventScroll: true }) })
         }
@@ -149,23 +149,23 @@ export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: 
       {hasLocations ? (
         <>
           <div data-map-surface ref={containerRef} role="region" aria-label="Map of public service locations"
-            className={cn('relative z-0 h-80 w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 text-slate-900 sm:h-96', initError && 'hidden')} />
+            className={cn('relative z-0 h-80 w-full overflow-hidden rounded-2xl border border-map-border bg-map-canvas text-map-on-canvas sm:h-96', initError && 'hidden')} />
           {(initError || tileError) && (
-            <div role="alert" className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-800">
+            <div role="alert" className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-map-border bg-map-surface p-3 text-sm text-map-copy">
               <p>{initError ? 'Map unavailable.' : 'Some map tiles could not load.'} The directory remains available below.</p>
               <Button variant="secondary" onClick={retry}>Retry map</Button>
             </div>
           )}
-          <p className="text-xs text-slate-600">{mappedPlaces.length} mapped {mappedPlaces.length === 1 ? 'listing' : 'listings'}.
+          <p className="text-xs text-map-muted">{mappedPlaces.length} mapped {mappedPlaces.length === 1 ? 'listing' : 'listings'}.
             {missingCount > 0 && ` ${missingCount} ${missingCount === 1 ? 'listing without confirmed coordinates remains' : 'listings without confirmed coordinates remain'} available in the list.`}</p>
         </>
       ) : (
-        <p className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+        <p className="flex items-center gap-2 rounded-xl border border-map-border bg-map-surface p-4 text-sm text-map-muted">
           <MapPin size={18} aria-hidden="true" />Map location not confirmed. Listings remain available in the directory.
         </p>
       )}
       <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noreferrer noopener"
-        className="inline-flex min-h-11 items-center text-xs font-medium text-brand-700 underline hover:text-brand-900">Report a map issue</a>
+        className="inline-flex min-h-11 items-center text-xs font-medium text-map-link underline hover:text-map-link-hover">Report a map issue</a>
     </section>
   )
 }

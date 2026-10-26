@@ -52,6 +52,17 @@
   --color-disputed-bg: #fbe9e9;
   --color-disputed-fg: #9c2626;
   --color-disputed-border: #f1bcbc;
+
+  /* Map chrome follows the app theme; Leaflet's white popup stays dark on light. */
+  --color-map-surface: var(--color-white);
+  --color-map-border: var(--color-slate-200);
+  --color-map-copy: var(--color-slate-800);
+  --color-map-muted: var(--color-slate-600);
+  --color-map-link: var(--color-brand-700);
+  --color-map-link-hover: var(--color-brand-900);
+  --color-map-canvas: var(--color-slate-100);
+  --color-map-on-canvas: var(--color-slate-900);
+  --color-map-popup-hover: var(--color-slate-100);
 }
 
 @layer base {
@@ -68,6 +79,26 @@
 
   :root[data-theme='dark'] body {
     @apply bg-slate-950 text-slate-100;
+  }
+
+  :root[data-theme='dark'] {
+    --color-map-surface: var(--color-slate-900);
+    --color-map-border: var(--color-slate-700);
+    --color-map-copy: var(--color-slate-100);
+    --color-map-muted: var(--color-slate-300);
+    --color-map-link: var(--color-brand-200);
+    --color-map-link-hover: var(--color-brand-100);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --color-map-surface: var(--color-slate-900);
+      --color-map-border: var(--color-slate-700);
+      --color-map-copy: var(--color-slate-100);
+      --color-map-muted: var(--color-slate-300);
+      --color-map-link: var(--color-brand-200);
+      --color-map-link-hover: var(--color-brand-100);
+    }
   }
 
   /* Visible focus rings everywhere — this is a navigation tool, keyboard/switch access matters */
