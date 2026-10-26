@@ -1,0 +1,1885 @@
+[
+  {
+    "sourceKey": "barangay-tunasan-office",
+    "name": "Barangay Tunasan Office",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": null,
+    "location": null,
+    "description": "Barangay government office for Tunasan residents.",
+    "services": [
+      "Barangay certifications and certificates of indigency"
+    ],
+    "publicPhone": "Chairman’s Office: 8 862-2918; Revenue Department: 8 862-2934 / 0916-4537196",
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Barangay Tunasan Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-tunasan/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "barangay-poblacion-office",
+    "name": "Barangay Poblacion Office",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": null,
+    "location": null,
+    "description": "Barangay government office for Poblacion residents.",
+    "services": [
+      "Barangay clearance requests",
+      "Permit applications",
+      "Complaints and service inquiries"
+    ],
+    "publicPhone": "Secretary: 8832-1632; Administration: 8862-4120; BESO: 8834-7314; Treasury: 8478-1527",
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Barangay Poblacion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/barangays/brgy-poblacion/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-health-office-tunasan",
+    "name": "City Health Office",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Centennial Avenue, Laguerta, Brgy. Tunasan, Muntinlupa City 1773",
+    "location": null,
+    "description": "City office overseeing public health services and health programs.",
+    "services": [],
+    "publicPhone": "(02) 8 8541-3485",
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - City Health Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-health-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-bplo-tunasan",
+    "name": "Business Permits and Licensing Office",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Right Wing, Muntinlupa Sports Complex, Tunasan, Muntinlupa City (temporary)",
+    "location": null,
+    "description": "City office for business regulation, permits, and licenses.",
+    "services": [
+      "Business permits",
+      "Occupational permits",
+      "Business record certification"
+    ],
+    "publicPhone": "8867-6527 / 8862-2756",
+    "publicEmail": "bplo.muntinlupa@yahoo.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Business Permits and Licensing Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-esc-tunasan",
+    "name": "Environmental Sanitation Center",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Arandia St., Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "City office for ecological solid-waste management and environmental-law coordination.",
+    "services": [],
+    "publicPhone": "8 861-1866 / 8 862-0352",
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Environmental Sanitation Center",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-eced-tunasan",
+    "name": "Early Childhood Education Division",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "2F Laguerta Bulilit Center, Centennial Avenue, Laguerta, Barangay Tunasan, City of Muntinlupa",
+    "location": null,
+    "description": "City division responsible for early childhood care and education programs.",
+    "services": [
+      "Child-development center registration and recognition"
+    ],
+    "publicPhone": "8 741-7326",
+    "publicEmail": "ecedmuntinlupa@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Early Childhood Education Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-security-office-tunasan",
+    "name": "City Security Office",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "2nd Floor, Motorpool Building, Pacwood Site, Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "City office providing security and safety services to public schools, offices, and residents.",
+    "services": [
+      "Security assistance for city events"
+    ],
+    "publicPhone": "(02) 8-553-7248",
+    "publicEmail": "cso.muntinlupa@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - City Security Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/city-security-office/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-ddrm-tunasan",
+    "name": "Muntinlupa City Department of Disaster Resilience and Management",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Hall of Justice Compound, Resilience Building, Susana Heights, Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "City department responsible for disaster resilience and risk management.",
+    "services": [
+      "Disaster-preparedness training",
+      "Technical assistance on disaster risk reduction"
+    ],
+    "publicPhone": "(02) 8 925-4382",
+    "publicEmail": "drrmomuntinlupa@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Department of Disaster Resilience and Management",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-museo-tunasan",
+    "name": "Museo ng Muntinlupa",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Centennial Ave., Brgy. Tunasan, City of Muntinlupa",
+    "location": null,
+    "description": "City museum presenting local history, heritage, and culture.",
+    "services": [
+      "City-history exhibitions",
+      "Public cultural programs"
+    ],
+    "publicPhone": "8 256-3128 local 100",
+    "publicEmail": "museo@muntinlupacity.gov.ph",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Museo ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/museo-ng-muntinlupa/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-yasdo-tunasan",
+    "name": "Youth Affairs and Sports Development Office",
+    "category": "government",
+    "barangay": "Tunasan",
+    "address": "Head Office, Muntinlupa Sports Center, Buendia St., Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "City office for youth and sports development programs.",
+    "services": [
+      "Youth and sports development programs",
+      "Skills training for out-of-school youth"
+    ],
+    "publicPhone": "0968.132.4742",
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Youth Affairs and Sports Development Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/youth-affairs-and-sports-development-office-yasdo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-public-library-poblacion",
+    "name": "Muntinlupa City Public Library",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": "2nd Floor Plaza Central Building, Poblacion, Muntinlupa City 1776",
+    "location": null,
+    "description": "City public library with reading materials and digital resources.",
+    "services": [
+      "Research and reference assistance",
+      "Computer and Wi-Fi access",
+      "Study spaces"
+    ],
+    "publicPhone": "8-800-8187",
+    "publicEmail": "mcpubliclibrary1@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": "Monday to Friday, except holidays, 7:00 AM to 6:00 PM.",
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "access.hoursNote",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Public Library",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-scholarship-poblacion",
+    "name": "Muntinlupa Scholarship Division",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": "2nd Floor Plaza Central Building, Poblacion, Muntinlupa",
+    "location": null,
+    "description": "City division administering educational and financial support through scholarship programs.",
+    "services": [
+      "Educational and financial support programs"
+    ],
+    "publicPhone": "8 831-5971",
+    "publicEmail": "concerns.msd@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa Scholarship Division",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-leipo-poblacion",
+    "name": "Local Economic and Investment Promotion Office",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": "3rd Floor, Plaza Central, Poblacion, Muntinlupa City 1776",
+    "location": null,
+    "description": "City office assisting investors and local enterprises.",
+    "services": [
+      "Investment assistance",
+      "MSME support",
+      "Research data requests"
+    ],
+    "publicPhone": "8862-2525 loc. 1032, 1033",
+    "publicEmail": "leipo@muntinlupacity.gov.ph",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Local Economic and Investment Promotion Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/local-economic-and-investment-promotion-office-leipo/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-poso-poblacion",
+    "name": "Public Order and Safety Office",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": "3rd Floor, Plaza Central Bldg., National Road, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "City office supporting public order, community safety, and disaster response.",
+    "services": [],
+    "publicPhone": "0938 432 5000",
+    "publicEmail": "posomuntinlupa2013@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Public Order and Safety Office",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "city-mcti-southville-annex",
+    "name": "Muntinlupa City Technical Institute - Southville Annex",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "MCTI-Annex Bldg., Phase 2 Block 3 Lot 1, Southville III, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Annex of the city technical and vocational education institute.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Technical Institute - Southville Annex",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-technical-institute/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Technical Institute - Southville Annex",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-technical-institute/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Technical Institute - Southville Annex",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-technical-institute/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Technical Institute - Southville Annex",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-technical-institute/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Muntinlupa City Technical Institute - Southville Annex",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-technical-institute/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "plmun-poblacion",
+    "name": "Pamantasan ng Lungsod ng Muntinlupa",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "University Road, NBP Reservation, Poblacion, Muntinlupa City 1776",
+    "location": null,
+    "description": "City higher education institution offering undergraduate and graduate programs.",
+    "services": [
+      "Undergraduate education",
+      "Graduate education"
+    ],
+    "publicPhone": "(02)8 893-3368 loc. 250",
+    "publicEmail": "plmuncomm@plmun.edu.ph",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "services",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "City Government of Muntinlupa - Pamantasan ng Lungsod ng Muntinlupa",
+        "sourceUrl": "https://muntinlupacity.gov.ph/departments-offices/pamantasan-ng-lungsod-ng-muntinlupa-plmun/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-sdo-muntinlupa",
+    "name": "DepEd Schools Division Office Muntinlupa",
+    "category": "government",
+    "barangay": "Poblacion",
+    "address": "Laguerta St., Tensuan Site, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "DepEd Schools Division Office for Muntinlupa City.",
+    "services": [],
+    "publicPhone": "(02) 8865-1514 / 8861-4953 / 8829-2308 / 8478-2846",
+    "publicEmail": "sdo.muntinlupa@gmail.com",
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicPhone",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "publicEmail",
+        "sourceName": "DepEd Regional and Division Offices Directory - Muntinlupa City",
+        "sourceUrl": "https://www.deped.gov.ph/contact-us/regional-division-offices-directory/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "doh-tunasan-health-center",
+    "name": "Tunasan Health Center",
+    "category": "health",
+    "barangay": "Tunasan",
+    "address": "E. Rodriguez Ave., Tunasan, Muntinlupa City (beside Barangay Hall)",
+    "location": null,
+    "description": "Public health center listed in the DOH facility directory.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DOH National TB Control Program facility directory - Tunasan Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/view-facility/?id=13140",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DOH National TB Control Program facility directory - Tunasan Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/view-facility/?id=13140",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DOH National TB Control Program facility directory - Tunasan Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/view-facility/?id=13140",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DOH National TB Control Program facility directory - Tunasan Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/view-facility/?id=13140",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DOH National TB Control Program facility directory - Tunasan Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/view-facility/?id=13140",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "doh-poblacion-health-center",
+    "name": "Poblacion Health Center",
+    "category": "health",
+    "barangay": "Poblacion",
+    "address": "Ground Floor, Contessa Bldg., Rizal St., Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Public health center listed in the DOH facility directory.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DOH National TB Control Program facility directory - Poblacion Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DOH National TB Control Program facility directory - Poblacion Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DOH National TB Control Program facility directory - Poblacion Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DOH National TB Control Program facility directory - Poblacion Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DOH National TB Control Program facility directory - Poblacion Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "doh-southville-health-center",
+    "name": "Southville Health Center",
+    "category": "health",
+    "barangay": "Poblacion",
+    "address": "Phase 1, Insular Prison Rd., South Ville 3, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Public health center listed in the DOH facility directory.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DOH National TB Control Program facility directory - Southville Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DOH National TB Control Program facility directory - Southville Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DOH National TB Control Program facility directory - Southville Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DOH National TB Control Program facility directory - Southville Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DOH National TB Control Program facility directory - Southville Health Center",
+        "sourceUrl": "https://ntp.doh.gov.ph/resources/facilities/?FacilitySearch%5Btype_id%5D=5&yiiwp-page=104",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-136903",
+    "name": "Muntinlupa Elementary School",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "Rizal Street, Poblacion, Muntinlupa City",
+    "location": {
+      "lat": 14.3891958,
+      "lng": 121.0442405
+    },
+    "description": "Public elementary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd SY 2020-2021 - school 136903",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd SY 2020-2021 - school 136903",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd SY 2020-2021 - school 136903",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd SY 2020-2021 - school 136903",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd SY 2020-2021 - school 136903",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 136903",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "location",
+        "sourceName": "DepEd 2026 PPP indicative school list (2025-12-08) - school 136903; project coordinates, not a site visit",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Deped-Announcement-on-PPP-Indicative-List-of-Schools-Annex-A-2025-12-08_1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-136906",
+    "name": "Tunasan Elementary School",
+    "category": "education",
+    "barangay": "Tunasan",
+    "address": "Arandia St., Tunasan, Muntinlupa City",
+    "location": {
+      "lat": 14.3811,
+      "lng": 121.0516
+    },
+    "description": "Public elementary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd SY 2020-2021 - school 136906",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd SY 2020-2021 - school 136906",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd SY 2020-2021 - school 136906",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd SY 2020-2021 - school 136906",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd SY 2020-2021 - school 136906",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 136906",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "location",
+        "sourceName": "DepEd 2026 PPP indicative school list (2025-12-08) - school 136906; project coordinates, not a site visit",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Deped-Announcement-on-PPP-Indicative-List-of-Schools-Annex-A-2025-12-08_1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-136907",
+    "name": "Victoria Homes Elementary School",
+    "category": "education",
+    "barangay": "Tunasan",
+    "address": "Don Pedro Reyes Ave., Victoria Homes Subdivision, Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "Public elementary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd SY 2020-2021 - school 136907",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd SY 2020-2021 - school 136907",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd SY 2020-2021 - school 136907",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd SY 2020-2021 - school 136907",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd SY 2020-2021 - school 136907",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 136907",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-228501",
+    "name": "Poblacion Elementary School",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "Phase 1, Southville 3, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Public elementary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd SY 2020-2021 - school 228501",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd SY 2020-2021 - school 228501",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd SY 2020-2021 - school 228501",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd SY 2020-2021 - school 228501",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd SY 2020-2021 - school 228501",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 228501",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-305468",
+    "name": "Muntinlupa National High School",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "NBP Reservation, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Public secondary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd 2026 allocation list - school 305468",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd 2026 allocation list - school 305468",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd 2026 allocation list - school 305468",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd 2026 allocation list - school 305468",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd 2026 allocation list - school 305468",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 305468",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-305469",
+    "name": "Muntinlupa Science High School",
+    "category": "education",
+    "barangay": "Tunasan",
+    "address": "Arandia St., Tunasan, Muntinlupa City",
+    "location": null,
+    "description": "Public secondary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd 2026 allocation list - school 305469",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd 2026 allocation list - school 305469",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd 2026 allocation list - school 305469",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd 2026 allocation list - school 305469",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd 2026 allocation list - school 305469",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 305469",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  },
+  {
+    "sourceKey": "deped-320701",
+    "name": "Poblacion National High School",
+    "category": "education",
+    "barangay": "Poblacion",
+    "address": "Southville 3, NHA, Poblacion, Muntinlupa City",
+    "location": null,
+    "description": "Public secondary school listed by DepEd.",
+    "services": [],
+    "publicPhone": null,
+    "publicEmail": null,
+    "access": {
+      "entranceNotes": "",
+      "wheelchairAccess": "unknown",
+      "parkingNotes": null,
+      "hoursNote": null,
+      "additionalNotes": null
+    },
+    "sources": [
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd 2026 allocation list - school 320701",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "category",
+        "sourceName": "DepEd 2026 allocation list - school 320701",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "barangay",
+        "sourceName": "DepEd 2026 allocation list - school 320701",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "address",
+        "sourceName": "DepEd 2026 allocation list - school 320701",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "description",
+        "sourceName": "DepEd 2026 allocation list - school 320701",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      },
+      {
+        "fieldKey": "name",
+        "sourceName": "DepEd National Inventory Dashboard (updated 2026-10-18) - school 320701",
+        "sourceUrl": "https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City",
+        "sourceType": "official",
+        "checkedAt": "2026-10-27"
+      }
+    ]
+  }
+]
