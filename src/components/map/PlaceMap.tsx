@@ -79,15 +79,15 @@ export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: 
     if (!session || session.map !== mapRef.current || !markerLayerRef.current) return
     const { leaflet, map } = session
     const layer = markerLayerRef.current
-    const focusedTitle = document.activeElement?.classList.contains('leaflet-marker-icon')
-      ? document.activeElement.getAttribute('aria-label') : null
+    const focusedGroupKey = document.activeElement?.classList.contains('leaflet-marker-icon')
+      ? document.activeElement.getAttribute('data-map-group-key') : null
     layer.clearLayers()
     const groups = new Map<string, Place[]>()
     for (const place of mappedPlaces) {
       const key = `${place.location!.lat},${place.location!.lng}`
       groups.set(key, [...(groups.get(key) ?? []), place])
     }
-    for (const group of groups.values()) {
+    for (const [groupKey, group] of groups) {
       const selected = group.some((place) => place.id === selectedPlaceId)
       const title = group.length === 1 ? group[0].name : `${group.length} listings at this location`
       const iconContent = document.createElement('span')
@@ -120,8 +120,9 @@ export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: 
       marker.on('add', () => {
         const element = marker.getElement()
         element?.setAttribute('aria-label', title)
+        element?.setAttribute('data-map-group-key', groupKey)
         element?.setAttribute('aria-pressed', String(selected))
-        if (title === focusedTitle) element?.focus({ preventScroll: true })
+        if (groupKey === focusedGroupKey) element?.focus({ preventScroll: true })
         element?.addEventListener('keydown', (event) => {
           if (event.code === 'Space' || event.code === 'Enter') { event.preventDefault(); marker.fire('click'); marker.openPopup() }
         })
