@@ -18,6 +18,10 @@ import type { Place } from '@/types'
 
 export const mockPlaces: Place[] = [
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-001',
     name: '[MOCK] Barangay Placeholder Hall — Sample Barangay',
     category: 'government',
@@ -50,6 +54,10 @@ export const mockPlaces: Place[] = [
     photoPlaceholderCount: 3,
   },
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-002',
     name: '[MOCK] Sample Public Market',
     category: 'shopping',
@@ -81,6 +89,10 @@ export const mockPlaces: Place[] = [
     photoPlaceholderCount: 2,
   },
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-003',
     name: '[MOCK] Placeholder Health Center',
     category: 'health',
@@ -109,6 +121,10 @@ export const mockPlaces: Place[] = [
     photoPlaceholderCount: 0,
   },
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-004',
     name: '[MOCK] Placeholder Riverside Park',
     category: 'park_recreation',
@@ -139,6 +155,10 @@ export const mockPlaces: Place[] = [
     photoPlaceholderCount: 1,
   },
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-005',
     name: '[MOCK] Sample Terminal Stop',
     category: 'transport',
@@ -167,6 +187,10 @@ export const mockPlaces: Place[] = [
     photoPlaceholderCount: 0,
   },
   {
+    services: [],
+    publicPhone: null,
+    publicEmail: null,
+    sources: [],
     id: 'place-006',
     name: '[MOCK] Placeholder Elementary School',
     category: 'education',

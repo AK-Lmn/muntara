@@ -75,18 +75,30 @@ export interface Landmark {
   relativePosition: string
 }
 
+export type PilotBarangay = 'Tunasan' | 'Poblacion'
+
+export interface PlaceSource {
+  id: string
+  fieldKey: string
+  sourceName: string
+  sourceUrl: string | null
+  sourceType: 'official' | 'field_visit' | 'openstreetmap'
+  checkedAt: string
+}
+
 export interface Place {
   id: string
   name: string
   category: PlaceCategory
   barangay: string
-  address: string
-  /**
-   * Placeholder coordinates for prototype map rendering only.
-   * MOCK DATA — not confirmed against a real geocoder or site visit.
-   */
-  location: GeoPoint
+  address: string | null
+  /** Null when reliable coordinates have not been confirmed. */
+  location: GeoPoint | null
   description: string
+  services: string[]
+  publicPhone: string | null
+  publicEmail: string | null
+  sources: PlaceSource[]
   access: AccessInfo
   nearbyLandmarks: Landmark[]
   tags: string[]

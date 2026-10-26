@@ -50,6 +50,7 @@ export function MapPlaceholder({ places, selectedPlaceId, onSelectPlace, classNa
 
       <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
         {places.map((place) => {
+          if (!place.location) return null
           const { x, y } = project(place.location)
           const isSelected = place.id === selectedPlaceId
           return (
