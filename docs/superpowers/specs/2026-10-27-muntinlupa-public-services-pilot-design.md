@@ -5,12 +5,12 @@
 
 ## Intent
 
-Build a polished Muntara prototype that can also serve as a useful local guide. The first pilot covers Tunasan and Poblacion, helping residents find public government offices, clinics, and schools, understand what each location offers, and report information that needs correction.
+Build a polished Muntara prototype that can also serve as a useful local guide. The first pilot covers Tunasan, Poblacion, and Putatan, helping residents find public government offices, clinics, and schools, understand what each location offers, and report information that needs correction.
 
 ## Decisions from the conversation
 
 - The project should serve both as a polished prototype and as a guide residents can use.
-- Start in Tunasan and Poblacion.
+- Start in Tunasan, Poblacion, and Putatan.
 - Include every public-facing government office in those barangays, plus public clinics and schools.
 - Build the full pilot: real listings and map, with corrections that persist and moderation that works.
 - Keep public browsing and correction submission account-free; put sign-in in a separate admin area.
@@ -23,7 +23,7 @@ This pilot must replace fictional place records in resident-facing views. Walkin
 
 ## Goals
 
-- Provide a complete, searchable directory for the two pilot barangays.
+- Provide a complete, searchable directory for the three pilot barangays.
 - Show real locations on a usable mobile map and in a list. Let visitors browse without signing in.
 - Give each listing a name, type, barangay, address, and map location. Show public contact details, hours, and services when reliable sources provide them. Show entrance and accessibility notes only when checked. Show “not confirmed” when a field is unknown.
 - Show where each fact came from and when it was last checked. Distinguish information confirmed by an official source from details checked at the location; an official listing alone must not imply a field check.
@@ -33,13 +33,13 @@ This pilot must replace fictional place records in resident-facing views. Walkin
 
 ## Scope boundary
 
-“Government office” means a public-facing government service location physically inside Tunasan or Poblacion. Include barangay offices, city offices or service desks, and national-agency service points when they operate in either barangay. Include public clinics and government-run schools or learning centers. Exclude private clinics and schools, internal offices without public visitors, and facilities outside the two barangay boundaries even when they serve residents there. Give distinct public-facing services separate listings when they share an address; the map may cluster their pins.
+“Government office” means a public-facing government service location physically inside Tunasan, Poblacion, or Putatan. Include barangay offices, city offices or service desks, and national-agency service points when they operate in one of these barangays. Include public clinics and government-run schools or learning centers. Exclude private clinics and schools, internal offices without public visitors, and facilities outside these barangay boundaries even when they serve residents there. Give distinct public-facing services separate listings when they share an address; the map may cluster their pins.
 
 Do not claim the pilot is complete until available official directories have been reconciled with the barangays and relevant facility owners. Keep a visible coverage state such as “pilot listings in progress” while gaps remain. Never invent an office, address, service, phone number, schedule, entrance, or coordinate to fill a gap.
 
 ## Data and trust
 
-Use the city’s Tunasan and Poblacion pages, its department directory and GIS catalogue, DepEd’s Muntinlupa school inventory, and DOH or other official facility listings as source leads. These pages provide useful records, but the research so far does not prove that any one directory is complete or current. Confirm the inventory with the relevant barangay or agency. OpenStreetMap can help locate candidate map points; it is not proof of an office’s services, hours, access, or current operation. Keep required attribution if OSM data or tiles are used.
+Use the city’s Tunasan, Poblacion, and Putatan pages, its department directory and GIS catalogue, DepEd’s Muntinlupa school inventory, and DOH or other official facility listings as source leads. These pages provide useful records, but the research so far does not prove that any one directory is complete or current. Confirm the inventory with the relevant barangay or agency. OpenStreetMap can help locate candidate map points; it is not proof of an office’s services, hours, access, or current operation. Keep required attribution if OSM data or tiles are used.
 
 Store source URL or citation, source type, and date checked for each listing and relevant field. Preserve a separate field-check date and method for entrance and access information. On the page, use plain labels such as “Official source checked” and “Visited in person.” Keep unknown or conflicting details visible as unknown or disputed. Do not expose employee names or personal contact details unless they are published as the office’s public contact.
 
@@ -53,7 +53,7 @@ Full moderation audit history is visible only to moderators. Each contributor ca
 
 ## Approaches
 
-1. **Directory pilot:** add sourced listings, provenance labels, and a real map for the two barangays. This is quicker and supports lookup, but corrections cannot persist for ongoing maintenance.
+1. **Directory pilot:** add sourced listings, provenance labels, and a real map for the three barangays. This is quicker and supports lookup, but corrections cannot persist for ongoing maintenance.
 2. **Full local pilot — selected:** add the same listings and map, plus anonymous durable correction tracking and a separate authenticated admin area. This takes longer but supports both a credible demo and continued community use without requiring public sign-up.
 
 The user selected the full local pilot. The existing React/TypeScript/Vite stack stays in place. Supabase is the proposed backend call above. The map provider remains a builder choice; it must work on phones, show clear attribution, and use a tile service whose terms fit the pilot.
@@ -89,6 +89,7 @@ The user selected the full local pilot. The existing React/TypeScript/Vite stack
 
 - [Tunasan barangay profile](https://muntinlupacity.gov.ph/barangays/brgy-tunasan/)
 - [Poblacion barangay profile](https://muntinlupacity.gov.ph/barangays/brgy-poblacion/)
+- [Putatan barangay profile](https://muntinlupacity.gov.ph/barangays/brgy-putatan/)
 - [City Health Office](https://muntinlupacity.gov.ph/departments-offices/city-health-office/)
 - [Muntinlupa GIS catalogue](https://cgis.muntinlupacity.gov.ph/catalogue/)
 - [DepEd Muntinlupa school inventory](https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City?filter=submitted)

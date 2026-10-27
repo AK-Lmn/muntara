@@ -4,7 +4,7 @@
  * NOTE ON DATA TRUST: Nothing in this app should ever claim to be verified
  * real-world information unless it was actually checked by a human against
  * the physical location. The types below exist specifically to make that
- * distinction impossible to skip — every place and every route carries an
+ * distinction impossible to skip: every place and every route carries an
  * explicit VerificationStatus, and UI components are expected to render it
  * rather than hide it.
  */
@@ -45,7 +45,7 @@ export interface VerificationMeta {
   lastCheckedAt: string | null
   /** Free-text description of how it was checked, e.g. "Visited in person", "Cross-checked with barangay listing". Placeholder in this prototype. */
   method: string | null
-  /** Display name / role of whoever last checked it — kept generic in mock data (e.g. "Community volunteer"). */
+  /** Display name / role of whoever last checked it: kept generic in mock data (e.g. "Community volunteer"). */
   checkedBy: string | null
   /** Number of independent community reports that agree with current info. */
   corroborations: number
@@ -75,7 +75,7 @@ export interface Landmark {
   relativePosition: string
 }
 
-export type PilotBarangay = 'Tunasan' | 'Poblacion'
+export type PilotBarangay = 'Tunasan' | 'Poblacion' | 'Putatan'
 
 export interface PlaceSource {
   id: string
@@ -105,7 +105,7 @@ export interface Place {
   /** Local names / alternate spellings commonly used by residents, kept alongside the formal name. */
   alternateNames: string[]
   verification: VerificationMeta
-  /** Placeholder for future photo support — prototype uses labeled placeholder blocks, not real images. */
+  /** Placeholder for future photo support: prototype uses labeled placeholder blocks, not real images. */
   photoPlaceholderCount: number
 }
 
@@ -145,7 +145,7 @@ export interface Correction {
   newValue: string | null
   /** Optional note/justification from the submitter. */
   submitterNote: string | null
-  /** Pseudonymous submitter label only — no real accounts in this prototype. */
+  /** Pseudonymous submitter label only: no real accounts in this prototype. */
   submittedBy: string
   submittedAt: string
   status: CorrectionStatus
@@ -160,7 +160,7 @@ export interface Correction {
 }
 
 export type RouteVerificationState =
-  /** Drawn from map data only — nobody has walked it to confirm it's correct, safe, or currently passable. */
+  /** Drawn from map data only: nobody has walked it to confirm it's correct, safe, or currently passable. */
   | 'mapped_only'
   /** Walked in person and confirmed, within the freshness window. */
   | 'field_verified'
@@ -178,13 +178,13 @@ export interface WalkingRoute {
   name: string
   startPlaceId: string
   endPlaceId: string
-  /** Placeholder polyline — prototype only, not a routed path from a real mapping engine. */
+  /** Placeholder polyline: prototype only, not a routed path from a real mapping engine. */
   pathPlaceholder: GeoPoint[]
   distanceMeters: number
   estimatedMinutes: number
   verification: RouteVerificationState
   lastFieldCheckAt: string | null
-  /** Plain-language uncertainty statement always shown next to the route — never omitted. */
+  /** Plain-language uncertainty statement always shown next to the route: never omitted. */
   uncertaintyNote: string
   segmentNotes: RouteSegmentNote[]
   wheelchairFriendly: 'yes' | 'no' | 'partial' | 'unknown'
@@ -192,7 +192,7 @@ export interface WalkingRoute {
 
 export type UserRole = 'visitor' | 'resident' | 'moderator'
 
-/** Minimal mock session — this prototype has no real auth. */
+/** Minimal mock session: this prototype has no real auth. */
 export interface MockSession {
   displayName: string
   role: UserRole

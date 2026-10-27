@@ -5,10 +5,10 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800',
-  secondary: 'bg-white text-brand-700 border border-brand-200 hover:bg-brand-50',
-  ghost: 'bg-transparent text-slate-700 hover:bg-slate-100',
-  danger: 'bg-red-600 text-white hover:bg-red-700',
+  primary: 'bg-action-primary text-white hover:bg-action-primary-hover active:bg-action-primary-active',
+  secondary: 'border border-line bg-paper text-ink hover:bg-surface-soft active:bg-line',
+  ghost: 'bg-transparent text-copy hover:bg-surface-soft active:bg-line',
+  danger: 'bg-danger-600 text-white hover:bg-danger-700 active:bg-danger-700',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -22,6 +22,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize
   icon?: ReactNode
   fullWidth?: boolean
+  loading?: boolean
 }
 
 export function Button({
@@ -29,15 +30,20 @@ export function Button({
   size = 'md',
   icon,
   fullWidth,
+  loading = false,
   className,
   children,
+  disabled,
   ...rest
 }: ButtonProps) {
   return (
     <button
+      aria-busy={loading || undefined}
+      disabled={disabled || loading}
       className={cn(
         'tap-target inline-flex items-center justify-center font-semibold transition-colors',
-        'disabled:opacity-50 disabled:cursor-not-allowed',
+        'focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
+        'active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100',
         variantClasses[variant],
         sizeClasses[size],
         fullWidth && 'w-full',

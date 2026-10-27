@@ -40,7 +40,7 @@ export function validatePlaces(records) {
     keys.add(record.sourceKey)
     string(record.name, `${path}.name`)
     if (!['government', 'health', 'education'].includes(record.category)) fail(`${path}.category`, 'unsupported pilot category')
-    if (!['Tunasan', 'Poblacion'].includes(record.barangay)) fail(`${path}.barangay`, 'outside the pilot')
+    if (!['Tunasan', 'Poblacion', 'Putatan'].includes(record.barangay)) fail(`${path}.barangay`, 'outside the pilot')
     string(record.address, `${path}.address`, { nullable: true })
     string(record.description, `${path}.description`, { empty: true })
     string(record.publicPhone, `${path}.publicPhone`, { nullable: true })

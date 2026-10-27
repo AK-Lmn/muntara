@@ -41,7 +41,7 @@ const OPTIMISTIC_STATUS: Record<ModerationDecision, CorrectionStatus> = {
 /**
  * Moderator queue. Actions are real in-memory state transitions (see
  * mockApi.ts); nothing persists beyond the session and there is no real
- * auth behind the role check — it just shows where the guard will live.
+ * auth behind the role check: it just shows where the guard will live.
  */
 export function ModerationPage({ session }: { session: MockSession }) {
   const [corrections, setCorrections] = useState<Correction[]>([])
@@ -87,12 +87,12 @@ export function ModerationPage({ session }: { session: MockSession }) {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <h1 className="flex items-center gap-2 text-xl font-bold text-ink">
           <ShieldCheck size={22} className="text-brand-600" />
           Moderation queue
         </h1>
-        <p className="mt-0.5 text-sm text-slate-500">
-          Mock moderator view of community-submitted corrections. Actions update this session only — nothing is sent
+        <p className="mt-0.5 text-sm text-muted">
+          Mock moderator view of community-submitted corrections. Actions update this session only: nothing is sent
           anywhere or stored beyond a reload.
         </p>
       </div>
@@ -114,31 +114,31 @@ export function ModerationPage({ session }: { session: MockSession }) {
           <Card key={correction.id} className="p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="font-semibold text-slate-900">{correction.placeName}</p>
-                <p className="text-xs text-slate-500">
+                <p className="font-semibold text-ink">{correction.placeName}</p>
+                <p className="text-xs text-muted">
                   Field: {correction.field} · Submitted {correction.submittedAt} by {correction.submittedBy}
                 </p>
               </div>
               <CorrectionStatusBadge status={correction.status} />
             </div>
 
-            <p className="mt-2.5 text-sm text-slate-700">{correction.proposedChange}</p>
+            <p className="mt-2.5 text-sm text-copy">{correction.proposedChange}</p>
             {correction.submitterNote && (
-              <p className="mt-1 whitespace-pre-line text-sm italic text-slate-500">"{correction.submitterNote}"</p>
+              <p className="mt-1 whitespace-pre-line text-sm italic text-muted">"{correction.submitterNote}"</p>
             )}
 
-            <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-100 pt-3">
+            <div className="mt-3 flex items-center justify-between gap-3 border-t border-line pt-3">
               <TrustSignalMeter score={correction.trustSignalScore} />
             </div>
 
             {correction.moderationNotes && (
-              <p className="mt-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+              <p className="mt-2 rounded-lg bg-canvas px-3 py-2 text-xs text-copy">
                 Moderator note: {correction.moderationNotes}
               </p>
             )}
 
             {correction.resolvedBy && correction.resolvedAt && (
-              <p className="mt-2 text-xs text-slate-500">
+              <p className="mt-2 text-xs text-muted">
                 Resolved by {correction.resolvedBy} on {correction.resolvedAt}
               </p>
             )}

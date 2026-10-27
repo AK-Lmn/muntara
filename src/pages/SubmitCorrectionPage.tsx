@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, CheckCircle2, ShieldAlert } from 'lucide-react'
-import { Select } from '@/components/ui/Select'
+import { ArrowLeft, CheckCircle2, Info, ShieldAlert } from 'lucide-react'
+import { Combobox } from '@/components/ui/Combobox'
 import { TextArea } from '@/components/ui/TextArea'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { CATEGORY_META } from '@/components/places/categoryMeta'
-import { fetchPlaces, sessionSubmissionCount, submitCorrection } from '@/lib/mockApi'
+import { submitCorrection } from '@/lib/mockApi'
+import { fetchPlaces } from '@/lib/placeApi'
 import type { CorrectionFieldTarget, Place, PlaceCategory } from '@/types'
 
 const FIELD_OPTIONS: { value: CorrectionFieldTarget; label: string }[] = [
@@ -25,6 +26,9 @@ export function SubmitCorrectionPage() {
   const preselectedPlaceId = searchParams.get('placeId')
 
   const [places, setPlaces] = useState<Place[]>([])
+  const [placesLoading, setPlacesLoading] = useState(true)
+  const [placesError, setPlacesError] = useState(false)
+  const [loadAttempt, setLoadAttempt] = useState(0)
   const [placeId, setPlaceId] = useState(preselectedPlaceId ?? '')
   const [field, setField] = useState<CorrectionFieldTarget>('access')
   const [proposedChange, setProposedChange] = useState('')
@@ -32,15 +36,24 @@ export function SubmitCorrectionPage() {
   const [note, setNote] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const needsNewValue = field !== 'other'
 
   useEffect(() => {
+    let active = true
     fetchPlaces().then((loaded) => {
+      if (!active) return
       setPlaces(loaded)
-      if (!preselectedPlaceId && loaded[0]) setPlaceId(loaded[0].id)
+      const selectedExists = loaded.some((place) => place.id === preselectedPlaceId)
+      setPlaceId(selectedExists ? preselectedPlaceId ?? '' : loaded[0]?.id ?? '')
+    }).catch(() => {
+      if (active) setPlacesError(true)
+    }).finally(() => {
+      if (active) setPlacesLoading(false)
     })
-  }, [preselectedPlaceId])
+    return () => { active = false }
+  }, [preselectedPlaceId, loadAttempt])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -49,151 +62,143 @@ export function SubmitCorrectionPage() {
     if (needsNewValue && !newValue.trim()) return
 
     setSubmitting(true)
-    await submitCorrection({
-      placeId: place.id,
-      placeName: place.name,
-      field,
-      proposedChange: proposedChange.trim(),
-      newValue: needsNewValue ? newValue.trim() : null,
-      submitterNote: note.trim() || null,
-      submittedBy: 'You (mock session)',
-    })
-    setSubmitting(false)
-    setSubmitted(true)
+    setSubmitError(null)
+    try {
+      await submitCorrection({
+        placeId: place.id,
+        placeName: place.name,
+        field,
+        proposedChange: proposedChange.trim(),
+        newValue: needsNewValue ? newValue.trim() : null,
+        submitterNote: note.trim() || null,
+        submittedBy: 'You (mock session)',
+      })
+      setSubmitted(true)
+    } catch {
+      setSubmitError('This correction could not be added. Try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 py-16 text-center">
-        <CheckCircle2 size={40} className="text-brand-600" />
+      <div className="mx-auto flex min-h-96 max-w-xl flex-col items-start justify-center gap-5">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-800">
+          <CheckCircle2 size={24} aria-hidden="true" />
+        </span>
         <div>
-          <h1 className="text-lg font-bold text-slate-900">Correction submitted</h1>
-          <p className="mt-1 max-w-sm text-sm text-slate-500">
-            This is a prototype — your submission was added to the in-memory moderation queue for this session only.
-            It won't persist after a page reload, and nothing was sent anywhere.
+          <h1 className="text-display font-bold leading-tight tracking-tight text-ink">Added to this session</h1>
+          <p className="mt-3 max-w-[48ch] text-base leading-relaxed text-copy">
+            This preview does not send or save corrections beyond this browser session. You can still see this report in the session tracker.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
           <Button variant="secondary" onClick={() => navigate('/corrections')}>
-            Track your corrections
+            View session tracker
           </Button>
-          <Button onClick={() => navigate('/')}>Back to Explore</Button>
+          <Button onClick={() => navigate('/')}>Back to directory</Button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="mx-auto max-w-lg space-y-5 pb-6">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">
-        <ArrowLeft size={16} />
-        Back
+    <div className="space-y-8 pb-8">
+      <Link to="/" className="group inline-flex min-h-11 items-center gap-2 rounded-md pr-3 text-sm font-semibold text-copy hover:text-brand-800">
+        <ArrowLeft size={17} aria-hidden="true" className="transition-transform group-hover:-translate-x-0.5" />Back to directory
       </Link>
 
-      <div>
-        <h1 className="text-xl font-bold text-slate-900">Suggest a correction</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
-          Help keep place information accurate. Submissions are reviewed by moderators before they affect the public
-          listing — you can follow each one's status on the{' '}
-          <Link to="/corrections" className="font-medium text-brand-700 hover:underline">
-            corrections tracker
-          </Link>
-          .
-        </p>
-      </div>
-
-      <Card className="flex gap-2.5 border-amber-200 bg-amber-50 p-3.5 text-sm text-amber-800">
-        <ShieldAlert size={18} className="mt-0.5 shrink-0" />
-        <p>
-          Prototype note: this form doesn't send data anywhere real. Spam/abuse protections (rate limiting, trust
-          scoring, account history) are represented here only as a placeholder "trust signal" visible to moderators —
-          see the README for the planned approach.
-        </p>
-      </Card>
-
-      {sessionSubmissionCount() >= 4 && (
-        <Card className="flex gap-2.5 border-amber-200 bg-amber-50 p-3.5 text-sm text-amber-800">
-          <ShieldAlert size={18} className="mt-0.5 shrink-0" />
-          <p>
-            You've submitted several corrections from this session. Moderators see a per-submitter count, and in a real
-            deployment this is where a rate limit or a longer look at your history would kick in.
+      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
+        <div>
+          <p className="text-sm font-semibold text-brand-800">Help keep a listing useful</p>
+          <h1 className="mt-3 max-w-[18ch] text-display font-bold leading-tight tracking-tight text-ink sm:text-display-lg">Suggest a correction</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-copy">
+            Tell us what needs changing. No account is needed for this preview.
+          </p>
+        </div>
+        <Card className="flex items-start gap-3 p-4">
+          <ShieldAlert size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-brand-800" />
+          <p className="text-sm leading-relaxed text-copy">
+            Preview only. Reports stay in this browser session and are not sent to an office or saved after reload.
           </p>
         </Card>
-      )}
+      </section>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <Select label="Which place?" value={placeId} onChange={(e) => setPlaceId(e.target.value)} required>
-          {places.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </Select>
+      <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_18rem]">
+        <section className="min-w-0" aria-labelledby="correction-form-heading">
+          <h2 id="correction-form-heading" className="sr-only">Correction details</h2>
+          {placesLoading ? (
+            <p role="status" className="rounded-lg border border-line bg-surface p-5 text-sm text-muted">Loading directory listings...</p>
+          ) : placesError ? (
+            <div role="alert" className="rounded-lg border border-line bg-surface p-5">
+              <p className="font-semibold text-ink">Listings unavailable</p>
+              <p className="mt-1 text-sm text-copy">Reload the directory and try again.</p>
+              <Button variant="secondary" size="sm" className="mt-4" onClick={() => {
+                setPlacesLoading(true)
+                setPlacesError(false)
+                setLoadAttempt((attempt) => attempt + 1)
+              }}>Try again</Button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6 rounded-lg border border-line bg-surface p-5 sm:p-7">
+              <Combobox label="Which place needs an update?" value={placeId}
+                onChange={(event) => setPlaceId(event.target.value)} required>
+                {places.map((place) => <option key={place.id} value={place.id}>{place.name}, {place.barangay}</option>)}
+              </Combobox>
 
-        <Select
-          label="What needs fixing?"
-          value={field}
-          onChange={(e) => setField(e.target.value as CorrectionFieldTarget)}
-        >
-          {FIELD_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </Select>
+              <Combobox label="What needs fixing?" value={field}
+                onChange={(event) => { setField(event.target.value as CorrectionFieldTarget); setNewValue('') }}>
+                {FIELD_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+              </Combobox>
 
-        <TextArea
-          label="What should it say instead?"
-          placeholder="Describe the correction as specifically as you can…"
-          rows={4}
-          value={proposedChange}
-          onChange={(e) => setProposedChange(e.target.value)}
-          required
-        />
+              <TextArea label="What is wrong?" placeholder="Describe the detail that needs an update."
+                rows={4} value={proposedChange} onChange={(event) => setProposedChange(event.target.value)} required />
 
-        {field === 'category' ? (
-          <Select
-            label="Which category should it be?"
-            value={newValue}
-            onChange={(e) => setNewValue(e.target.value)}
-            required
-          >
-            <option value="">Choose a category…</option>
-            {(Object.keys(CATEGORY_META) as PlaceCategory[]).map((cat) => (
-              <option key={cat} value={cat}>
-                {CATEGORY_META[cat].label}
-              </option>
-            ))}
-          </Select>
-        ) : field !== 'other' ? (
-          <TextArea
-            label="Exactly what should it say?"
-            placeholder="The final wording a moderator could copy straight in…"
-            rows={2}
-            value={newValue}
-            onChange={(e) => setNewValue(e.target.value)}
-            hint="Give the exact replacement text — a moderator can accept it as-is. Without it they can only mark your note as reviewed."
-            required
-          />
-        ) : null}
+              {field === 'category' ? (
+                <Combobox label="What category should it use?" value={newValue}
+                  onChange={(event) => setNewValue(event.target.value)} required>
+                  <option value="">Choose a category</option>
+                  {(Object.keys(CATEGORY_META) as PlaceCategory[]).map((category) => (
+                    <option key={category} value={category}>{CATEGORY_META[category].label}</option>
+                  ))}
+                </Combobox>
+              ) : field !== 'other' ? (
+                <TextArea label="What should the listing say instead?" placeholder="Enter the exact replacement text."
+                  rows={3} value={newValue} onChange={(event) => setNewValue(event.target.value)}
+                  hint="A moderator can use this exact wording when the correction flow is connected." required />
+              ) : null}
 
-        <TextArea
-          label="Anything else moderators should know? (optional)"
-          placeholder="E.g. when you last visited, how you know this"
-          rows={2}
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          hint="Context like this helps moderators verify faster — it won't be shown publicly in this prototype."
-        />
+              <TextArea label="Anything else to help check this? (optional)"
+                placeholder="For example, when you last visited or where you found the information."
+                rows={3} value={note} onChange={(event) => setNote(event.target.value)} />
 
-        <Button
-          type="submit"
-          fullWidth
-          disabled={submitting || !proposedChange.trim() || (needsNewValue && !newValue.trim())}
-        >
-          {submitting ? 'Submitting…' : 'Submit correction'}
-        </Button>
-      </form>
+              {submitError && <p role="alert" className="text-sm font-semibold text-danger-700">{submitError}</p>}
+              <Button type="submit" fullWidth loading={submitting}
+                disabled={!placeId || !proposedChange.trim() || (needsNewValue && !newValue.trim())}>
+                {submitting ? 'Adding report...' : 'Add report to this session'}
+              </Button>
+            </form>
+          )}
+        </section>
+
+        <aside className="space-y-6">
+          <section className="space-y-3" aria-labelledby="before-heading">
+            <div className="flex items-center gap-2 text-brand-800">
+              <Info size={18} aria-hidden="true" />
+              <h2 id="before-heading" className="font-semibold text-ink">Before you report</h2>
+            </div>
+            <ul className="space-y-3 text-sm leading-relaxed text-copy">
+              <li>Share a specific detail, such as an address, service, or opening time.</li>
+              <li>Do not include personal or medical information.</li>
+              <li>Use the <Link to="/corrections" className="font-semibold text-brand-800 underline underline-offset-4 hover:text-brand-950">session tracker</Link> to view reports added before you reload.</li>
+            </ul>
+          </section>
+          <p className="border-t border-line pt-4 text-xs leading-relaxed text-muted">
+            In the full pilot, corrections will be reviewed before any public listing changes.
+          </p>
+        </aside>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
-import { Select } from '@/components/ui/Select'
+import { Combobox } from '@/components/ui/Combobox'
 import { TextArea } from '@/components/ui/TextArea'
 import { availableDecisions, type ModerationDecision, type ModerationInput } from '@/lib/mockApi'
 import type { Correction, RejectReason } from '@/types'
@@ -25,14 +25,14 @@ const DECISION_VARIANT: Record<ModerationDecision, 'primary' | 'secondary' | 'gh
 function noteLabel(decision: ModerationDecision, correction: Correction): string {
   switch (decision) {
     case 'reject':
-      return 'Reason for rejection (required — the submitter sees this)'
+      return 'Reason for rejection (required: the submitter sees this)'
     case 'request_info':
       return 'What do you need to know? (required)'
     case 'reopen':
       return 'Why re-open this? (required)'
     default:
       return correction.status === 'needs_more_info'
-        ? 'Note (required — say what changed your mind)'
+        ? 'Note (required: say what changed your mind)'
         : 'Note (optional)'
   }
 }
@@ -96,7 +96,7 @@ export function CorrectionActions({ correction, onSubmit }: CorrectionActionsPro
 
   if (decision === null) {
     return (
-      <div className="mt-3 flex flex-wrap gap-2 border-t border-slate-100 pt-3">
+      <div className="mt-3 flex flex-wrap gap-2 border-t border-line pt-3">
         {decisions.map((action) => (
           <Button
             key={action}
@@ -113,26 +113,26 @@ export function CorrectionActions({ correction, onSubmit }: CorrectionActionsPro
   }
 
   return (
-    <div className="mt-3 space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-      <p className="text-sm font-semibold text-slate-800">{DECISION_LABEL[decision]}</p>
+    <div className="mt-3 space-y-3 rounded-xl border border-line bg-canvas p-3">
+      <p className="text-sm font-semibold text-ink">{DECISION_LABEL[decision]}</p>
 
       {decision === 'accept' && (
-        <p className="rounded-lg bg-white px-3 py-2 text-xs text-slate-600">
+        <p className="rounded-lg bg-paper px-3 py-2 text-xs text-copy">
           {correction.newValue ? (
             <>
               Will update <span className="font-medium">{correction.field}</span> to:{' '}
-              <span className="font-medium text-slate-900">{correction.newValue}</span>
+              <span className="font-medium text-ink">{correction.newValue}</span>
             </>
           ) : (
             <>
-              No exact replacement text was given, so the place's wording won't change — only its verification status.
+              No exact replacement text was given, so the place's wording won't change: only its verification status.
             </>
           )}
         </p>
       )}
 
       {decision === 'reject' && (
-        <Select
+        <Combobox
           label="Reason (required)"
           value={reason}
           onChange={(e) => setReason(e.target.value as RejectReason | '')}
@@ -140,7 +140,7 @@ export function CorrectionActions({ correction, onSubmit }: CorrectionActionsPro
           <option value="">Choose a reason…</option>
           <option value="spam">Spam / not a real correction</option>
           <option value="conflict">Conflicts with other reports (flags the place as disputed)</option>
-        </Select>
+        </Combobox>
       )}
 
       <TextArea
@@ -151,7 +151,7 @@ export function CorrectionActions({ correction, onSubmit }: CorrectionActionsPro
       />
 
       {decision === 'accept' && (
-        <label className="flex gap-2.5 text-sm text-slate-700">
+        <label className="flex gap-2.5 text-sm text-copy">
           <input
             type="checkbox"
             className="mt-0.5 h-4 w-4 shrink-0 accent-brand-600"
@@ -160,15 +160,15 @@ export function CorrectionActions({ correction, onSubmit }: CorrectionActionsPro
           />
           <span>
             I confirmed this in person or against an authoritative source
-            <span className="block text-xs text-slate-500">
-              Leave unchecked if not — the place stays community-reported (or needs a recheck) rather than claiming to be
+            <span className="block text-xs text-muted">
+              Leave unchecked if not: the place stays community-reported (or needs a recheck) rather than claiming to be
               verified.
             </span>
           </span>
         </label>
       )}
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      {error && <p className="text-sm font-medium text-danger-700">{error}</p>}
 
       <div className="flex gap-2">
         <Button size="sm" disabled={submitting} onClick={handleConfirm}>

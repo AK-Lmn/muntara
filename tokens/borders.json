@@ -1,0 +1,15 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Border radii and widths for the Muntara interface.",
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "0.5rem" },
+    "md": { "$type": "dimension", "$value": "0.75rem" },
+    "lg": { "$type": "dimension", "$value": "1rem" },
+    "xl": { "$type": "dimension", "$value": "1.5rem" },
+    "pill": { "$type": "dimension", "$value": "9999px" }
+  },
+  "width": {
+    "hairline": { "$type": "dimension", "$value": "1px" },
+    "focus": { "$type": "dimension", "$value": "2px" }
+  }
+}

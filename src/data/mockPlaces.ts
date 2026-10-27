@@ -2,7 +2,7 @@ import type { Place } from '@/types'
 
 /**
  * ============================================================================
- * ⚠️ MOCK DATA — NOT REAL MUNTINLUPA LOCATIONS ⚠️
+ *  MOCK DATA: NOT REAL MUNTINLUPA LOCATIONS
  * ============================================================================
  * Every place below is a FICTIONAL placeholder invented for prototyping UI
  * and interaction flows. Names, addresses, coordinates, access notes, and
@@ -23,7 +23,7 @@ export const mockPlaces: Place[] = [
     publicEmail: null,
     sources: [],
     id: 'place-001',
-    name: '[MOCK] Barangay Placeholder Hall — Sample Barangay',
+    name: '[MOCK] Barangay Placeholder Hall: Sample Barangay',
     category: 'government',
     barangay: 'Sample Barangay',
     address: '[MOCK ADDRESS] 123 Placeholder Street, Sample Barangay, Muntinlupa City',
@@ -34,7 +34,7 @@ export const mockPlaces: Place[] = [
       entranceNotes:
         '[MOCK] Example entrance note: "Main entrance is placeholder-facing, near a placeholder landmark."',
       wheelchairAccess: 'unknown',
-      parkingNotes: '[MOCK] Placeholder parking note — needs field confirmation.',
+      parkingNotes: '[MOCK] Placeholder parking note: needs field confirmation.',
       hoursNote: null,
       additionalNotes: '[MOCK] Placeholder note about gate hours or guard checkpoints.',
     },
@@ -68,7 +68,7 @@ export const mockPlaces: Place[] = [
       'Placeholder market entry demonstrating a busier, multi-entrance location with mixed verification state.',
     access: {
       entranceNotes:
-        '[MOCK] Example: "Two entrances in this placeholder scenario — a placeholder main gate and a placeholder side gate used mostly by vendors."',
+        '[MOCK] Example: "Two entrances in this placeholder scenario: a placeholder main gate and a placeholder side gate used mostly by vendors."',
       wheelchairAccess: 'partial',
       parkingNotes: '[MOCK] Placeholder: limited street parking, example only.',
       hoursNote: null,
@@ -102,7 +102,7 @@ export const mockPlaces: Place[] = [
     description:
       'Placeholder health-center entry used to prototype the "awaiting review" verification state.',
     access: {
-      entranceNotes: '[MOCK] Placeholder entrance note — not yet confirmed.',
+      entranceNotes: '[MOCK] Placeholder entrance note: not yet confirmed.',
       wheelchairAccess: 'unknown',
       parkingNotes: null,
       hoursNote: null,

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship a sourced, searchable public directory and real map for government offices, public clinics, and public schools in Tunasan and Poblacion.
+**Goal:** Ship a sourced, searchable public directory and real map for government offices, public clinics, and public schools in Tunasan, Poblacion, and Putatan.
 
 **Architecture:** React reads published place records and field-level source evidence from Supabase through `src/lib/placeApi.ts`. A Leaflet map shows only records with coordinates; list and detail views show source confidence and unknown fields plainly.
 
@@ -12,8 +12,8 @@
 
 ## Global Constraints
 
-- Start in Tunasan and Poblacion.
-- Include every public-facing government office in those barangays, plus public clinics and schools.
+- Start in Tunasan, Poblacion, and Putatan.
+- Include every public-facing government office in these barangays, plus public clinics and schools.
 - Never invent an office, address, service, phone number, schedule, entrance, or coordinate to fill a gap.
 - Distinguish information confirmed by an official source from details checked at the location.
 - Keep unknown or conflicting details visible as unknown or disputed.
@@ -23,7 +23,7 @@
 
 ## Review Focus
 
-- A source row points outside the two pilot barangays or duplicates another service location: reject or resolve it before import.
+- A source row points outside the three pilot barangays or duplicates another service location: reject or resolve it before import.
 - A listing has no checked coordinate: keep it in the directory and show no map pin.
 - A contact, hour, or access field has no supporting evidence: show “not confirmed.”
 - Two public services share one address: preserve separate directory records and keep their map markers selectable.
@@ -57,7 +57,7 @@
 
 **Interfaces:**
 - `createSupabaseClient(): SupabaseClient` reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`; it must fail with a clear setup error when either is absent.
-- Add `PilotBarangay = 'Tunasan' | 'Poblacion'`.
+- Add `PilotBarangay = 'Tunasan' | 'Poblacion' | 'Putatan'`.
 - Add `PlaceSource { id: string; fieldKey: string; sourceName: string; sourceUrl: string | null; sourceType: 'official' | 'field_visit' | 'openstreetmap'; checkedAt: string }`.
 - Extend `Place` with `services: string[]`, `publicPhone: string | null`, `publicEmail: string | null`, `sources: PlaceSource[]`, and `location: GeoPoint | null`.
 - Persist place fields used by `Place`: name, category, barangay, address, coordinates, description, services, public contact, access information, verification state, and publication state. Store source evidence in `place_sources`, one row per place and field.
@@ -68,7 +68,7 @@ Run `supabase --help`, then `supabase init` using the installed CLI. Keep the CL
 
 - [ ] **Step 2: Create the place/source migration**
 
-Run `supabase migration --help`, then create the migration with the CLI. Constrain `barangay` to Tunasan or Poblacion, `category` to government, health, or education, and coordinates to valid latitude/longitude ranges. Permit null address or coordinates when a reliable source has not confirmed them. Add a stable unique `source_key` for imports.
+Run `supabase migration --help`, then create the migration with the CLI. Constrain `barangay` to Tunasan, Poblacion, or Putatan, `category` to government, health, or education, and coordinates to valid latitude/longitude ranges. Permit null address or coordinates when a reliable source has not confirmed them. Add a stable unique `source_key` for imports.
 
 - [ ] **Step 3: Add public read policies and explicit grants**
 
@@ -145,7 +145,7 @@ Create `placeApi.ts`; return typed results and surface request errors to pages. 
 
 - [ ] **Step 2: Add list filters and truthful empty/error states**
 
-In Explore, preserve text/category/verification filters and add a barangay filter. Search name, barangay, services, and alternate names. Replace mock-data copy with the two-barangay pilot coverage state. Keep results usable while map coordinates are missing.
+In Explore, preserve text/category/verification filters and add a barangay filter. Search name, barangay, services, and alternate names. Replace mock-data copy with the three-barangay pilot coverage state. Keep results usable while map coordinates are missing.
 
 - [ ] **Step 3: Add sources and practical place details**
 
@@ -201,7 +201,7 @@ Remove mock route pages and current in-memory correction/moderation pages from `
 
 - [ ] **Step 2: Remove the hard-coded public session**
 
-Remove `mockSession` from `App.tsx`, the `session` prop from `AppShell` and `TopBar`, and the public moderation tab. Use the project name Muntara and label the current coverage as Tunasan and Poblacion.
+Remove `mockSession` from `App.tsx`, the `session` prop from `AppShell` and `TopBar`, and the public moderation tab. Use the project name Muntara and label the current coverage as Tunasan, Poblacion, and Putatan.
 
 - [ ] **Step 3: Update project documentation**
 

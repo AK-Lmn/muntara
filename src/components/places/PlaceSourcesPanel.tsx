@@ -35,11 +35,14 @@ export function PlaceSourcesPanel({ sources }: { sources: PlaceSource[] }) {
   }
 
   return (
-    <Card className="p-4">
-      <h2 className="font-semibold text-slate-900">Sources</h2>
-      <p className="mt-1 text-sm text-slate-500">Each source supports only the fields shown. An official listing does not confirm an in-person visit.</p>
-      {groups.size === 0 ? <p className="mt-3 text-sm text-slate-500">Not confirmed</p> : (
-        <ul className="mt-3 space-y-4">
+    <Card className="p-5">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-brand-700">Evidence</p>
+        <h2 className="mt-1 text-lg font-bold text-ink">Sources</h2>
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-copy">Each source supports only the fields listed. An official page does not confirm an in-person visit.</p>
+      {groups.size === 0 ? <p className="mt-4 text-sm text-muted">Sources not confirmed</p> : (
+        <ul className="mt-4 divide-y divide-line">
           {[...groups.entries()].map(([key, { source, fields }]) => {
             const url = safeUrl(source.sourceUrl)
             const date = new Date(source.checkedAt)
@@ -47,16 +50,16 @@ export function PlaceSourcesPanel({ sources }: { sources: PlaceSource[] }) {
               year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC',
             })
             return (
-              <li key={key} className="space-y-1 text-sm">
-                <p className="font-medium text-slate-800">{SOURCE_LABELS[source.sourceType]}</p>
+              <li key={key} className="space-y-2 py-4 text-sm first:pt-0 last:pb-0">
+                <p className="font-semibold text-ink">{SOURCE_LABELS[source.sourceType]}</p>
                 {url ? (
-                  <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1 break-words text-brand-700 underline underline-offset-2">
+                  <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 break-all font-semibold text-brand-800 underline underline-offset-4 hover:text-brand-950">
                     {source.sourceName}<ExternalLink size={14} aria-hidden="true" className="mt-0.5 shrink-0" />
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
-                ) : <p className="text-slate-700">{source.sourceName}</p>}
-                <p className="text-slate-600">Checked: {checkedAt}</p>
-                <p className="text-slate-600">Fields: {[...fields].join(', ')}</p>
+                ) : <p className="text-copy">{source.sourceName}</p>}
+                <p className="text-copy"><span className="font-semibold">Checked:</span> {checkedAt}</p>
+                <p className="text-copy"><span className="font-semibold">Supports:</span> {[...fields].join(', ')}</p>
               </li>
             )
           })}

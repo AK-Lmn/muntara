@@ -27,7 +27,7 @@ export function RouteDetailPage() {
   }, [routeId])
 
   if (route === undefined) {
-    return <p className="py-10 text-center text-sm text-slate-500">Loading…</p>
+    return <p className="py-10 text-center text-sm text-muted">Loading…</p>
   }
 
   if (route === null) {
@@ -50,16 +50,16 @@ export function RouteDetailPage() {
 
   return (
     <div className="space-y-5 pb-6">
-      <Link to="/routes" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">
+      <Link to="/routes" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-copy">
         <ArrowLeft size={16} />
         Back to Routes
       </Link>
 
       <div>
-        <h1 className="text-xl font-bold leading-snug text-slate-900">
+        <h1 className="text-xl font-bold leading-snug text-ink">
           {start?.name ?? 'Unknown'} → {end?.name ?? 'Unknown'}
         </h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <p className="mt-0.5 text-sm text-muted">
           {(route.distanceMeters / 1000).toFixed(1)} km · ~{route.estimatedMinutes} min walk
         </p>
         <div className="mt-3">
@@ -90,19 +90,19 @@ export function RouteDetailPage() {
         </div>
       </Card>
 
-      <Card className="flex items-center gap-2.5 p-4 text-sm text-slate-700">
-        <Accessibility size={18} className="shrink-0 text-slate-400" />
+      <Card className="flex items-center gap-2.5 p-4 text-sm text-copy">
+        <Accessibility size={18} className="shrink-0 text-faint" />
         {WHEELCHAIR_LABEL[route.wheelchairFriendly]}
       </Card>
 
       {route.segmentNotes.length > 0 && (
         <div>
-          <h2 className="mb-2 font-semibold text-slate-900">Segment notes</h2>
+          <h2 className="mb-2 font-semibold text-ink">Segment notes</h2>
           <ul className="space-y-2">
             {route.segmentNotes.map((segment, i) => (
-              <li key={i} className="rounded-xl border border-slate-200 bg-white p-3 text-sm">
-                <p className="text-slate-800">{segment.description}</p>
-                {segment.caution && <p className="mt-1 text-amber-700">⚠ {segment.caution}</p>}
+              <li key={i} className="rounded-xl border border-line bg-paper p-3 text-sm">
+                <p className="text-ink">{segment.description}</p>
+                {segment.caution && <p className="mt-1 text-review-fg"> {segment.caution}</p>}
               </li>
             ))}
           </ul>

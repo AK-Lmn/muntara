@@ -20,7 +20,7 @@ function latestCheck(sources: PlaceSource[], type: PlaceSource['sourceType']): s
 
 /**
  * Plain-language "when and how was this checked" block. Always renders,
- * even when there's nothing to show (lastCheckedAt is null) — an explicit
+ * even when there's nothing to show (lastCheckedAt is null): an explicit
  * "never checked" beats silence, which could be misread as "fine."
  */
 export function FreshnessNote({ verification, sources }: FreshnessNoteProps) {
@@ -28,22 +28,22 @@ export function FreshnessNote({ verification, sources }: FreshnessNoteProps) {
   const fieldCheck = latestCheck(sources, 'field_visit')
 
   return (
-    <div className="flex items-start gap-2 rounded-xl bg-slate-50 px-3.5 py-3 text-sm text-slate-600 dark:bg-white/5">
+    <div className="flex items-start gap-3 rounded-lg border border-line bg-surface p-4 text-sm text-copy">
       {officialCheck || fieldCheck ? (
-        <CalendarCheck size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-slate-400" />
+        <CalendarCheck size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-brand-700" />
       ) : (
-        <HelpCircle size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-slate-400" />
+        <HelpCircle size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-brand-700" />
       )}
       <div className="space-y-1">
-        <p><span className="font-medium text-slate-800">Official source checked:</span> {formatDate(officialCheck)}</p>
-        <p><span className="font-medium text-slate-800">Visited in person:</span> {formatDate(fieldCheck)}</p>
-        <p className="text-slate-500">Checks apply only to the fields listed in Sources below.</p>
+        <p><span className="font-semibold text-ink">Official source checked:</span> {formatDate(officialCheck)}</p>
+        <p><span className="font-semibold text-ink">Visited in person:</span> {formatDate(fieldCheck)}</p>
+        <p className="pt-1 text-xs text-muted">Checks apply only to the fields listed in Sources.</p>
         {verification.lastCheckedAt && (
-          <p><span className="font-medium text-slate-800">Review recorded:</span> {formatDate(verification.lastCheckedAt)}</p>
+          <p><span className="font-semibold text-ink">Review recorded:</span> {formatDate(verification.lastCheckedAt)}</p>
         )}
-        {verification.method && <p className="text-slate-500">{verification.method}</p>}
+        {verification.method && <p className="text-muted">{verification.method}</p>}
         {verification.corroborations > 0 && (
-          <p className="text-slate-500">
+          <p className="text-muted">
             {verification.corroborations} community {verification.corroborations === 1 ? 'report agrees' : 'reports agree'} with this information
           </p>
         )}

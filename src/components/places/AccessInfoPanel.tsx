@@ -22,17 +22,18 @@ export function AccessInfoPanel({ access }: AccessInfoPanelProps) {
   ]
 
   return (
-    <section className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4" aria-labelledby="access-heading">
-      <h2 id="access-heading" className="font-semibold text-slate-900">Entrance & access</h2>
-      <dl className="space-y-3">
+    <section className="space-y-4 border-t border-line pt-6" aria-labelledby="access-heading">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-brand-700">Planning a visit</p>
+        <h2 id="access-heading" className="mt-1 text-xl font-bold text-ink">Entrance and access</h2>
+      </div>
+      <dl className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
         {details.map(({ label, icon: Icon, value }) => (
-          <div key={label} className="flex gap-2.5 text-sm text-slate-700">
-            <Icon size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-slate-400" />
-            <div>
-              <dt className="font-medium text-slate-800">{label}</dt>
-              <dd className={!value || value === 'Not confirmed' ? 'text-slate-500' : undefined}>
-                {value || 'Not confirmed'}
-              </dd>
+          <div key={label} className="flex gap-3 text-sm">
+            <Icon size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-brand-700" />
+            <div className="min-w-0">
+              <dt className="font-semibold text-ink">{label}</dt>
+              <dd className="mt-1 text-copy">{value || 'Not confirmed'}</dd>
             </div>
           </div>
         ))}

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Muntara civic directory colors. Warm paper, forest green, and restrained copper.",
+  "semantic": {
+    "ink": { "$type": "color", "$value": "#1D2922" },
+    "copy": { "$type": "color", "$value": "#405147" },
+    "muted": { "$type": "color", "$value": "#596A60" },
+    "faint": { "$type": "color", "$value": "#6E7C73" },
+    "canvas": { "$type": "color", "$value": "#F3F2EB" },
+    "paper": { "$type": "color", "$value": "#FEFDF8" },
+    "surface-soft": { "$type": "color", "$value": "#E9ECE4" },
+    "surface-raised": { "$type": "color", "$value": "#FFFFFF" },
+    "line": { "$type": "color", "$value": "#D4DBD2" },
+    "line-strong": { "$type": "color", "$value": "#66756B" },
+    "action": {
+      "primary": { "$type": "color", "$value": "#1E573F" },
+      "primary-hover": { "$type": "color", "$value": "#184732" },
+      "primary-active": { "$type": "color", "$value": "#123A29" },
+      "secondary": { "$type": "color", "$value": "#E6EBE4" },
+      "secondary-hover": { "$type": "color", "$value": "#DDE4DB" },
+      "destructive": { "$type": "color", "$value": "#A0362F" },
+      "destructive-hover": { "$type": "color", "$value": "#812A24" }
+    },
+    "text": {
+      "primary": { "$type": "color", "$value": "#1D2922" },
+      "secondary": { "$type": "color", "$value": "#405147" },
+      "tertiary": { "$type": "color", "$value": "#596A60" },
+      "disabled": { "$type": "color", "$value": "#7E8982" },
+      "on-action": { "$type": "color", "$value": "#FFFFFF" },
+      "link": { "$type": "color", "$value": "#1E573F" },
+      "link-hover": { "$type": "color", "$value": "#123A29" }
+    },
+    "surface": {
+      "page": { "$type": "color", "$value": "#F3F2EB" },
+      "card": { "$type": "color", "$value": "#FEFDF8" },
+      "raised": { "$type": "color", "$value": "#FFFFFF" },
+      "sunken": { "$type": "color", "$value": "#E9ECE4" },
+      "disabled": { "$type": "color", "$value": "#E9ECE4" }
+    },
+    "border": {
+      "default": { "$type": "color", "$value": "#D4DBD2" },
+      "strong": { "$type": "color", "$value": "#66756B" },
+      "focus": { "$type": "color", "$value": "#1E573F" },
+      "error": { "$type": "color", "$value": "#A0362F" }
+    },
+    "feedback": {
+      "error-bg": { "$type": "color", "$value": "#F5E8E5" },
+      "error-text": { "$type": "color", "$value": "#812A24" },
+      "success-bg": { "$type": "color", "$value": "#E6EFE6" },
+      "success-text": { "$type": "color", "$value": "#24593A" },
+      "warning-bg": { "$type": "color", "$value": "#F3ECDE" },
+      "warning-text": { "$type": "color", "$value": "#705221" }
+    }
+  },
+  "component": {
+    "brand": {
+      "50": { "$type": "color", "$value": "#EEF4EE" },
+      "100": { "$type": "color", "$value": "#DDE9DE" },
+      "200": { "$type": "color", "$value": "#C0D4C3" },
+      "300": { "$type": "color", "$value": "#9AB9A0" },
+      "400": { "$type": "color", "$value": "#6F9678" },
+      "500": { "$type": "color", "$value": "#477653" },
+      "600": { "$type": "color", "$value": "#1E573F" },
+      "700": { "$type": "color", "$value": "#184732" },
+      "800": { "$type": "color", "$value": "#153B2D" },
+      "900": { "$type": "color", "$value": "#123329" },
+      "950": { "$type": "color", "$value": "#0B211A" }
+    },
+    "accent": {
+      "400": { "$type": "color", "$value": "#C58B5E" },
+      "500": { "$type": "color", "$value": "#AE6633" },
+      "600": { "$type": "color", "$value": "#8D5129" }
+    },
+    "danger": {
+      "50": { "$type": "color", "$value": "#F5E8E5" },
+      "100": { "$type": "color", "$value": "#ECD0CA" },
+      "600": { "$type": "color", "$value": "#A0362F" },
+      "700": { "$type": "color", "$value": "#812A24" }
+    },
+    "verified": {
+      "bg": { "$type": "color", "$value": "#E6EFE6" },
+      "fg": { "$type": "color", "$value": "#24593A" },
+      "border": { "$type": "color", "$value": "#BED2BE" }
+    },
+    "community": {
+      "bg": { "$type": "color", "$value": "#E7EEF2" },
+      "fg": { "$type": "color", "$value": "#294A5D" },
+      "border": { "$type": "color", "$value": "#BACBD5" }
+    },
+    "review": {
+      "bg": { "$type": "color", "$value": "#F3ECDE" },
+      "fg": { "$type": "color", "$value": "#705221" },
+      "border": { "$type": "color", "$value": "#DCCBA8" }
+    },
+    "stale": {
+      "bg": { "$type": "color", "$value": "#F2E9DE" },
+      "fg": { "$type": "color", "$value": "#75451F" },
+      "border": { "$type": "color", "$value": "#D8C1A7" }
+    },
+    "disputed": {
+      "bg": { "$type": "color", "$value": "#F5E8E5" },
+      "fg": { "$type": "color", "$value": "#812A24" },
+      "border": { "$type": "color", "$value": "#DDB9B2" }
+    },
+    "map": {
+      "surface": { "$type": "color", "$value": "#FEFDF8" },
+      "border": { "$type": "color", "$value": "#D4DBD2" },
+      "copy": { "$type": "color", "$value": "#1D2922" },
+      "muted": { "$type": "color", "$value": "#596A60" },
+      "link": { "$type": "color", "$value": "#1E573F" },
+      "link-hover": { "$type": "color", "$value": "#123A29" },
+      "canvas": { "$type": "color", "$value": "#E9ECE4" },
+      "on-canvas": { "$type": "color", "$value": "#1D2922" },
+      "popup-hover": { "$type": "color", "$value": "#E9ECE4" }
+    }
+  },
+  "dark": {
+    "ink": { "$type": "color", "$value": "#F1F3EE" },
+    "copy": { "$type": "color", "$value": "#D1D9D2" },
+    "muted": { "$type": "color", "$value": "#B5C0B7" },
+    "faint": { "$type": "color", "$value": "#A5B0A8" },
+    "canvas": { "$type": "color", "$value": "#151D18" },
+    "paper": { "$type": "color", "$value": "#1D2922" },
+    "surface-soft": { "$type": "color", "$value": "#26342C" },
+    "surface-raised": { "$type": "color", "$value": "#2D3A32" },
+    "line": { "$type": "color", "$value": "#3A4A40" },
+    "line-strong": { "$type": "color", "$value": "#91A196" },
+    "text": {
+      "primary": { "$type": "color", "$value": "#F1F3EE" },
+      "secondary": { "$type": "color", "$value": "#D1D9D2" },
+      "tertiary": { "$type": "color", "$value": "#B5C0B7" },
+      "disabled": { "$type": "color", "$value": "#A5B0A8" },
+      "on-action": { "$type": "color", "$value": "#FFFFFF" },
+      "link": { "$type": "color", "$value": "#9FD7B4" },
+      "link-hover": { "$type": "color", "$value": "#B9E4C9" }
+    },
+    "surface": {
+      "page": { "$type": "color", "$value": "#151D18" },
+      "card": { "$type": "color", "$value": "#1D2922" },
+      "raised": { "$type": "color", "$value": "#2D3A32" },
+      "sunken": { "$type": "color", "$value": "#101713" },
+      "disabled": { "$type": "color", "$value": "#26342C" }
+    },
+    "border": {
+      "default": { "$type": "color", "$value": "#3A4A40" },
+      "strong": { "$type": "color", "$value": "#91A196" },
+      "focus": { "$type": "color", "$value": "#9FD7B4" },
+      "error": { "$type": "color", "$value": "#E39086" }
+    },
+    "action": {
+      "primary": { "$type": "color", "$value": "#1E573F" },
+      "primary-hover": { "$type": "color", "$value": "#2D6C4D" },
+      "primary-active": { "$type": "color", "$value": "#3D805E" },
+      "secondary": { "$type": "color", "$value": "#2D3A32" },
+      "secondary-hover": { "$type": "color", "$value": "#39483E" },
+      "destructive": { "$type": "color", "$value": "#A0362F" },
+      "destructive-hover": { "$type": "color", "$value": "#BA4A42" }
+    }
+  }
+}

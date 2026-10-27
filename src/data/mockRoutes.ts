@@ -1,7 +1,7 @@
 import type { WalkingRoute } from '@/types'
 
 /**
- * ⚠️ MOCK DATA — fictional placeholder walking routes.
+ *  MOCK DATA: fictional placeholder walking routes.
  * Path points are illustrative only and were not generated from a real
  * routing engine or a field survey. Distances and times are made up.
  */
@@ -43,7 +43,7 @@ export const mockRoutes: WalkingRoute[] = [
     verification: 'mapped_only',
     lastFieldCheckAt: null,
     uncertaintyNote:
-      '[MOCK] This path is drawn from placeholder map data only. Nobody has walked it to confirm it is correct, safe, or currently passable — treat it as a rough guide, not a confirmed route.',
+      '[MOCK] This path is drawn from placeholder map data only. Nobody has walked it to confirm it is correct, safe, or currently passable: treat it as a rough guide, not a confirmed route.',
     segmentNotes: [],
     wheelchairFriendly: 'unknown',
   },
@@ -62,7 +62,7 @@ export const mockRoutes: WalkingRoute[] = [
     verification: 'field_verified_stale',
     lastFieldCheckAt: '2025-10-05',
     uncertaintyNote:
-      '[MOCK] This route was field-verified previously, but that check is now over a year old. Conditions (construction, closures) may have changed — treat as "probably fine" rather than confirmed.',
+      '[MOCK] This route was field-verified previously, but that check is now over a year old. Conditions (construction, closures) may have changed: treat as "probably fine" rather than confirmed.',
     segmentNotes: [
       { description: '[MOCK] Placeholder Street to riverside path', caution: '[MOCK] Example: unlit after dark' },
     ],

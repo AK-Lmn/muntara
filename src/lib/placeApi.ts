@@ -1,5 +1,10 @@
 import { createSupabaseClient } from './supabaseClient'
+import { pilotPlaces } from '@/data/pilotPlaces'
 import type { Place, PlaceSource } from '@/types'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim()
+const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim()
+export const isLocalPilotPreview = !supabaseUrl && !supabaseKey
 
 type SourceRow = {
   id: string
@@ -87,12 +92,14 @@ function toPlace(row: PlaceRow): Place {
 }
 
 export async function fetchPlaces(): Promise<Place[]> {
+  if (isLocalPilotPreview) return [...pilotPlaces].sort((a, b) => a.name.localeCompare(b.name))
   const { data, error } = await publishedPlaces().order('name').overrideTypes<PlaceRow[], { merge: false }>()
   if (error) throw new Error('The directory could not be loaded. Please try again.')
   return (data ?? []).map(toPlace)
 }
 
 export async function fetchPlaceById(id: string): Promise<Place | null> {
+  if (isLocalPilotPreview) return pilotPlaces.find((place) => place.id === id) ?? null
   const { data, error } = await publishedPlaces().eq('id', id).maybeSingle().overrideTypes<PlaceRow | null, { merge: false }>()
   if (error) throw new Error('This place could not be loaded. Please try again.')
   return data ? toPlace(data) : null

@@ -91,7 +91,7 @@ export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: 
       const selected = group.some((place) => place.id === selectedPlaceId)
       const title = group.length === 1 ? group[0].name : `${group.length} listings at this location`
       const iconContent = document.createElement('span')
-      iconContent.className = cn('flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-sm font-bold text-white shadow-md',
+      iconContent.className = cn('flex h-9 w-9 items-center justify-center rounded-full border-2 border-paper text-sm font-bold text-white shadow-md',
         selected ? 'bg-brand-900 ring-4 ring-brand-300' : 'bg-brand-700')
       if (group.length > 1) iconContent.textContent = String(group.length)
       else iconContent.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>'

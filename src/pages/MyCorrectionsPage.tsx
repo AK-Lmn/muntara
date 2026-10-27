@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
+import { ArrowUpRight, ClipboardList } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { ClipboardList } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { EmptyState } from '@/components/ui/EmptyState'
@@ -15,13 +15,13 @@ import {
 } from '@/lib/mockApi'
 import type { Correction } from '@/types'
 
-/** The mock session's submissions are labeled this way at submit time. */
+/** The prototype labels submissions this way; they exist only for this browser session. */
 const SUBMITTER_LABEL = 'You (mock session)'
 
 const STATUS_HINT: Partial<Record<Correction['status'], string>> = {
   pending: 'Waiting in the moderation queue.',
   in_review: 'A moderator is looking at this.',
-  needs_more_info: 'A moderator needs more from you — reply below.',
+  needs_more_info: 'A moderator needs more from you. Reply below.',
   accepted: 'Accepted and applied to the listing.',
   rejected: 'Not accepted. The reason is above.',
   withdrawn: 'You withdrew this.',
@@ -55,7 +55,7 @@ function SubmitterActions({
   }
 
   return (
-    <div className="mt-3 border-t border-slate-100 pt-3">
+    <div className="mt-3 border-t border-line pt-3">
       {replying ? (
         <div className="space-y-2">
           <TextArea
@@ -64,7 +64,7 @@ function SubmitterActions({
             value={note}
             onChange={(e) => setNote(e.target.value)}
           />
-          {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+          {error && <p className="text-sm font-medium text-danger-700">{error}</p>}
           <div className="flex gap-2">
             <Button size="sm" disabled={busy} onClick={() => run('reply')}>
               {busy ? 'Sending…' : 'Send reply'}
@@ -86,7 +86,7 @@ function SubmitterActions({
               Withdraw
             </Button>
           )}
-          {error && <p className="w-full text-sm font-medium text-red-600">{error}</p>}
+          {error && <p className="w-full text-sm font-medium text-danger-700">{error}</p>}
         </div>
       )}
     </div>
@@ -94,10 +94,8 @@ function SubmitterActions({
 }
 
 /**
- * Status tracker for the submitter. In a real deployment this would show
- * only the signed-in user's own submissions; with no accounts yet, items
- * submitted from this session are shown as "yours", and the seeded demo
- * entries are shown only when you have none of your own.
+ * Status tracker for submissions created in this browser session.
+ * Seeded demo reports are not shown as user submissions.
  */
 export function MyCorrectionsPage() {
   const [corrections, setCorrections] = useState<Correction[]>([])
@@ -108,8 +106,7 @@ export function MyCorrectionsPage() {
   }, [])
 
   const mine = corrections.filter((c) => c.submittedBy === SUBMITTER_LABEL)
-  const showingDemo = mine.length === 0
-  const list = showingDemo ? corrections : mine
+  const list = mine
 
   async function handleSubmitterAction(id: string, action: SubmitterAction, note?: string): Promise<string | undefined> {
     setBusyId(id)
@@ -125,29 +122,26 @@ export function MyCorrectionsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl space-y-5 pb-6">
-      <div>
-        <h1 className="flex items-center gap-2 text-xl font-bold text-slate-900">
-          <ClipboardList size={22} className="text-brand-600" />
-          Your corrections
-        </h1>
-        <p className="mt-0.5 text-sm text-slate-500">
-          What happened to what you reported — moderators' notes are shown as-is. Nothing here persists past a reload.
-        </p>
-      </div>
-
-      {showingDemo && list.length > 0 && (
-        <Card className="border-dashed p-3.5 text-sm text-slate-600">
-          You haven't submitted anything this session, so these are the seeded demo entries. Prototype note: a real
-          version would show only your own submissions. <Link to="/corrections/new" className="font-medium text-brand-700 hover:underline">Suggest a correction</Link> to add one.
-        </Card>
-      )}
+    <div className="mx-auto max-w-4xl space-y-8 pb-8">
+      <header className="grid gap-5 border-b border-line pb-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+        <div>
+          <p className="flex items-center gap-2 text-sm font-semibold text-brand-800"><ClipboardList size={17} aria-hidden="true" />Correction tracker</p>
+          <h1 className="mt-3 text-display font-bold leading-tight tracking-tight text-ink sm:text-display-lg">Your reports</h1>
+          <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-copy">
+            Reports added here stay in this browser session. Reloading clears them.
+          </p>
+        </div>
+        <Link to="/corrections/new" className="tap-target inline-flex items-center justify-center gap-2 rounded-md bg-action-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-action-primary-hover active:bg-action-primary-active focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas">
+          Suggest an edit<ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
+      </header>
 
       {list.length === 0 && (
         <EmptyState
           icon={<ClipboardList size={28} />}
-          title="Nothing submitted yet"
-          description="Corrections you send show up here with their status."
+          title="Nothing reported this session"
+          description="Add a correction to see it here until you reload this preview."
+          action={<Link to="/corrections/new" className="tap-target inline-flex items-center rounded-md bg-action-primary px-4 py-2 text-sm font-semibold text-white hover:bg-action-primary-hover">Suggest an edit</Link>}
         />
       )}
 
@@ -156,29 +150,29 @@ export function MyCorrectionsPage() {
           <Card key={correction.id} className="p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="font-semibold text-slate-900">{correction.placeName}</p>
-                <p className="text-xs text-slate-500">
+                <p className="font-semibold text-ink">{correction.placeName}</p>
+                <p className="text-xs text-muted">
                   {correction.field} · submitted {correction.submittedAt}
                 </p>
               </div>
               <CorrectionStatusBadge status={correction.status} />
             </div>
 
-            <p className="mt-2.5 text-sm text-slate-700">{correction.proposedChange}</p>
+            <p className="mt-2.5 text-sm text-copy">{correction.proposedChange}</p>
             {correction.submitterNote && (
-              <p className="mt-1 whitespace-pre-line text-xs italic text-slate-500">"{correction.submitterNote}"</p>
+              <p className="mt-1 whitespace-pre-line text-xs italic text-muted">"{correction.submitterNote}"</p>
             )}
 
-            <p className="mt-2 text-xs text-slate-500">{STATUS_HINT[correction.status]}</p>
+            <p className="mt-2 text-xs text-muted">{STATUS_HINT[correction.status]}</p>
 
             {correction.moderationNotes && (
-              <p className="mt-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+              <p className="mt-2 rounded-lg bg-canvas px-3 py-2 text-xs text-copy">
                 Moderator note: {correction.moderationNotes}
               </p>
             )}
 
             {busyId === correction.id ? (
-              <p className="mt-3 text-xs text-slate-500">Saving…</p>
+              <p className="mt-3 text-xs text-muted">Saving…</p>
             ) : (
               <SubmitterActions
                 correction={correction}

@@ -20,7 +20,7 @@ interface VerificationBadgeProps {
 
 /**
  * The single source of truth for how a verification state is labeled and
- * colored across the app. Never render verification status any other way —
+ * colored across the app. Never render verification status any other way -
  * route this through here so the semantics stay consistent everywhere.
  */
 export function VerificationBadge({ state, className }: VerificationBadgeProps) {

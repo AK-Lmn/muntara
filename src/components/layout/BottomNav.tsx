@@ -1,17 +1,15 @@
 import { NavLink } from 'react-router-dom'
-import { Map, Route as RouteIcon, ClipboardEdit, ShieldCheck } from 'lucide-react'
+import { Map, ClipboardEdit } from 'lucide-react'
 import { cn } from '@/lib/cn'
 
 const ITEMS = [
-  { to: '/', label: 'Explore', icon: Map, end: true },
-  { to: '/routes', label: 'Routes', icon: RouteIcon, end: false },
+  { to: '/', label: 'Directory', icon: Map, end: true },
   { to: '/corrections/new', label: 'Suggest edit', icon: ClipboardEdit, end: false },
-  { to: '/moderation', label: 'Moderation', icon: ShieldCheck, end: false },
 ] as const
 
 /**
  * Mobile-first bottom tab bar. Hidden on wider viewports in favor of the
- * top nav (see AppShell) — kept as two separate components rather than one
+ * top nav (see AppShell): kept as two separate components rather than one
  * that reflows, so each can be optimized for its breakpoint without
  * tangled conditional classes.
  */
@@ -19,7 +17,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Primary"
-      className="glass-panel fixed inset-x-0 bottom-0 z-40 flex justify-around px-2 pb-[env(safe-area-inset-bottom)] pt-1.5 sm:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 flex justify-around border-t border-line bg-paper px-3 pb-[env(safe-area-inset-bottom)] pt-1.5 sm:hidden"
     >
       {ITEMS.map(({ to, label, icon: Icon, end }) => (
         <NavLink
@@ -28,12 +26,12 @@ export function BottomNav() {
           end={end}
           className={({ isActive }) =>
             cn(
-              'tap-target flex flex-col items-center justify-center gap-0.5 rounded-xl px-3 py-1.5 text-[11px] font-medium',
-              isActive ? 'text-brand-700' : 'text-slate-500',
+              'tap-target flex flex-col items-center justify-center gap-0.5 rounded-md px-4 py-1.5 text-xs font-semibold transition-colors hover:bg-surface-soft active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-500',
+              isActive ? 'bg-brand-50 text-brand-900' : 'text-muted',
             )
           }
         >
-          <Icon size={20} />
+          <Icon size={20} aria-hidden="true" />
           {label}
         </NavLink>
       ))}

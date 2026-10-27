@@ -10,9 +10,8 @@ export function Card({ children, interactive, className, ...rest }: CardProps) {
   return (
     <div
       className={cn(
-        'rounded-2xl border border-slate-200 bg-white shadow-sm',
-        'dark:border-white/10 dark:bg-slate-900',
-        interactive && 'transition-shadow hover:shadow-md active:shadow-sm cursor-pointer',
+        'rounded-lg border border-line bg-paper',
+        interactive && 'transition-colors hover:bg-surface active:bg-surface-soft focus-within:ring-2 focus-within:ring-brand-400',
         className,
       )}
       {...rest}

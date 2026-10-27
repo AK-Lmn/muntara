@@ -20,7 +20,7 @@ import type {
  * in-memory mock arrays. Nothing here touches a network or a database.
  *
  * NOTE: the fetch* functions return copies of the arrays because the arrays
- * below are mutated by the submit/moderate functions — returning the live
+ * below are mutated by the submit/moderate functions: returning the live
  * array would leave component state aliased to the store (stale or silently
  * changing).
  */
@@ -65,7 +65,7 @@ export async function fetchCorrections(): Promise<Correction[]> {
 
 /**
  * Prototype stand-in for a rate limit: counts submissions from this browser
- * session only. Not a real abuse control — see the README's Phase 2 notes.
+ * session only. Not a real abuse control: see the README's Phase 2 notes.
  */
 let sessionSubmissions = 0
 
@@ -74,7 +74,7 @@ export function sessionSubmissionCount(): number {
 }
 
 /**
- * Prototype-only "submit" — appends to the in-memory array for the current
+ * Prototype-only "submit": appends to the in-memory array for the current
  * session only (nothing persists on reload). A real implementation would
  * POST to a backend and run the submission through the moderation pipeline
  * described in the README's data-sourcing-plan section.
@@ -194,7 +194,7 @@ const FIELD_APPLIERS: Partial<Record<CorrectionFieldTarget, (place: Place, value
  * Resolves a correction's outcome onto the place it points at. Kept in one
  * place so the trust semantics are auditable: an accepted correction only
  * makes a place 'verified' when the moderator actually attests they checked
- * it — never just because someone submitted it.
+ * it: never just because someone submitted it.
  */
 function applyToPlace(correction: Correction, decision: ModerationDecision, input: ModerationInput, moderator: string) {
   const index = mockPlaces.findIndex((p) => p.id === correction.placeId)
@@ -246,7 +246,7 @@ function findOrThrow(id: string): { index: number; correction: Correction } {
 
 /**
  * Moderator decision on a queue item. Throws on an unknown id or an
- * illegal transition — the caller is expected to catch and show the message.
+ * illegal transition: the caller is expected to catch and show the message.
  */
 export async function moderateCorrection(
   id: string,

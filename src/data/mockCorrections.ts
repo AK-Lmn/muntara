@@ -1,6 +1,6 @@
 import type { Correction } from '@/types'
 
-/** ⚠️ MOCK DATA — fictional placeholder correction submissions for prototyping the moderation flow. */
+/**  MOCK DATA: fictional placeholder correction submissions for prototyping the moderation flow. */
 export const mockCorrections: Correction[] = [
   {
     id: 'corr-001',
@@ -34,7 +34,7 @@ export const mockCorrections: Correction[] = [
     status: 'in_review',
     rejectReason: null,
     trustSignalScore: 34,
-    moderationNotes: '[MOCK] Example moderator note: "Conflicts with an earlier report — needs field check before accepting."',
+    moderationNotes: '[MOCK] Example moderator note: "Conflicts with an earlier report: needs field check before accepting."',
     resolvedBy: null,
     resolvedAt: null,
   },
@@ -75,10 +75,10 @@ export const mockCorrections: Correction[] = [
   {
     id: 'corr-005',
     placeId: 'place-001',
-    placeName: '[MOCK] Barangay Placeholder Hall — Sample Barangay',
+    placeName: '[MOCK] Barangay Placeholder Hall: Sample Barangay',
     field: 'hours',
-    proposedChange: '[MOCK] Example submission: "Office hours changed to 7 AM–4 PM."',
-    newValue: '[MOCK] Mon–Fri, 7:00 AM–4:00 PM',
+    proposedChange: '[MOCK] Example submission: "Office hours changed to 7 AM-4 PM."',
+    newValue: '[MOCK] Mon-Fri, 7:00 AM-4:00 PM',
     submitterNote: '[MOCK] Example note: "Heard this at the counter, not sure of the new schedule."',
     submittedBy: 'You (mock session)',
     submittedAt: '2026-10-21',

@@ -20,8 +20,8 @@ export function RoutesPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-bold text-slate-900">Walking routes</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-bold text-ink">Walking routes</h1>
+        <p className="mt-0.5 text-sm text-muted">
           Every route is labeled as either field-verified or mapped-only. Never assume a route is safe or current
           just because it's listed here.
         </p>
@@ -37,10 +37,10 @@ export function RoutesPage() {
                     <RouteIcon size={20} />
                   </div>
                   <div>
-                    <p className="font-semibold leading-snug text-slate-900">
+                    <p className="font-semibold leading-snug text-ink">
                       {placeName(route.startPlaceId)} → {placeName(route.endPlaceId)}
                     </p>
-                    <p className="mt-0.5 text-xs text-slate-500">
+                    <p className="mt-0.5 text-xs text-muted">
                       {(route.distanceMeters / 1000).toFixed(1)} km · ~{route.estimatedMinutes} min walk
                     </p>
                   </div>
