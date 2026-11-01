@@ -1,0 +1,610 @@
+[275] assistant: I’m reviewing the map’s behavior and accessibility, including the installed UX/UI design-system skill.
+
+[279] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/review-23490df..87cd724.diff'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:12000}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx'; Get-Content -LiteralPath 'src/pages/ExplorePage.tsx'; Get-Content -LiteralPath 'src/pages/PlaceDetailPage.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:10000}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'docs/superpowers/specs/2026-10-27-muntinlupa-public-services-pilot-design.md'; Get-Content -LiteralPath 'scripts/place-map.test.mjs'; Get-Content -LiteralPath '.env.example'; Get-Content -LiteralPath 'src/index.css'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7500})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[280] tool exec result: Script completed
+Wall time 1.0 seconds
+Output:
+
+Warning: truncated output (original token count: 13577)
+Total output lines: 995
+
+diff --git a/.env.example b/.env.example
+index 0683745..cb8ca01 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,3 +1,8 @@
+ # Copy to .env.local and use only the public Supabase publishable key.
+ VITE_SUPABASE_URL=http://127.0.0.1:54321
+ VITE_SUPABASE_PUBLISHABLE_KEY=
++
++# Browser map settings. Attribution is trusted maintainer-configured Leaflet HTML.
++# Standard OSM tiles are best-effort with no SLA. See https://operations.osmfoundation.org/policies/tiles/
++VITE_MAP_TILE_URL=https://tile.openstreetmap.org/{z}/{x}/{y}.png
++VITE_MAP_ATTRIBUTION='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+diff --git a/package-lock.json b/package-lock.json
+index 02a652f..edd9e3d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -10,6 +10,7 @@
+       "dependencies": {
+         "@supabase/supabase-js": "2.118.0",
+         "clsx": "^2.1.1",
++        "leaflet": "1.9.4",
+         "lucide-react": "^1.61.0",
+         "react": "^19.3.1",
+         "react-dom": "^19.3.1",
+@@ -17,6 +18,7 @@
+       },
+       "devDependencies": {
+         "@tailwindcss/vite": "^4.3.3",
++        "@types/leaflet": "1.9.22",
+         "@types/node": "^24.19.2",
+         "@types/react": "^19.3.0",
+         "@types/react-dom": "^19.3.0",
+@@ -1297,6 +1299,23 @@
+         "vite": "^5.2.0 || ^6 || ^7 || ^8"
+       }
+     },
++    "node_modules/@types/geojson": {
++      "version": "7946.0.16",
++      "resolved": "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.16.tgz",
++      "integrity": "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@types/leaflet": {
++      "version": "1.9.22",
++      "resolved": "https://registry.npmjs.org/@types/leaflet/-/lea<truncated omitted_approx_tokens="9039" />
+  /* Civic brand: deep teal (trust, local government) + warm accent (community/local color) */
+  --color-brand-50: #eefbf7;
+  --color-brand-100: #d4f3e8;
+  --color-brand-200: #abe7d2;
+  --color-brand-300: #74d3b5;
+  --color-brand-400: #3fb896;
+  --color-brand-500: #1f9b7c;
+  --color-brand-600: #157c64;
+  --color-brand-700: #136452;
+  --color-brand-800: #124f43;
+  --color-brand-900: #0f4138;
+  --color-brand-950: #07241f;
+
+  --color-accent-400: #f5a742;
+  --color-accent-500: #ee8f1f;
+  --color-accent-600: #d6730f;
+
+  /* Verification semantics — color is always paired with icon + text, never used alone */
+  --color-verified-bg: #e8f7ee;
+  --color-verified-fg: #0f6b35;
+  --color-verified-border: #a7e3bd;
+
+  --color-community-bg: #eef3fb;
+  --color-community-fg: #1d4f8c;
+  --color-community-border: #bcd4f3;
+
+  --color-review-bg: #fdf3e3;
+  --color-review-fg: #8a5a0a;
+  --color-review-border: #f3d79c;
+
+  --color-stale-bg: #fdf0e8;
+  --color-stale-fg: #9a4a16;
+  --color-stale-border: #f3cdab;
+
+  --color-disputed-bg: #fbe9e9;
+  --color-disputed-fg: #9c2626;
+  --color-disputed-border: #f1bcbc;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    margin: 0;
+  }
+
+  :root[data-theme='dark'] body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* Visible focus rings everywhere — this is a navigation tool, keyboard/switch access matters */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/60 shadow-sm;
+  }
+  :root[data-theme='dark'] .glass-panel {
+    @apply bg-slate-900/60 border-white/10;
+  }
+
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+[281] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"$mapLines = Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx'; for ($lineNumber = 0; $lineNumber -lt $mapLines.Length; $lineNumber++) { '{0,4}: {1}' -f ($lineNumber + 1), $mapLines[$lineNumber] }",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:6500}),
+  tools.exec_command({cmd:"rg -n 'MapPlaceholder|PlaceMap|leaflet|tap-target' src; Get-Content -LiteralPath 'src/components/layout/AppShell.tsx'; Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs'; Get-Content -LiteralPath 'src/components/ui/Button.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:6000})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[282] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+   1: import { useEffect, useMemo, useRef, useState } from 'react'
+   2: import type * as Leaflet from 'leaflet'
+   3: import { MapPin } from 'lucide-react'
+   4: import type { Place } from '@/types'
+   5: import { cn } from '@/lib/cn'
+   6: import { Button } from '@/components/ui/Button'
+   7: 
+   8: interface PlaceMapProps {
+   9:   places: Place[]
+  10:   selectedPlaceId?: string | null
+  11:   onSelectPlace?: (id: string) => void
+  12:   className?: string
+  13: }
+  14: 
+  15: type MapSession = { leaflet: typeof Leaflet; map: Leaflet.Map }
+  16: const TILE_URL = import.meta.env.VITE_MAP_TILE_URL?.trim() || 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+  17: const ATTRIBUTION = import.meta.env.VITE_MAP_ATTRIBUTION?.trim() ||
+  18:   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  19: 
+  20: export function PlaceMap({ places, selectedPlaceId, onSelectPlace, className }: PlaceMapProps) {
+  21:   const containerRef = useRef<HTMLDivElement>(null)
+  22:   const mapRef = useRef<Leaflet.Map | null>(null)
+  23:   const tileLayerRef = useRef<Leaflet.TileLayer | null>(null)
+  24:   const markerLayerRef = useRef<Leaflet.LayerGroup | null>(null)
+  25:   const [session, setSession] = useState<MapSession | null>(null)
+  26:   const [initError, setInitError] = useState(false)
+  27:   const [tileError, setTileError] = useState(false)
+  28:   const [retryAttempt, setRetryAttempt] = useState(0)
+  29:   const mappedPlaces = useMemo(() => places.filter((place) => place.location !== null), [places])
+  30:   const hasLocations = mappedPlaces.length > 0
+  31:   const missingCount = places.length - mappedPlaces.length
+  32: 
+  33:   useEffect(() => {
+  34:     if (!hasLocations || !containerRef.current) return
+  35:     let active = true
+  36:     let map: Leaflet.Map | undefined
+  37:     let observer: ResizeObserver | undefined
+  38: <truncated omitted_approx_tokens="4151" />ponse.end('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#e2e8f0"/><path d="M0 128H256M128 0V256" stroke="white" stroke-width="12"/><text x="20" y="30" font-size="14">Local fixture tile</text></svg>');return}next()
+ })}}]})
+await vite.listen();console.log('Map browser fixture http://127.0.0.1:5175/__map-check (local tiles only)');process.on('SIGINT',async()=>{console.log('Local fixture tile requests:',tileRequests);await vite.close();process.exit()})
+
+
+
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { cn } from '@/lib/cn'
+
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
+type ButtonSize = 'sm' | 'md' | 'lg'
+
+const variantClasses: Record<ButtonVariant, string> = {
+  primary: 'bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800',
+  secondary: 'bg-white text-brand-700 border border-brand-200 hover:bg-brand-50',
+  ghost: 'bg-transparent text-slate-700 hover:bg-slate-100',
+  danger: 'bg-red-600 text-white hover:bg-red-700',
+}
+
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: 'text-sm px-3 py-1.5 rounded-lg gap-1.5',
+  md: 'text-sm px-4 py-2.5 rounded-xl gap-2',
+  lg: 'text-base px-5 py-3 rounded-xl gap-2',
+}
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant
+  size?: ButtonSize
+  icon?: ReactNode
+  fullWidth?: boolean
+}
+
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  icon,
+  fullWidth,
+  className,
+  children,
+  ...rest
+}: ButtonProps) {
+  return (
+    <button
+      className={cn(
+        'tap-target inline-flex items-center justify-center font-semibold transition-colors',
+        'disabled:opacity-50 disabled:cursor-not-allowed',
+        variantClasses[variant],
+        sizeClasses[size],
+        fullWidth && 'w-full',
+        className,
+      )}
+      {...rest}
+    >
+      {icon}
+      {children}
+    </button>
+  )
+}
+
+[283] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"rg --files 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts' | Select-Object -First 40; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\workflows\\design-review.md' -TotalCount 180",max_output_tokens:2500}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'node_modules/leaflet/src/layer/marker/Marker.js' -TotalCount 330; Get-Content -LiteralPath 'node_modules/leaflet/src/layer/Popup.js' -TotalCount 240",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7000})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[284] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+Warning: truncated output (original token count: 2730)
+Total output lines: 207
+
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\build_tokens.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\check_links.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\accuracy_report.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\design_systems.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\axe_audit.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\contrast.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\check_no_emoji.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\library.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\gate.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\lint_hardcodes.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\lint_intent.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\_targets.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_target_size.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_states.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_screen_economy.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_rtl.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_responsive.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_reduced_motion.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_overflow.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_mobile_first.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_keyboard.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_interactive.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\verify_focustrap.mjs
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\validate_tokens.py
+C:\Users\ckzz2\.codex\skills\ux-ui-agent-ski<truncated omitted_approx_tokens="5677" />ns.closeOnClick : this._map.options.closePopupOnClick) {
+			events.preclick = this.close;
+		}
+
+		if (this.options.keepInView) {
+			events.moveend = this._adjustPan;
+		}
+
+		return events;
+	},
+
+	_initLayout: function () {
+		var prefix = 'leaflet-popup',
+		    container = this._container = DomUtil.create('div',
+			prefix + ' ' + (this.options.className || '') +
+			' leaflet-zoom-animated');
+
+		var wrapper = this._wrapper = DomUtil.create('div', prefix + '-content-wrapper', container);
+		this._contentNode = DomUtil.create('div', prefix + '-content', wrapper);
+
+		DomEvent.disableClickPropagation(container);
+		DomEvent.disableScrollPropagation(this._contentNode);
+		DomEvent.on(container, 'contextmenu', DomEvent.stopPropagation);
+
+		this._tipContainer = DomUtil.create('div', prefix + '-tip-container', container);
+		this._tip = DomUtil.create('div', prefix + '-tip', this._tipContainer);
+
+		if (this.options.closeButton) {
+			var closeButton = this._closeButton = DomUtil.create('a', prefix + '-close-button', container);
+			closeButton.setAttribute('role', 'button'); // overrides the implicit role=link of <a> elements #7399
+			closeButton.setAttribute('aria-label', 'Close popup');
+			closeButton.href = '#close';
+			closeButton.innerHTML = '<span aria-hidden="true">&#215;</span>';
+
+			DomEvent.on(closeButton, 'click', function (ev) {
+				DomEvent.preventDefault(ev);
+				this.close();
+			}, this);
+		}
+	},
+
+	_updateLayout: function () {
+		var container = this._contentNode,
+		    style = container.style;
+
+		style.width = '';
+		style.whiteSpace = 'nowrap';
+
+		var width = container.offsetWidth;
+		width = Math.min(width, this.options.maxWidth);
+		width = Math.max(width, this.options.minWidth);
+
+		style.width = (width + 1) + 'px';
+		style.whiteSpace = '';
+
+		style.height = '';
+
+		var height = container.offsetHeight,
+		    maxHeight = this.options.maxHeight,
+		    scrolledClass = 'leaflet-popup-scrolled';
+
+[285] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'src/pages/ExplorePage.tsx' -Tail 60; Get-Content -LiteralPath 'src/components/places/PlaceCard.tsx'; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\verify_states.mjs' -TotalCount 75; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\_targets.mjs' -TotalCount 80",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:4000}),
+  tools.exec_command({cmd:"git diff --stat 23490df0a37cb10032f81e9974d0c9cc3e09f8e3 87cd72492f29e50a60cec2d0783a675886d449ed",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",sandbox_permissions:"require_escalated",justification:"Read map task diff statistics for independent review.",max_output_tokens:300})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[286] tool exec result: Script completed
+Wall time 2.2 seconds
+Output:
+
+        value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Search places" />
+
+      <div role="group" aria-label="Filter by barangay" className="flex flex-wrap gap-2">
+        <Chip active={barangayFilter === null} onClick={() => setBarangayFilter(null)}>Both barangays</Chip>
+        {BARANGAYS.map((barangay) => (
+          <Chip key={barangay} active={barangayFilter === barangay}
+            onClick={() => setBarangayFilter(barangayFilter === barangay ? null : barangay)}>{barangay}</Chip>
+        ))}
+      </div>
+
+      <div role="group" aria-label="Filter by category" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
+        <Chip active={categoryFilter === null} onClick={() => setCategoryFilter(null)}>All categories</Chip>
+        {PILOT_CATEGORIES.map((category) => {
+          const { label, icon: Icon } = CATEGORY_META[category]
+          return (
+            <Chip key={category} active={categoryFilter === category} icon={<Icon size={14} />}
+              onClick={() => setCategoryFilter(categoryFilter === category ? null : category)}>{label}</Chip>
+          )
+        })}
+      </div>
+
+      <div role="group" aria-label="Filter by review status" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
+        <Chip active={verificationFilter === null} onClick={() => setVerificationFilter(null)}>All review states</Chip>
+        {VERIFICATION_FILTERS.map((state) => (
+          <button key={state} type="button" aria-pressed={verificationFilter === state}
+            onClick={() => setVerificationFilter(verificationFilter === state ? null : state)}
+            className={`tap-target rounded-full ${verificationFilter === state ? 'ring-2 ring-brand-500 ring-offset-1' : 'hover:ring-1 hover:ring-slate-300'}`}>
+            <VerificationBadge state={state} />
+          </button>
+       <truncated omitted_approx_tokens="2390" />1, and deliberately: 1 means "I looked and found something
+ * wrong", 2 means "I could not look". A caller that treats them the same is
+ * already wrong, and several in this repo do not.
+ */
+import { existsSync, statSync } from 'node:fs';
+import { basename } from 'node:path';
+
+/**
+ * @param {string[]} paths  non-flag arguments, as the gate parsed them
+ * @param {object}  [opts]
+ * @param {string}  [opts.usage]  the one-line usage to print when nothing was given
+ * @param {boolean} [opts.allowDirs=true]  whether a directory is a valid target
+ * @returns {string[]} the same paths, once every one of them is real
+ */
+export function requireTargets(paths, opts = {}) {
+  const { usage, allowDirs = true } = opts;
+  const who = basename(process.argv[1] || 'gate');
+
+  if (!paths || paths.length === 0) {
+    console.log(usage || `Usage: node scripts/${who} <file|dir> [...]`);
+    console.log('ERROR: no target given. A gate with nothing to measure is not a pass.');
+    process.exit(2);
+  }
+
+  const missing = paths.filter(p => !existsSync(p));
+  if (missing.length) {
+    console.log(`ERROR: path(s) not found: ${missing.join(', ')}`);
+    console.log('Nothing was measured. This is not a pass - check the path and run it again.');
+    process.exit(2);
+  }
+
+  if (!allowDirs) {
+    const dirs = paths.filter(p => statSync(p).isDirectory());
+    if (dirs.length) {
+      console.log(`ERROR: expected a file, got a directory: ${dirs.join(', ')}`);
+      process.exit(2);
+    }
+  }
+
+  return paths;
+}
+
+ .env.example                    |   5 ++
+ package-lock.json               |  25 ++++++
+ package.json                    |   2 +
+ scripts/place-map.test.mjs      |  35 +++++++++
+ src/components/map/PlaceMap.tsx | 170 ++++++++++++++++++++++++++++++++++++++++
+ src/main.tsx                    |   1 +
+ src/pages/ExplorePage.tsx       |   4 +-
+ src/pages/PlaceDetailPage.tsx   |   4 +-
+ 8 files changed, 242 insertions(+), 4 deletions(-)
+
+[287] assistant: The map’s lifecycle and selection code look sound. I’m checking the UX gates’ fit for this React source before giving the verdict.
+
+[288] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\lint_hardcodes.py' -TotalCount 100; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\check_no_emoji.py' -TotalCount 65; Get-Content -LiteralPath 'index.html'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:2300}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'src/components/ui/Card.tsx'; rg -n 'keypress|keydown' node_modules/leaflet/src/map/Map.js node_modules/leaflet/src/layer/Popup.js; Get-Content -LiteralPath 'scripts/place-api.test.mjs' -TotalCount 45",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:1600})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[289] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+#!/usr/bin/env python3
+"""Lint generated component code for hardcoded values that should be design tokens.
+
+The kit's rule is "zero hardcoded values": every color/size/radius/duration must come
+from a token (CSS var, theme key, asset). Point this at YOUR component source.
+
+Usage:
+  python3 scripts/lint_hardcodes.py src/components            # a dir
+  python3 scripts/lint_hardcodes.py Button.tsx Card.vue       # files
+  python3 scripts/lint_hardcodes.py --ext .tsx,.vue src/
+
+Flags a line with a raw hex color, px length, or ms/s duration UNLESS it:
+  - is inside a CSS var / token reference (var(--…), {token…}, theme(…)),
+  - is a token-definition file (tokens/*.json),
+  - carries an inline allow comment containing 'ds-allow-hardcode'.
+Exit 0 = clean, 1 = violations found.
+"""
+import re
+import sys
+from pathlib import Path
+
+CODE_EXT = {".css", ".scss", ".tsx", ".jsx", ".ts", ".js", ".vue", ".svelte",
+            ".swift", ".kt", ".dart", ".html"}
+
+HEX = re.compile(r"(?<![\w&])#[0-9a-fA-F]{3,8}\b")
+# Outside CSS, a # is far more often prose than a colour: "issue #412" is not a
+# hex. In markup a hex only counts in value position - after a colon, an equals,
+# an opening paren or a comma.
+HEX_VALUE = re.compile(r"[:=(,]\s*[\"']?#[0-9a-fA-F]{3,8}\b")
+PX = re.compile(r"(?<![\w.])\d+(?:\.\d+)?px\b")
+MS = re.compile(r"(?<![\w.])\d+(?:\.\d+)?m?s\b")
+# raw Tailwind palette utilities (bg-gray-500, text-blue-600, border-red-400 …) that
+# bypass semantic tokens: the #1 real-world drift (527 of these in one audited project).
+_TW_PREFIX = r"(?:bg|text|border|ring|ring-offset|fill|stroke|from|via|to|divide|outline|decoration|accent|caret|placeholder|shadow)"
+_TW_COLOR = r"(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)"
+TW = re.compile(rf"(?<![\w-]){_TW_PREFIX}-{_TW_COLOR}-(?:50|100|200|30<truncated omitted_approx_tokens="1999" />act'
+import { renderToStaticMarkup } from 'react-dom/server'
+
+const id = '830cffbf-3384-4d78-912b-a7c0630210ee'
+const row = {
+  id, name: 'Public library', category: 'government', barangay: 'Poblacion',
+  address: null, latitude: null, longitude: null, description: '', services: ['Reading services'],
+  public_phone: '8800-8187', public_email: null, entrance_notes: '', wheelchair_access: 'unknown',
+  parking_notes: null, hours_note: 'Monday to Friday', additional_notes: null,
+  nearby_landmarks: [], tags: [], alternate_names: ['City library'],
+  verification_state: 'awaiting_review', last_checked_at: null, verification_method: null,
+  checked_by: null, corroborations: 0, photo_placeholder_count: 0,
+  place_sources: [{ id: 'source-1', field_key: 'publicPhone', source_name: 'Official office directory',
+    source_url: 'https://example.gov.ph/library', source_type: 'official', checked_at: '2026-10-27T00:00:00Z' }],
+}
+let api
+let vite
+let http
+let response = { body: [], status: 200 }
+const requests = []
+
+before(async () => {
+  http = createHttpServer((request, reply) => {
+    requests.push(new URL(request.url, 'http://localhost'))
+    reply.writeHead(response.status, { 'content-type': 'application/json' })
+    reply.end(JSON.stringify(response.body))
+  })
+  await new Promise((resolve) => http.listen(0, '127.0.0.1', resolve))
+  process.env.VITE_SUPABASE_URL = `http://127.0.0.1:${http.address().port}`
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test-only'
+  vite = await createViteServer({ server: { middlewareMode: true }, appType: 'custom' })
+  api = await vite.ssrLoadModule('/src/lib/placeApi.ts')
+})
+after(async () => {
+  await vite?.close()
+  if (http) await new Promise((resolve) => http.close(resolve))
+  delete process.env.VITE_SUPABASE_URL
+  delete process.env.VITE_SUPABASE_PUBLISHABLE_KEY
+})
+
+test('published directory reads retain unknowns and map field evidence into Place', async () => {
+
+[290] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"python 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\check_no_emoji.py' 'src/components/map/PlaceMap.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:800}),
+  tools.exec_command({cmd:"python 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\lint_hardcodes.py' 'src/components/map/PlaceMap.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:1300})
+]);
+for (const r of results) text(r.status === "fulfilled" ? `${r.value.exit_code}: ${r.value.output}` : String(r.reason));
+
+[291] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+1: ResourceUnavailable: 
+Line |
+   2 |  python 'C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\check …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Program 'python.exe' failed to run: An error occurred trying to start process 'C:\Users\ckzz2\AppData\Local\Microsoft\WindowsApps\python.exe' with working directory 'C:\Users\ckzz2\.codex\worktrees\muntara-pilot\muntara'. The file cannot be accessed by the system.At line:2 char:1
++ python 'C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\check …
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.
+
+1: ResourceUnavailable: 
+Line |
+   2 |  python 'C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\lint_ …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Program 'python.exe' failed to run: An error occurred trying to start process 'C:\Users\ckzz2\AppData\Local\Microsoft\WindowsApps\python.exe' with working directory 'C:\Users\ckzz2\.codex\worktrees\muntara-pilot\muntara'. The file cannot be accessed by the system.At line:2 char:1
++ python 'C:\Users\ckzz2\.codex\skills\ux-ui-agent-skills\scripts\lint_ …
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.
+
+[292] tool exec call: const r = await tools.mcp__codex_app__load_workspace_dependencies({});
+for (const item of r.content ?? []) if (item.type === "text") text(item.text);
+
+[293] tool exec result: Script completed
+Wall time 0.2 seconds
+Output:
+
+Workspace dependencies are available for this local desktop thread.
+
+### Workspace Dependencies
+Use these bundled paths for sheets, slides, documents, PDFs, images, or browser automation:
+- Bundle version: `26.1025.11240`
+- Git executable: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd\git.exe`
+- Node.js executable: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe`
+- Node.js packages: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules`
+- pnpm executable: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback\pnpm.cmd`
+- Python executable: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
+- Python packages: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\python`
+- Override binaries: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override`
+- Fallback binaries: `C:\Users\ckzz2\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback`
+
+[294] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"& 'C:\\Users\\ckzz2\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\check_no_emoji.py' 'src/components/map/PlaceMap.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:500}),
+  tools.exec_command({cmd:"& 'C:\\Users\\ckzz2\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\scripts\\lint_hardcodes.py' 'src/components/map/PlaceMap.tsx'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:1300})
+]);
+for (const r of results) text(r.status === "fulfilled" ? `${r.value.exit_code}: ${r.value.output}` : String(r.reason));
+
+[295] tool exec result: Script completed
+Wall time 2.6 seconds
+Output:
+
+0: Scanned 1 file(s).
+OK: no emoji in UI output or taste files, and no em or en dash.
+
+1: src\components\map\PlaceMap.tsx:109: hardcoded tailwind-palette 'text-slate-900': use a token
+src\components\map\PlaceMap.tsx:112: hardcoded tailwind-palette 'bg-slate-100': use a token
+src\components\map\PlaceMap.tsx:151: hardcoded tailwind-palette 'border-slate-200': use a token
+src\components\map\PlaceMap.tsx:151: hardcoded tailwind-palette 'bg-slate-100': use a token
+src\components\map\PlaceMap.tsx:151: hardcoded tailwind-palette 'text-slate-900': use a token
+src\components\map\PlaceMap.tsx:153: hardcoded tailwind-palette 'border-slate-200': use a token
+src\components\map\PlaceMap.tsx:153: hardcoded tailwind-palette 'text-slate-800': use a token
+src\components\map\PlaceMap.tsx:162: hardcoded tailwind-palette 'border-slate-200': use a token
+src\components\map\PlaceMap.tsx:162: hardcoded tailwind-palette 'text-slate-600': use a token
+
+Scanned 1 of 1 candidate file(s).
+FAIL: 9 hardcoded value(s). Map each to a token, or add a 'ds-allow-hardcode' comment for a justified exception.
+
+[296] tool send_message call: {"target":"/root","message":"REDACTED"}
+
+[297] tool send_message call: {"target":"/root","message":"REDACTED"}
+
+[298] assistant: Reject pending one fix.
+
+- **[P2] Restore focus by stable group identity.** [PlaceMap.tsx:82](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/map/PlaceMap.tsx:82) remembers the marker’s label; [line 124](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/map/PlaceMap.tsx:124) focuses every matching label. Two shared groups with two listings both read “2 listings at this location.” Selecting the first group’s entry moves focus to the last group after rebuilding. Match a coordinate/group key instead. Verify with two equal-size shared groups.
+
+Lifecycle, cleanup, null locations, safe labels, retry behavior, attribution, and prototype-placeholder scope otherwise match the brief.
+
+UX/UI checks: no-emoji gate passed; token gate flagged nine raw Slate palette utilities. Dark-mode contrast remains a Task 5 release risk. Full AAA compliance is unverified.
+
+Reported tests/build/lint were not rerun. Live Supabase and remote tile availability remain unverified.
