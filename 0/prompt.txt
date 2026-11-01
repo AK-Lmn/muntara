@@ -1,0 +1,1 @@
+[309] assistant: I’ll reproduce the equal-count group focus collision, then replace label matching with a coordinate-group key.
