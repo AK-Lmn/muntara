@@ -1,0 +1,24 @@
+PLEASE IMPLEMENT THIS PLAN:
+# Expand Muntara’s public-service directory
+
+## Summary
+
+Audit coverage in Tunasan and Poblacion. The inventory has 35 listings now, but the source notes still flag missing offices, clinics, learning centers, and school details.
+
+## Changes
+
+- Audit public-facing government offices first, including city, barangay, and national-agency counters. Then check clinics and health stations, followed by public schools and learning centers.
+- Use official directories as evidence. Use OpenStreetMap to find candidates and map points; verify each candidate with an official source before adding it.
+- Add confirmed places to the existing JSON inventory with field-level citations. Keep unknown contacts, hours, access details, and coordinates blank; don’t guess.
+- Update the source notes and map from the inventory. Leave backend work and database imports out of scope.
+
+## Acceptance checks
+
+- Review each discovered listing for public access, pilot location, and duplicates. Keep unconfirmed leads in the research queue.
+- Run the inventory validator. Confirm documented counts match the data and OSM supports location fields only.
+- Keep coverage labeled “pilot listings in progress” until facility owners confirm the remaining gaps.
+
+## Assumptions
+
+- “Government offices” means public-facing service locations, including national-agency counters. Employee-only offices and facilities outside the two barangays stay out.
+- Google Maps remains unused for scraping; OSM coordinates require OSM attribution.
