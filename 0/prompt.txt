@@ -1,0 +1,21 @@
+C:\Users\ckzz2>curl.exe -4 -I --connect-timeout 5 --max-time 15 https://neon.com/home
+curl: (28) Connection timed out after 5007 milliseconds
+
+C:\Users\ckzz2>tracert -d -h 12 -w 1000 76.76.21.21
+
+Tracing route to 76.76.21.21 over a maximum of 12 hops
+
+  1     2 ms     1 ms     4 ms  192.168.68.1
+  2     2 ms     1 ms     1 ms  192.168.1.1
+  3    11 ms    15 ms     9 ms  112.207.160.1
+  4     *        *        4 ms  122.2.181.17
+  5     *        *        *     Request timed out.
+  6     *        *        *     Request timed out.
+  7     *        *        *     Request timed out.
+  8     *        *        *     Request timed out.
+  9     *        *        *     Request timed out.
+ 10     *        *        *     Request timed out.
+ 11     *        *        *     Request timed out.
+ 12     *        *        *     Request timed out.
+
+Trace complete.
