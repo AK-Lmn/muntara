@@ -1,0 +1,42 @@
+[159] tool list_agents call: {}
+
+[161] assistant: Task 3’s query and page checks pass. The implementer is recording a pre-existing dark-mode contrast issue for the later shell task.
+
+[168] assistant: Agent message from /root/public_reads_task3:
+Message Type: FINAL_ANSWER
+Task name: /root
+Sender: /root/public_reads_task3
+Payload:
+Task 3 committed: `23490df0a37cb10032f81e9974d0c9cc3e09f8e3`. Worktree clean; ready for review.
+
+- Supabase public reads, filters, sources, explicit unknowns, and detail cleanup implemented.
+- 19/19 Node tests, build, lint, and staged whitespace check passed.
+- Fixture browser checks passed for sourced/incomplete records and filters.
+- [Report](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-3-report.md)
+
+Live Supabase remains unverified. Shared shell/Card dark-mode contrast remains a documented pre-existing risk for Task 5.
+
+[169] assistant: Task 3 is committed. I’m preparing its independent review; live Supabase behavior remains an open check.
+
+[178] assistant: The Task 3 review is checking mapping, filters, evidence labels, and null-location handling. No live database is available to validate its queries.
+
+[181] assistant: Agent message from /root/public_reads_review3:
+Message Type: FINAL_ANSWER
+Task name: /root
+Sender: /root/public_reads_review3
+Payload:
+Spec compliance: approved. Task quality: approved. No actionable findings across nine changed files.
+
+- [Public API](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/lib/placeApi.ts:53) filters published records, maps nullable values and evidence, and handles errors. Query shape matches current [Supabase select](https://supabase.com/docs/reference/javascript/select) and [maybeSingle](https://supabase.com/docs/reference/javascript/maybesingle) docs.
+- [Explore](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/pages/ExplorePage.tsx:31) preserves filters and handles loading/error/empty states. [Detail](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/pages/PlaceDetailPage.tsx:19) ignores stale results and removes mock content.
+- [Sources](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/places/PlaceSourcesPanel.tsx:18) rejects unsafe link protocols. [Freshness](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/verification/FreshnessNote.tsx:26) keeps official checks distinct from visits.
+- [Seven focused tests](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/scripts/place-api.test.mjs:45) cover HTTP query contracts, unknowns, evidence mapping, and source-link safety. No unresolved doubt justified rerunning them.
+- Focused unchanged-code checks confirmed schema compatibility, publishable-only browser configuration, filter `aria-pressed`, and the updated FreshnessNote caller. Truncated diff output required current-file reads.
+
+Live Supabase queries, migration/RLS execution, import, and duplicate verification remain open. Documented dark-mode contrast remains a Task 5 release risk.
+
+[184] assistant: Task 3 review passed. For the pilot map, I’m choosing configurable OpenStreetMap tiles with visible attribution; official policy says best-effort, with no SLA.
+
+[186] tool exec result: Script completed
+Wall time 1.8 seconds
+Output:
