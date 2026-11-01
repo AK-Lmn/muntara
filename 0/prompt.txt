@@ -1,0 +1,37 @@
+C:\Users\ckzz2>curl.exe -I --connect-timeout 5 --max-time 15 https://example.com
+HTTP/1.1 200 OK
+Date: Tue, 27 Oct 2026 13:42:48 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Server: cloudflare
+last-modified: Sat, 24 Oct 2026 11:34:40 GMT
+allow: GET, HEAD
+Accept-Ranges: bytes
+Age: 8
+cf-cache-status: HIT
+CF-RAY: a51220496c9ef8d3-SIN
+alt-svc: h3=":443"; ma=86400
+
+
+C:\Users\ckzz2>curl.exe -I --connect-timeout 5 --max-time 15 https://console.neon.tech
+HTTP/1.1 404 Not Found
+Date: Tue, 27 Oct 2026 13:42:49 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+content-security-policy: style-src 'self' 'unsafe-inline' dfv3qgd2ykmrx.cloudfront.net fonts.googleapis.com fast.appcues.com rsms.me; frame-src 'self' *.withorb.com *.youtube.com app.hex.tech *.arkoselabs.com; img-src * data:; media-src 'self' https://cdn.neonapi.io https://br-calm-haze-b53n2a9j.storage.c-7.us-east-2.aws.neon.tech; report-uri https://o1373725.ingest.sentry.io/api/6681775/security/?sentry_key=2d65ecac64634befa77615c9077a289e&sentry_environment=production; report-to sentry; default-src 'self'; connect-src 'self' neon.com *.neon.com wss://*.neon.com neon.tech *.neon.tech wss://*.neon.tech *.neon.build wss://*.neon.build neonstatus.com *.segment.io *.sentry.io *.google-analytics.com *.posthog.com api.hsforms.com c.statcounter.com wss://statcounter.com wss://statcounter.io wss://api.appcues.net api.appcues.net api64.ipify.org discord.com api.management.inkeep.com wss://api.inkeep.com/graphql *.inkeep.com/graphql https://api.inkeep.com https://api.io.inkeep.com https://api.pwnedpasswords.com vercel.com *.arkoselabs.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' dfv3qgd2ykmrx.cloudfront.net analytics.neon.tech *.googletagmanager.com app.posthog.com www.statcounter.com fast.appcues.com *.youtube.com *.i.posthog.com cdn.madkudu.com *.arkoselabs.com; font-src 'self' data: dfv3qgd2ykmrx.cloudfront.net *.neon.tech fonts.gstatic.com rsms.me; object-src 'none';
+content-security-policy-report-only: report-uri https://o1373725.ingest.sentry.io/api/6681775/security/?sentry_key=2d65ecac64634befa77615c9077a289e&sentry_environment=production; report-to sentry; script-src 'self' 'unsafe-eval' dfv3qgd2ykmrx.cloudfront.net analytics.neon.tech https://www.googletagmanager.com/gtm.js https://www.googletagmanager.com/gtag/js app.posthog.com www.statcounter.com fast.appcues.com *.i.posthog.com cdn.madkudu.com *.arkoselabs.com 'sha256-RB2MbNz5w9QpSAsbGZ0AHMn733t+3mjeMVUK6wk2Jvg=' 'sha256-t/KbfRDHbL8b+DFFuK8Je4gXXt5mx4ZZgPbKNXJiI3k=' 'sha256-q4b/UQgdKIKjSSH2RNKmmQYUkqZgHUP+kD/IabTbMpM='; style-src 'self' 'unsafe-inline' dfv3qgd2ykmrx.cloudfront.net fonts.googleapis.com fast.appcues.com rsms.me; frame-src 'self' *.withorb.com *.youtube.com app.hex.tech *.arkoselabs.com; img-src * data:; default-src 'self'; connect-src 'self' neon.com *.neon.com wss://*.neon.com neon.tech *.neon.tech wss://*.neon.tech *.neon.build wss://*.neon.build neonstatus.com *.segment.io *.sentry.io *.google-analytics.com *.posthog.com api.hsforms.com c.statcounter.com wss://statcounter.com wss://statcounter.io wss://api.appcues.net api.appcues.net api64.ipify.org discord.com api.management.inkeep.com wss://api.inkeep.com/graphql *.inkeep.com/graphql https://api.inkeep.com https://api.io.inkeep.com https://api.pwnedpasswords.com vercel.com *.arkoselabs.com; font-src 'self' data: dfv3qgd2ykmrx.cloudfront.net *.neon.tech fonts.gstatic.com rsms.me; object-src 'none'; media-src 'self' https://cdn.neonapi.io https://br-calm-haze-b53n2a9j.storage.c-7.us-east-2.aws.neon.tech;
+referrer-policy: strict-origin-when-cross-origin
+reporting-endpoints: sentry="https://o1373725.ingest.sentry.io/api/6681775/security/?sentry_key=2d65ecac64634befa77615c9077a289e&sentry_environment=production"
+Set-Cookie: REDACTED; Path=/; HttpOnly; Secure; SameSite=Lax
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+vary: Origin
+vary: Cookie
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-neon-ret-request-id: d1aad6a5-2859-4a3d-9df4-2b3c635c0979
+cf-cache-status: DYNAMIC
+Server: cloudflare
+CF-RAY: a512204c7fa40991-HKG
+
+
+C:\Users\ckzz2>
