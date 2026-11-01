@@ -1,0 +1,346 @@
+[30] assistant: Using Supabase and TDD guidance for Task 2. I’ll build the sourced inventory and importer, then verify and commit.
+
+[31] tool exec call: const rs = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-2-brief.md'; Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-2-research.md'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:12000}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\supabase\\1.0.0\\skills\\supabase\\SKILL.md'; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\test-driven-development\\SKILL.md'; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ponytail\\SKILL.md'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:10000}),
+  tools.exec_command({cmd:"rg --files -g 'AGENTS.md' -g 'package.json' -g '.gitignore' -g '*types*' -g '*places*' -g '*sdd*' -g 'config.toml' -g '*.sql' -g '*.json' -g '*.mjs' -g '*.ts' -g '*.tsx' | Select-Object -First 100",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:3000})
+]);
+for (const r of rs) text(r.status === "fulfilled" ? r.value.output : r.reason);
+
+[32] tool exec result: Script completed
+Wall time 1.0 seconds
+Output:
+
+### Task 2: Build the reviewed pilot inventory and import
+
+**Files:**
+- Create: `docs/data-sources/tunasan-poblacion-inventory.md`
+- Create: `data/pilot-places.json`
+- Create: `scripts/import-pilot-places.mjs`
+- Create: `scripts/import-pilot-places.test.mjs`
+- Modify: `.gitignore` if needed to exclude `.env.local`
+
+**Interfaces:**
+- `scripts/import-pilot-places.mjs --input data/pilot-places.json` validates all rows before writing, then idempotently upserts by `source_key`.
+- Each JSON record contains `sourceKey`, `name`, `category`, `barangay`, `address`, `location`, `description`, `services`, `publicPhone`, `publicEmail`, `access`, and `sources`.
+- Each non-null public fact has at least one `sources` entry with `fieldKey`, `sourceName`, `sourceUrl`, `sourceType`, and `checkedAt`.
+
+- [ ] **Step 1: Write importer validation cases**
+
+Use Node’s built-in test runner. Cover a valid record, unsupported barangay/category, duplicate `sourceKey`, invalid coordinates, and a public fact without evidence.
+
+- [ ] **Step 2: Run importer tests and confirm they fail**
+
+Run: `node --test scripts/import-pilot-places.test.mjs`  
+Expected: FAIL because the validator is not implemented.
+
+- [ ] **Step 3: Reconcile source records into the inventory**
+
+Use the official city, barangay, DepEd, and DOH source leads in the design document. Record the source URL and access date for every fact. Confirm each facility is physically in the pilot boundary before including it. Use OSM only as a coordinate lead, and keep that evidence labeled as OSM. Leave uncertain fields null and track coverage gaps; do not claim completeness until the barangays or facility owners reconcile the inventory.
+
+- [ ] **Step 4: Implement validation and idempotent import**
+
+Read the import key only from `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the local process environment. Validate the entire file before the first write<truncated omitted_approx_tokens="8724" />on real hardware needs, anything the user asked for.
+
+## Levels
+
+| Level | Behavior |
+|-------|----------|
+| **lite** | Build what was asked. Name the smaller option in one line and let the user pick. |
+| **full** | The rules above. Default. |
+| **ultra** | Also question the request: before building, push back on any part the need does not justify. |
+
+vite.config.ts
+tsconfig.node.json
+tsconfig.json
+tsconfig.app.json
+.gitignore
+.oxlintrc.json
+package-lock.json
+package.json
+supabase\config.toml
+supabase\.gitignore
+supabase\tests\places_rls.test.sql
+scripts\import-osm.mjs
+supabase\migrations\20261026174827_places_and_sources.sql
+src\types\index.ts
+src\data\mockRoutes.ts
+src\data\mockPlaces.ts
+src\data\mockCorrections.ts
+src\data\importedPlaces.ts
+src\pages\SubmitCorrectionPage.tsx
+src\pages\RoutesPage.tsx
+src\pages\RouteDetailPage.tsx
+src\pages\PlaceDetailPage.tsx
+src\pages\MyCorrectionsPage.tsx
+src\pages\ModerationPage.tsx
+src\pages\ExplorePage.tsx
+src\main.tsx
+src\lib\supabaseClient.ts
+src\lib\mockApi.ts
+src\lib\cn.ts
+src\components\verification\VerificationBadge.tsx
+src\components\verification\FreshnessNote.tsx
+src\components\map\MapPlaceholder.tsx
+src\components\routes\RouteVerificationBadge.tsx
+src\components\ui\TextInput.tsx
+src\components\ui\TextArea.tsx
+src\components\ui\Select.tsx
+src\components\ui\EmptyState.tsx
+src\components\ui\Chip.tsx
+src\App.tsx
+src\components\ui\Card.tsx
+src\components\ui\Button.tsx
+src\components\ui\Badge.tsx
+src\components\layout\TopBar.tsx
+src\components\layout\BottomNav.tsx
+src\components\layout\AppShell.tsx
+src\components\corrections\TrustSignalMeter.tsx
+src\components\corrections\CorrectionStatusBadge.tsx
+src\components\corrections\CorrectionActions.tsx
+src\components\places\PlaceCard.tsx
+src\components\places\categoryMeta.ts
+src\components\places\AccessInfoPanel.tsx
+src\components\places\PhotoPlaceholders.tsx
+src\components\places\LandmarkList.tsx
+
+[33] tool exec call: const rs = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'package.json'; Get-Content -LiteralPath '.gitignore'; Get-Content -LiteralPath 'src/types/index.ts'; Get-Content -LiteralPath 'supabase/migrations/20261026174827_places_and_sources.sql'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:6500}),
+  tools.exec_command({cmd:"Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\test-driven-development\\writing-good-tests.md'; Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\verification-before-completion\\SKILL.md'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7000}),
+  tools.web__run({open:[{ref_id:"https://supabase.com/changelog.md"},{ref_id:"https://supabase.com/docs/reference/javascript/upsert"},{ref_id:"https://muntinlupacity.gov.ph/departments-offices/city-health-office/"},{ref_id:"https://muntinlupacity.gov.ph/departments-offices/business-permits-and-licensing-office/"}],response_length:"long"})
+]);
+for (const r of rs) text(r.status === "fulfilled" ? r.value.output ?? r.value : r.reason);
+
+[34] tool exec result: Script completed
+Wall time 2.5 seconds
+Output:
+
+Warning: truncated output (original token count: 10958)
+Total output lines: 1167
+
+{
+  "name": "muntinlupa-explorer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "import:osm": "node scripts/import-osm.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/**
+ * Core data model for Muntinlupa Explorer.
+ *
+ * NOTE ON DATA TRUST: Nothing in this app should ever claim to be verified
+ * real-world information unless it was actually checked by a human against
+ * the physical location. The types below exist specifically to make that
+ * distinction impossible to skip — every place and every route carries an
+ * explicit VerificationStatus, and UI components are expected to render it
+ * rather than hide it.
+ */
+
+/** Broad category used for filtering and map markers. */
+export type PlaceCategory =
+  | 'government'
+  | 'health'
+  | 'education'
+  | 'transport'
+  | 'food'
+  | 'park_recreation'
+  | 'worship'
+  | 'shopping'
+  | 'emergency_services'
+  | 'lodging'
+  | 'other'
+
+/**
+ * How con<truncated omitted_approx_tokens="9039" />nd support services for the regulation and control of business as well as the issuance of permits and licenses of establishments, issuance of occupational permits and implementation of various ordinances related to business establishments in the City of Muntinlupa.
+L55: 
+L56: Vision
+L57: The Business Permits and Licensing Office of Muntinlupa City is the Model BPLO in the entire Philippines through its excellent implementation of the BOSS system and other innovative programs that facilitate the conduct of legitimate private enterprises as a strategic means to enhance the city’s competitiveness as an investment destination.
+L58: 
+L59: Mission
+L60: The Business Permits and Licensing Office of the City Government of Muntinlupa exists to provide quality public service to the city’s taxpayers through the streamlined Business One-Stop Shop program which ensures efficient, fast, and quality public service toward achieving a business-friendly environment.
+L61: 
+L62: Service Pledge
+L63: 
+L64: We commit to:
+L65: 1. Provide efficient, prompt, and excellent service to taxpayers at all times.
+L66: 2. Adhere to our service standard of processing application provided that requisite documents, as prescribed in our citizen’s charter, are presented as well.
+L67: 3. Attend to all applicants/taxpayers who are within the premises of the office prior to the end of official working hours and during lunch break.
+L68: 
+L69: List of Services
+L70:   * Issuance of Business Permit (New and Renewal)
+L71:   * Special Permit
+L72:   * Non-Contracting Certificate
+L73:   * Business Account Modification
+L74:   * Business Retirement/Closure
+L75:   * Certification/Verification of Business Record
+L76:   * Health and Occupational Permit
+L77: 
+L78: * * *
+L79: 
+L80: Service Process
+L81: 
+L82: 【17†iframe】
+L83: 
+L84: * * *
+L85: 
+L86: 【18†Image】 【19†Image】
+L87: 
+L88: 
+L89: 
+L90: Copyright © 2022 City Government of Muntinlupa (Management Information Systems Office)
+
+[35] tool exec call: text(await tools.web__run({
+  open:[
+    {ref_id:"https://supabase.com/changelog.md"},
+    {ref_id:"https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/"},
+    {ref_id:"https://muntinlupacity.gov.ph/departments-offices/early-childhood-education-division/"},
+    {ref_id:"https://muntinlupacity.gov.ph/departments-offices/city-security-office/"}
+  ],
+  response_length:"long"
+}));
+
+[36] tool exec result: Script completed
+Wall time 2.5 seconds
+Output:
+
+Internal Error ()
+citeturn26view0 [wordlim: 200] Source: open({"ref_id":"https://supabase.com/changelog.md","lineno":null}); Total lines: 1
+L0: Failed to fetch https://supabase.com/changelog.md: (400) Unsupported content-type: text/markdown
+--------------------------------------------------------------------------------
+Environmental Sanitation Center – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/)
+citeturn26view1 [wordlim: 200] Crawled: 3 days ago; Content type: text/html; Source: open({"ref_id":"https://muntinlupacity.gov.ph/departments-offices/environmental-sanitation-center/","lineno":null}); Total lines: 79
+L0: Open Menu Close Menu
+L1: 
+L2:     * 【0†HOME】
+L3:     * 【1†THE CITY】
+L4:       * 【2†HISTORY】
+L5:       * 【3†QUALITY POLICY STATEMENT】
+L6:     * 【1†GOVERNMENT】
+L7:       * 【4†BARANGAYS】
+L8:       * 【5†CITY OFFICIALS】
+L9:       * 【6†DEPARTMENTS/OFFICES】
+L10:     * 【7†BUSINESS & SERVICES】
+L11:     * 【8†JOBS】
+L12:     * 【9†TOURISM】
+L13:     * 【1†ACCOMPLISHMENTS】
+L14:       * 【10†7K AGENDA – 2025 ANNUAL REPORT†heyzine.com】
+L15:       * 【11†AWARDS】
+L16:     * 【12†GALLERY†www.facebook.com】
+L17:     * 【13†FAQs】
+L18:   * 【0†HOME】
+L19:   * 【1†THE CITY】
+L20:     * 【2†HISTORY】
+L21:     * 【3†QUALITY POLICY STATEMENT】
+L22:   * 【1†GOVERNMENT】
+L23:     * 【4†BARANGAYS】
+L24:     * 【5†CITY OFFICIALS】
+L25:     * 【6†DEPARTMENTS/OFFICES】
+L26:   * 【7†BUSINESS & SERVICES】
+L27:   * 【8†JOBS】
+L28:   * 【9†TOURISM】
+L29:   * 【1†ACCOMPLISHMENTS】
+L30:     * 【10†7K AGENDA – 2025 ANNUAL REPORT†heyzine.com】
+L31:     * 【11†AWARDS】
+L32:   * 【12†GALLERY†www.facebook.com】
+L33:   * 【13†FAQs】
+L34: # Environmental Sanitation Center
+L35: 
+L36<truncated omitted_approx_tokens="1807" />JOBS】
+L28:   * 【9†TOURISM】
+L29:   * 【1†ACCOMPLISHMENTS】
+L30:     * 【10†7K AGENDA – 2025 ANNUAL REPORT†heyzine.com】
+L31:     * 【11†AWARDS】
+L32:   * 【12†GALLERY†www.facebook.com】
+L33:   * 【13†FAQs】
+L34: # City Security Office
+L35: 
+L36: 【14†Image】
+L37: 
+L38: Officer-In-Charge:
+L39: Mr. Efren Villanueva
+L40: 
+L41: Address:
+L42: 2nd Floor, Motorpool Building, Pacwood Site, Tunasan, Muntinlupa City
+L43: 
+L44: Contact Information:
+L45: Telephone No.: (02) 8-553-7248
+L46: E-mail: 【15†[email protected]】
+L47: 
+L48: * * *
+L49: 
+L50: Mandate
+L51: 
+L52: Provision for quality security and safety services to Public Schools/Other Offices
+L53: 
+L54: Vision
+L55: 
+L56: A peaceful, orderly, free of criminality, safe and secure Public Schools and Offices protected by equipped, competent and dependable City Security Officers.
+L57: Mission
+L58: 
+L59: The City Security Office shall perform to secure, protect and enforce rules, regulations, safety policies pursuant to pertinent laws and ordinances in ensuring public safety within the City of Muntinlupa.
+L60: 
+L61: Service Pledge
+L62: 
+L63: The City Security Office commits to provide the schools/offices and the Muntinlupa Residents a quality security and safety services by:
+L64:   * Protecting the students from illegal drugs, alcohol, gambling and other forms of vices and harm;
+L65:   * Protecting the officers and staff, teaching and non-teaching personnel, parents and visitors from any harm or danger while inside the school campuses/offices;
+L66:   * Providing security assistance to other Departments of the City Government of Muntinlupa and Muntinlupa Residents in any events/occasions;
+L67:   * Protecting the properties of the schools/offices within the perimeter of these institutions.
+L68: 
+L69: * * *
+L70: Service Process
+L71: 
+L72: 【16†iframe】
+L73: 
+L74: 
+L75: 
+L76: Copyright © 2022 City Government of Muntinlupa (Management Information Systems Office)
