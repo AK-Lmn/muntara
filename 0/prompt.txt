@@ -1,0 +1,1 @@
+[336] assistant: The regression now passes: focus returns to the selected coordinate group. I’m running final checks and committing the fix.
