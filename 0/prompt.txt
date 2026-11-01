@@ -1,0 +1,2 @@
+C:\Users\ckzz2>curl.exe -4 -I --connect-timeout 5 --max-time 15 https://neon.com/home
+curl: (28) Connection timed out after 5007 milliseconds
