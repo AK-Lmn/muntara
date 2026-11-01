@@ -1,0 +1,560 @@
+[302] assistant: Review found a keyboard bug: equal-size shared-pin groups can steal focus. I’ll follow the code-review skill, fix it, and rerun checks before screenshots.
+
+[303] tool exec call: const r = await tools.exec_command({
+  cmd: "Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\receiving-code-review\\SKILL.md' -TotalCount 220",
+  max_output_tokens: 2800
+});
+text(r.output);
+
+[304] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+Get-Content: 
+Line |
+   2 |  Get-Content -LiteralPath 'C:\Users\ckzz2\.codex\skills\receiving-code …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\Users\ckzz2\.codex\skills\receiving-code-review\SKILL.md' because it does not exist.
+
+[305] tool exec call: const r = await tools.exec_command({
+  cmd: "rg --files 'C:\\Users\\ckzz2\\.codex\\skills' 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills' | rg -i 'receiving-code-review.*SKILL\\.md$'",
+  max_output_tokens: 300
+});
+text(r.output);
+
+[306] tool exec result: Script completed
+Wall time 0.7 seconds
+Output:
+
+C:\Users\ckzz2\.codex\plugins\cache\openai-curated-remote\superpowers\7.0.1\skills\receiving-code-review\SKILL.md
+
+[307] tool exec call: const r = await tools.exec_command({
+  cmd: "Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\receiving-code-review\\SKILL.md' -TotalCount 220",
+  max_output_tokens: 2700
+});
+text(r.output);
+
+[308] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+---
+name: receiving-code-review
+description: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation
+---
+
+# Code Review Reception
+
+## Overview
+
+Code review requires technical evaluation, not emotional performance.
+
+**Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
+
+## The Response Pattern
+
+```
+WHEN receiving code review feedback:
+
+1. READ: Complete feedback without reacting
+2. UNDERSTAND: Restate requirement in own words (or ask)
+3. VERIFY: Check against codebase reality
+4. EVALUATE: Technically sound for THIS codebase?
+5. RESPOND: Technical acknowledgment or reasoned pushback
+6. IMPLEMENT: One item at a time, test each
+```
+
+## Forbidden Responses
+
+**NEVER:**
+- "You're absolutely right!" (explicit instruction-file violation)
+- "Great point!" / "Excellent feedback!" (performative)
+- "Let me implement that now" (before verification)
+
+**INSTEAD:**
+- Restate the technical requirement
+- Ask clarifying questions
+- Push back with technical reasoning if wrong
+- Just start working (actions > words)
+
+## Handling Unclear Feedback
+
+```
+IF any item is unclear:
+  STOP - do not implement anything yet
+  ASK for clarification on unclear items
+
+WHY: Items may be related. Partial understanding = wrong implementation.
+```
+
+**Example:**
+```
+your human partner: "Fix 1-6"
+You understand 1,2,3,6. Unclear on 4,5.
+
+❌ WRONG: Implement 1,2,3,6 now, ask about 4,5 later
+✅ RIGHT: "I understand items 1,2,3,6. Need clarification on 4 and 5 before proceeding."
+```
+
+## Source-Specific Handling
+
+### From your human partner
+- **Trusted** - implement after understanding
+- **Still ask** if scope unclear
+- **No performative agreement**<truncated omitted_approx_tokens="614" />feedback.
+
+**If you catch yourself about to write "Thanks":** DELETE IT. State the fix instead.
+
+## Gracefully Correcting Your Pushback
+
+If you pushed back and were wrong:
+```
+✅ "You were right - I checked [X] and it does [Y]. Implementing now."
+✅ "Verified this and you're correct. My initial understanding was wrong because [reason]. Fixing."
+
+❌ Long apology
+❌ Defending why you pushed back
+❌ Over-explaining
+```
+
+State the correction factually and move on.
+
+## Common Mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Performative agreement | State requirement or just act |
+| Blind implementation | Verify against codebase first |
+| Batch without testing | One at a time, test each |
+| Assuming reviewer is right | Check if breaks things |
+| Avoiding pushback | Technical correctness > comfort |
+| Partial implementation | Clarify all items first |
+| Can't verify, proceed anyway | State limitation, ask for direction |
+
+## Real Examples
+
+**Performative Agreement (Bad):**
+```
+Reviewer: "Remove legacy code"
+❌ "You're absolutely right! Let me remove that..."
+```
+
+**Technical Verification (Good):**
+```
+Reviewer: "Remove legacy code"
+✅ "Checking... build target is 10.15+, this API needs 13+. Need legacy for backward compat. Current impl has wrong bundle ID - fix it or drop pre-13 support?"
+```
+
+**YAGNI (Good):**
+```
+Reviewer: "Implement proper metrics tracking with database, date filters, CSV export"
+✅ "Grepped codebase - nothing calls this endpoint. Remove it (YAGNI)? Or is there usage I'm missing?"
+```
+
+**Unclear Item (Good):**
+```
+your human partner: "Fix items 1-6"
+You understand 1,2,3,6. Unclear on 4,5.
+✅ "Understand 1,2,3,6. Need clarification on 4 and 5 before implementing."
+```
+
+## GitHub Thread Replies
+
+When replying to inline review comments on GitHub, reply in the comment thread (`gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies`), not as a top-level PR comment.
+
+[309] assistant: Agent message from /root/public_map_review4:
+Message Type: FINAL_ANSWER
+Task name: /root
+Sender: /root/public_map_review4
+Payload:
+Reject pending one fix.
+
+- **[P2] Restore focus by stable group identity.** [PlaceMap.tsx:82](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/map/PlaceMap.tsx:82) remembers the marker’s label; [line 124](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/map/PlaceMap.tsx:124) focuses every matching label. Two shared groups with two listings both read “2 listings at this location.” Selecting the first group’s entry moves focus to the last group after rebuilding. Match a coordinate/group key instead. Verify with two equal-size shared groups.
+
+Lifecycle, cleanup, null locations, safe labels, retry behavior, attribution, and prototype-placeholder scope otherwise match the brief.
+
+UX/UI checks: no-emoji gate passed; token gate flagged nine raw Slate palette utilities. Dark-mode contrast remains a Task 5 release risk. Full AAA compliance is unverified.
+
+Reported tests/build/lint were not rerun. Live Supabase and remote tile availability remain unverified.
+
+[310] tool exec call: const r = await tools.exec_command({
+  cmd: "Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' | Select-Object -Skip 65 -First 75; Get-Content -LiteralPath 'scripts/place-map.test.mjs' -TotalCount 220",
+  workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  max_output_tokens: 2400
+});
+text(r.output);
+
+[311] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+      }
+    }).catch(() => { if (active) setInitError(true) })
+    return () => {
+      active = false
+      observer?.disconnect()
+      map?.remove()
+      mapRef.current = null
+      markerLayerRef.current = null
+      tileLayerRef.current = null
+    }
+  }, [hasLocations, retryAttempt])
+
+  useEffect(() => {
+    if (!session || session.map !== mapRef.current || !markerLayerRef.current) return
+    const { leaflet, map } = session
+    const layer = markerLayerRef.current
+    const focusedTitle = document.activeElement?.classList.contains('leaflet-marker-icon')
+      ? document.activeElement.getAttribute('aria-label') : null
+    layer.clearLayers()
+    const groups = new Map<string, Place[]>()
+    for (const place of mappedPlaces) {
+      const key = `${place.location!.lat},${place.location!.lng}`
+      groups.set(key, [...(groups.get(key) ?? []), place])
+    }
+    for (const group of groups.values()) {
+      const selected = group.some((place) => place.id === selectedPlaceId)
+      const title = group.length === 1 ? group[0].name : `${group.length} listings at this location`
+      const iconContent = document.createElement('span')
+      iconContent.className = cn('flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-sm font-bold text-white shadow-md',
+        selected ? 'bg-brand-900 ring-4 ring-brand-300' : 'bg-brand-700')
+      if (group.length > 1) iconContent.textContent = String(group.length)
+      else iconContent.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>'
+      const marker = leaflet.marker([group[0].location!.lat, group[0].location!.lng], {
+        icon: leaflet.divIcon({ html: iconContent, className: '', iconSize: [44, 44], iconAnchor: [18, 36] }),<truncated omitted_approx_tokens="432" />rent || mappedPlaces.length === 0) return
+    const points = mappedPlaces.map((place) => [place.location!.lat, place.location!.lng] as Leaflet.LatLngTuple)
+    if (points.length === 1) session.map.setView(points[0], 16, { animate: false })
+    else session.map.fitBounds(points, { padding: [32, 32], maxZoom: 16, animate: false })
+  }, [session, mappedPlaces])
+
+  const retry = () => {
+import assert from 'node:assert/strict'
+import { after, before, test } from 'node:test'
+import { createServer } from 'vite'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+
+let vite
+let PlaceMap
+before(async () => {
+  vite = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
+  ;({ PlaceMap } = await vite.ssrLoadModule('/src/components/map/PlaceMap.tsx'))
+})
+after(async () => { await vite?.close() })
+
+const places = [
+  { id: 'muntinlupa-es', name: 'Muntinlupa Elementary School', location: { lat: 14.3891958, lng: 121.0442405 } },
+  { id: 'tunasan-es', name: 'Tunasan Elementary School', location: { lat: 14.3811, lng: 121.0516 } },
+  { id: 'no-coordinate', name: 'Barangay office', location: null },
+]
+
+test('unknown coordinates show an honest fallback without a map surface', () => {
+  const markup = renderToStaticMarkup(createElement(PlaceMap, { places: [places[2]] }))
+  assert.match(markup, /Map location not confirmed/)
+  assert.doesNotMatch(markup, /data-map-surface/)
+  assert.match(markup, /https:\/\/www.openstreetmap.org\/fixthemap/)
+})
+
+test('mapped listings retain a visible notice for records missing coordinates', () => {
+  const markup = renderToStaticMarkup(createElement(PlaceMap, { places }))
+  assert.match(markup, /data-map-surface/)
+  assert.match(markup, /role="region"/)
+  assert.match(markup, /2 mapped listings/)
+  assert.match(markup, /1 listing without confirmed coordinates/)
+  assert.match(markup, /Report a map issue/)
+})
+
+[312] tool followup_task call: {"target":"public_map_task4","message":"REDACTED"}
+
+[313] tool exec call: const results = await Promise.all([
+  tools.exec_command({
+    cmd: "Get-Content -LiteralPath 'src/index.css' -TotalCount 220",
+    workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+    max_output_tokens: 2000
+  }),
+  tools.exec_command({
+    cmd: "rg -n 'text-slate|bg-slate|border-slate|dark:' 'src' --glob '*.tsx' --glob '*.css' | Select-Object -First 70",
+    workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+    max_output_tokens: 1200
+  })
+]);
+for (const r of results) text(r.output);
+
+[314] tool exec result: Script completed
+Wall time 1.0 seconds
+Output:
+
+@import "tailwindcss";
+
+/*
+  Design direction note (see README "Design principles" for the full
+  rationale): this is a civic wayfinding tool people will often use
+  outdoors, in daylight, sometimes on older phones. Readability and contrast
+  take priority over moodiness here, so the theme leans toward a clean,
+  high-contrast "civic" light surface by default, with a dark mode that
+  keeps the same contrast discipline rather than going low-contrast/moody.
+  Glassmorphism is used sparingly, for secondary chrome (nav, sheets) —
+  never for body text or verification status, which always sit on a solid,
+  high-contrast background.
+*/
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Civic brand: deep teal (trust, local government) + warm accent (community/local color) */
+  --color-brand-50: #eefbf7;
+  --color-brand-100: #d4f3e8;
+  --color-brand-200: #abe7d2;
+  --color-brand-300: #74d3b5;
+  --color-brand-400: #3fb896;
+  --color-brand-500: #1f9b7c;
+  --color-brand-600: #157c64;
+  --color-brand-700: #136452;
+  --color-brand-800: #124f43;
+  --color-brand-900: #0f4138;
+  --color-brand-950: #07241f;
+
+  --color-accent-400: #f5a742;
+  --color-accent-500: #ee8f1f;
+  --color-accent-600: #d6730f;
+
+  /* Verification semantics — color is always paired with icon + text, never used alone */
+  --color-verified-bg: #e8f7ee;
+  --color-verified-fg: #0f6b35;
+  --color-verified-border: #a7e3bd;
+
+  --color-community-bg: #eef3fb;
+  --color-community-fg: #1d4f8c;
+  --color-community-border: #bcd4f3;
+
+  --color-review-bg: #fdf3e3;
+  --color-review-fg: #8a5a0a;
+  --color-review-border: #f3d79c;
+
+  --color-stale-bg: #fdf0e8;
+  --color-stale-fg: #9a4a16;
+  --color-stale-border: #f3cdab;
+
+  --color-disputed-bg: #fbe9e9;
+  --color-disputed-fg: #9c2626;
+  --color-disputed-border: #f1bcbc;
+}
+
+@layer base {
+  html {
+    -webkit-tex<truncated omitted_approx_tokens="920" />derationPage.tsx:118:                <p className="text-xs text-slate-500">
+src\pages\ModerationPage.tsx:125:            <p className="mt-2.5 text-sm text-slate-700">{correction.proposedChange}</p>
+src\pages\ModerationPage.tsx:127:              <p className="mt-1 whitespace-pre-line text-sm italic text-slate-500">"{correction.submitterNote}"</p>
+src\pages\ModerationPage.tsx:130:            <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-100 pt-3">
+src\pages\ModerationPage.tsx:135:              <p className="mt-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+src\pages\ModerationPage.tsx:141:              <p className="mt-2 text-xs text-slate-500">
+src\pages\MyCorrectionsPage.tsx:58:    <div className="mt-3 border-t border-slate-100 pt-3">
+src\pages\MyCorrectionsPage.tsx:130:        <h1 className="flex items-center gap-2 text-xl font-bold text-slate-900">
+src\pages\MyCorrectionsPage.tsx:134:        <p className="mt-0.5 text-sm text-slate-500">
+src\pages\MyCorrectionsPage.tsx:140:        <Card className="border-dashed p-3.5 text-sm text-slate-600">
+src\pages\MyCorrectionsPage.tsx:159:                <p className="font-semibold text-slate-900">{correction.placeName}</p>
+src\pages\MyCorrectionsPage.tsx:160:                <p className="text-xs text-slate-500">
+src\pages\MyCorrectionsPage.tsx:167:            <p className="mt-2.5 text-sm text-slate-700">{correction.proposedChange}</p>
+src\pages\MyCorrectionsPage.tsx:169:              <p className="mt-1 whitespace-pre-line text-xs italic text-slate-500">"{correction.submitterNote}"</p>
+src\pages\MyCorrectionsPage.tsx:172:            <p className="mt-2 text-xs text-slate-500">{STATUS_HINT[correction.status]}</p>
+src\pages\MyCorrectionsPage.tsx:175:              <p className="mt-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+src\pages\MyCorrectionsPage.tsx:181:              <p className="mt-3 text-xs text-slate-500">Saving…</p>
+
+[315] tool exec call: const r = await tools.exec_command({
+  cmd: "rg -n 'data-theme|setTheme|theme' src",
+  workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  max_output_tokens: 1000
+});
+text(r.output);
+
+[316] tool exec result: Script completed
+Wall time 5.2 seconds
+Output:
+
+src\index.css:7:  take priority over moodiness here, so the theme leans toward a clean,
+src\index.css:15:@theme {
+src\index.css:69:  :root[data-theme='dark'] body {
+src\index.css:85:  :root[data-theme='dark'] .glass-panel {
+
+[317] tool wait_agent call: {"timeout_ms":60000}
+
+[318] tool wait_agent result: {"message":"Wait timed out.","timed_out":true}
+
+[319] tool send_message call: {"target":"public_map_task4","message":"REDACTED"}
+
+[320] tool wait_agent call: {"timeout_ms":60000}
+
+[321] tool wait_agent result: {"message":"Wait timed out.","timed_out":true}
+
+[322] tool exec call: const results = await Promise.all([
+  tools.exec_command({
+    cmd: "Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' | Select-Object -Skip 75 -First 65",
+    workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+    max_output_tokens: 1500
+  }),
+  tools.exec_command({
+    cmd: "Get-ChildItem -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map' -File | Where-Object {$_.Name -like 'task-4*'} | Select-Object Name,Length,LastWriteTime",
+    workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+    max_output_tokens: 300
+  })
+]);
+for (const r of results) text(r.output);
+
+[323] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+  }, [hasLocations, retryAttempt])
+
+  useEffect(() => {
+    if (!session || session.map !== mapRef.current || !markerLayerRef.current) return
+    const { leaflet, map } = session
+    const layer = markerLayerRef.current
+    const focusedGroupKey = document.activeElement?.classList.contains('leaflet-marker-icon')
+      ? document.activeElement.getAttribute('data-map-group-key') : null
+    layer.clearLayers()
+    const groups = new Map<string, Place[]>()
+    for (const place of mappedPlaces) {
+      const key = `${place.location!.lat},${place.location!.lng}`
+      groups.set(key, [...(groups.get(key) ?? []), place])
+    }
+    for (const [groupKey, group] of groups) {
+      const selected = group.some((place) => place.id === selectedPlaceId)
+      const title = group.length === 1 ? group[0].name : `${group.length} listings at this location`
+      const iconContent = document.createElement('span')
+      iconContent.className = cn('flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-sm font-bold text-white shadow-md',
+        selected ? 'bg-brand-900 ring-4 ring-brand-300' : 'bg-brand-700')
+      if (group.length > 1) iconContent.textContent = String(group.length)
+      else iconContent.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>'
+      const marker = leaflet.marker([group[0].location!.lat, group[0].location!.lng], {
+        icon: leaflet.divIcon({ html: iconContent, className: '', iconSize: [44, 44], iconAnchor: [18, 36] }),
+        title, keyboard: true, zIndexOffset: selected ? 1000 : 0,
+      })
+      const tooltip = document.createElement('span')
+      tooltip.textContent = title
+      marker.bindTooltip(tooltip, { direction: 'top', permanent: selected })
+      c<truncated omitted_approx_tokens="63" /> if (item instanceof HTMLButtonElement) {
+          item.type = 'button'
+          item.className += ' tap-target w-full rounded-lg px-2 text-left hover:bg-slate-100'
+          item.setAttribute('aria-pressed', String(place.id === selectedPlaceId))
+          item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup(); marker.getElement()?.focus({ preventScroll: true }) })
+        }
+        popup.append(item)
+      }
+      marker.bindPopup(popup)
+      marker.on('click', () => { if (group.length === 1) onSelectPlace?.(group[0].id) })
+      marker.on('add', () => {
+        const element = marker.getElement()
+        element?.setAttribute('aria-label', title)
+        element?.setAttribute('data-map-group-key', groupKey)
+        element?.setAttribute('aria-pressed', String(selected))
+        if (groupKey === focusedGroupKey) element?.focus({ preventScroll: true })
+        element?.addEventListener('keydown', (event) => {
+          if (event.code === 'Space' || event.code === 'Enter') { event.preventDefault(); marker.fire('click'); marker.openPopup() }
+        })
+      })
+      marker.addTo(layer)
+    }
+  }, [session, mappedPlaces, selectedPlaceId, onSelectPlace])
+
+  useEffect(() => {
+    if (!session || session.map !== mapRef.current || mappedPlaces.length === 0) return
+    const points = mappedPlaces.map((place) => [place.location!.lat, place.location!.lng] as Leaflet.LatLngTuple)
+    if (points.length === 1) session.map.setView(points[0], 16, { animate: false })
+    else session.map.fitBounds(points, { padding: [32, 32], maxZoom: 16, animate: false })
+  }, [session, mappedPlaces])
+
+
+
+Name                     Length LastWriteTime
+----                     ------ -------------
+task-4-brief.md            3587 10/27/2026 2:39:28 AM
+task-4-browser-check.mjs   4114 10/27/2026 2:46:13 AM
+task-4-check.jsx           2040 10/27/2026 2:58:53 AM
+task-4-report.md           5234 10/27/2026 2:51:48 AM
+
+[324] tool exec call: const r = await tools.exec_command({
+  cmd: "Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-report.md' -Tail 60",
+  workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  max_output_tokens: 1300
+});
+text(r.output);
+
+[325] tool exec result: Script completed
+Wall time 0.7 seconds
+Output:
+
+Warning: truncated output (original token count: 1319)
+Total output lines: 42
+
+# Task 4 implementation report
+
+Base: `23490df0a37cb10032f81e9974d0c9cc3e09f8e3`
+
+Status: implementation complete and ready for independent review. The temporary local browser preview and all fixture tabs have been closed. No live Supabase or production tile availability success is claimed.
+
+## Changes
+
+- Added `PlaceMap` with lazy Leaflet loading, map/tile/marker refs, stable map ownership, viewport fitting, a single-point zoom, resize handling, and cleanup on unmount. Selection updates retain keyboard focus and never recreate the map itself.
+- Switched live Explore and Place Detail to the real map. Null-coordinate listings remain readable in the directory; the component also renders an honest no-location fallback if no point is available.
+- Markers support click, Enter, and Space selection; selected state includes a persistent label and pressed state. Records at the same coordinates share one marker with separately selectable popup entries. Place names enter Leaflet DOM through textContent.
+- Added tile failure alerts, Retry map recovery, graceful initialization/configuration failure, a visible map-issue link, and native map attribution. Map markers and zoom controls have 44-pixel touch targets. The map uses a light surface for readable Leaflet labels, with the existing civic colors for pins.
+- Pinned `leaflet` to `1.9.4` and `@types/leaflet` to `1.9.22`; imported Leaflet CSS once in main. The browser bundles Leaflet separately through a dynamic import.
+- Extended `.env.example` with non-secret tile URL and attribution configuration. Attribution is trusted deployment-maintainer Leaflet HTML; public place data is never interpreted as attribution HTML.
+
+## Compatibility ruling
+
+The controller approved retaining `MapPlaceholder` only for `RouteDetailPage` until Task 5 unmounts prototype routes. Moving its<truncated omitted_approx_tokens="338" /> actual React/Leaflet component with the two reviewed DepEd coordinate pairs, a null-coordinate entry, and a local-only tile endpoint. No automated OSM tile requests were made.
+- Confirmed two-point and single-point views, marker selection by mouse/Enter/Space, shared-coordinate popup choices, visible attribution/report link, no-coordinate fallback, local tile failure, successful Retry map recovery, and an invalid tile-template initialization error that leaves the directory available and retries without crashing.
+- A keyboard check first showed Enter opened a popup without selecting the place. Enter now triggers the same selection as Space; both were rechecked. A subsequent check exposed focus loss during marker rebuilds; focus is now preserved, confirmed by the selected marker remaining the active element with `aria-pressed=true`.
+- A real 320 by 740 viewport screenshot showed the map, selected label, attribution, and issue link fitting without horizontal overflow. DOM measurement confirmed both zoom controls are 44 by 44 pixels. Cleanup/remount left exactly one Leaflet container and one marker in the single-point fixture, with no console errors.
+- React review checklist: stable map lifecycle, complete effect dependencies, asynchronous cleanup guard, no extra fetch waterfall for directory reads, lazy third-party module, safe text for place labels, keyboard selection/focus, pressed state, and graceful errors were checked.
+
+## Remaining limits
+
+Live Supabase queries, schema/RLS execution, actual inventory import, and duplicate-import verification remain open from earlier tasks. Browser map checks used fixture data and local tiles; they do not establish external tile service uptime. Shared shell/Card dark-mode contrast remains the pre-existing Task 5 risk. Full application mobile/error-path checks remain part of the public-shell task.
+
+Commit: 87cd72492f29e50a60cec2d0783a675886d449ed. Staged whitespace check passed; worktree is clean.
+
+[326] tool exec call: const r = await tools.exec_command({
+  cmd: "git status --short",
+  workdir: "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  sandbox_permissions: "require_escalated",
+  justification: "Check the Task 4 review-fix worktree while the implementer runs the regression check.",
+  max_output_tokens: 300
+});
+text(r.output);
+
+>>> TRANSCRIPT DELTA END
+
+Reviewed Codex session id: 01a1792e-2786-7221-9d43-83bbe0e6645b
+
+>>> PARENT TURN PERMISSION CONTEXT START
+
+The active permission profile for environment "local" has no explicit denied-read paths/globs.
+
+>>> PARENT TURN PERMISSION CONTEXT END
+
+The Codex agent has requested the following next action:
+
+>>> APPROVAL REQUEST START
+
+Assess the exact planned action below. Use read-only tool checks when local state matters.
+
+Planned action JSON:
+
+{
+  "command": [
+    "C:\\Users\\ckzz2\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "-Command",
+    "git status --short"
+  ],
+  "cwd": "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  "environment_id": "local",
+  "justification": "Check the Task 4 review-fix worktree while the implementer runs the regression check.",
+  "sandbox_permissions": "require_escalated",
+  "tool": "exec_command",
+  "tty": false
+}
+
+>>> APPROVAL REQUEST END
