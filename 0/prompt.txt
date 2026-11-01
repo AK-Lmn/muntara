@@ -1,0 +1,352 @@
+[262] tool js call: {"code":"var mapBrowser = await cua.getBrowser({ id: 'iab' }); nodeRepl.write(await (await mapBrowser.capabilities.get('viewport')).documentation());","title":"Inspect responsive browser sizing support"}
+
+[263] tool js result: Wall time: 0.0246 seconds
+Output:
+# Browser Capability: viewport
+Browser viewport override control. Do not set the viewport during normal browser setup; most tasks should use the existing/default viewport. Use `set()` only when the user asks for specific dimensions, asks to test a responsive breakpoint or device size, or the task cannot be answered correctly without a specific viewport. Do not resize the browser just to make a screenshot larger, prettier, or fit more content. Use the default viewport, a normal screenshot, or a full-page screenshot instead. If you set a temporary viewport, call `reset()` before finishing unless the user asked to keep that viewport.
+
+```ts
+const capability = await browser.capabilities.get("viewport");
+
+interface ViewportSize {
+  height: number;
+  width: number;
+}
+
+interface ViewportBrowserCapability {
+  reset(): Promise<void>; // Clear the explicit viewport override and return to default browser sizing.
+  set(options: ViewportSize): Promise<void>; // Apply an explicit browser viewport override.
+}
+```
+
+[264] tool js call: {"code":"await (await mapBrowser.capabilities.get('viewport')).set({ width: 320, height: 740 }); await mapTab.getAXState(); await mapTab.getScreenshot();","title":"Check the map at a real 320-pixel viewport"}
+
+[265] tool js result: Wall time: 0.1194 seconds
+Output:
+Browser tab: 1, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+There has been no change in the accessibility tree.
+The focused UI element is 10 button Toggle mobile width
+
+[266] tool js call: {"code":"await mapTab.click(9); await mapTab.getAXState(); await mapTab.click(9); await mapTab.getAXState(); nodeRepl.write({ maps: await mapTab.playwright.locator('.leaflet-container').count(), markers: await mapTab.playwright.locator('.leaflet-marker-icon').count(), errors: await mapTab.dev.logs({ levels: ['error'], limit: 5 }) }); await (await mapBrowser.capabilities.get('viewport')).reset(); await mapTab.close();","title":"Verify cleanup/remount and close the temporary map check"}
+
+[267] tool js result: Wall time: 0.5101 seconds
+Output:
+Browser tab: 1, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+1 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+	2 container
+		3 heading Map interaction check, Value: 1
+			4 text Map interaction check
+		5 button multiple
+		6 button single
+		7 button none
+		8 button shared
+		9 button Toggle map
+		10 button Toggle mobile width
+		11 button Fail tiles
+		12 button Recover tiles
+		13 text Selected:  one
+		29 content list
+			30 text Muntinlupa Elementary School
+			31 text Tunasan Elementary School
+			32 text Barangay office
+
+The focused UI element is 9 button Toggle mapBrowser tab: 1, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+1 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+	2 container
+		3 heading Map interaction check, Value: 1
+			4 text Map interaction check
+		5 button multiple
+		6 button single
+		7 button none
+		8 button shared
+		9 button Toggle map
+		10 button Toggle mobile width
+		11 button Fail tiles
+		12 button Recover tiles
+		13 text Selected:  one
+		33 container Public service locations
+			34 container Map of public service locations
+				35 container
+					36 checkbox Description: Muntinlupa Elementary School, Value: 1
+					37 container Muntinlupa Elementary School, ID: leaflet-tooltip-292
+						38 text Muntinlupa Elementary School
+				39 container
+					40 container
+						41 button Zoom in
+						42 button Zoom out
+					43 container
+						44 text Fixture tiles | © 
+						45 link Description: OpenStreetMap contributors, Value: openstreetmap.org/copyright
+			46 container
+				47 text 1  mapped  listing .
+			48 link Description: Report a map issue, Value: openstreetmap.org/fixthemap
+		29 content list
+			30 text Muntinlupa Elementary School
+			31 text Tunasan Elementary School
+			32 text Barangay office
+
+The focused UI element is 9 button Toggle map
+{ maps: 1, markers: 1, errors: [] }
+
+[268] tool exec call: text(await tools.exec_command({cmd:"$mapSource = Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Raw\n$mapSource = $mapSource.Replace(\"      try {`n        map = leaflet.map\", \"      try {`n        leaflet.Util.template(TILE_URL, { x: 0, y: 0, z: 0, s: 'a', r: '' })`n        map = leaflet.map\")\n$mapSource = $mapSource.Replace(\"      } catch {`n        map?.remove()`n        mapRef\", \"      } catch {`n        map?.remove()`n        map = undefined`n        mapRef\")\nSet-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Value $mapSource -Encoding utf8\n$fixturePath = '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs'\n$fixtureText = Get-Content -LiteralPath $fixturePath -Raw\n$fixtureText.Replace(\"process.env.VITE_MAP_TILE_URL = '/__map-check/tiles/{z}/{x}/{y}.png'\", \"process.env.VITE_MAP_TILE_URL = process.env.MAP_CHECK_BAD_URL === '1' ? '/{unsupported}/tile.png' : '/__map-check/tiles/{z}/{x}/{y}.png'\") | Set-Content -LiteralPath $fixturePath -Encoding utf8","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Keep malformed tile configuration within the map error boundary and prevent double cleanup after failed initialization.","max_output_tokens":50}));
+text(await tools.write_stdin({session_id:91029,chars:"\u0003",yield_time_ms:1000,max_output_tokens:200}));
+text(await tools.exec_command({cmd:"$env:MAP_CHECK_BAD_URL='1'\nnode .superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Temporarily reproduce invalid map configuration in the local-only fixture to verify graceful initialization failure.","max_output_tokens":200,"yield_time_ms":10000}));
+
+[269] tool exec result: Script completed
+Wall time 14.3 seconds
+Output:
+
+{"chunk_id":"338313","wall_time_seconds":0.1770839,"exit_code":0,"original_token_count":0,"output":""}
+{"chunk_id":"1dcdc5","wall_time_seconds":0.0151146,"exit_code":1,"original_token_count":44,"output":"2:43:43 AM [vite] (client) hmr update /src/components/map/PlaceMap.tsx, /src/index.css\n2:46:13 AM [vite] (client) hmr update /src/components/map/PlaceMap.tsx, /src/index.css\n"}
+{"chunk_id":"f1f853","wall_time_seconds":10.0098365,"session_id":62887,"original_token_count":19,"output":"Map browser fixture http://127.0.0.1:5175/__map-check (local tiles only)\n"}
+
+[270] tool js call: {"code":"var errorTab = await cua.createBrowserTab('iab', 'http://127.0.0.1:5175/__map-check', { visible: false });","title":"Check malformed tile configuration recovery"}
+
+[271] tool js result: Wall time: 3.3350 seconds
+Output:
+Browser tab: 2, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+	1 container
+		2 heading Map interaction check, Value: 1
+			3 text Map interaction check
+		4 button multiple
+		5 button single
+		6 button none
+		7 button shared
+		8 button Toggle map
+		9 button Toggle mobile width
+		10 button Fail tiles
+		11 button Recover tiles
+		12 text Selected:  none
+		13 container Public service locations
+			14 container
+				15 text Map unavailable.  The directory remains available below.
+				16 button Retry map
+			17 container
+				18 text 2  mapped  listings .  1 listing without confirmed coordinates remains available in the list.
+			19 link Description: Report a map issue, Value: openstreetmap.org/fixthemap
+		20 content list
+			21 text Muntinlupa Elementary School
+			22 text Tunasan Elementary School
+			23 text Barangay office
+
+The focused UI element is 0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+
+[272] tool js call: {"code":"await errorTab.click(16); await errorTab.getAXState(); nodeRepl.write(await errorTab.dev.logs({ levels: ['error'], limit: 3 })); await errorTab.close();","title":"Verify failed initialization retries without breaking the directory"}
+
+[273] tool js result: Wall time: 0.2529 seconds
+Output:
+Browser tab: 2, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+	1 container
+		2 heading Map interaction check, Value: 1
+			3 text Map interaction check
+		4 button multiple
+		5 button single
+		6 button none
+		7 button shared
+		8 button Toggle map
+		9 button Toggle mobile width
+		10 button Fail tiles
+		11 button Recover tiles
+		12 text Selected:  none
+		13 container Public service locations
+			24 container
+				25 text Map unavailable.  The directory remains available below.
+				26 button Retry map
+			17 container
+				18 text 2  mapped  listings .  1 listing without confirmed coordinates remains available in the list.
+			19 link Description: Report a map issue, Value: openstreetmap.org/fixthemap
+		20 content list
+			21 text Muntinlupa Elementary School
+			22 text Tunasan Elementary School
+			23 text Barangay office
+
+The focused UI element is 0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+[]
+
+[274] tool send_message call: {"target":"/root","message":"REDACTED"}
+
+[275] tool exec call: text(await tools.exec_command({cmd:"$mapSource = Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Raw\n$mapSource.Replace('        map.attributionControl.setPrefix(false)', \"        map.attributionControl.setPrefix(false)`n        map.zoomControl.getContainer()?.querySelectorAll('a').forEach((control) => control.classList.add('tap-target', '!flex', 'items-center', 'justify-center'))\") | Set-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Encoding utf8","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Give the native Leaflet zoom controls the project’s 44-pixel touch targets for mobile use.","max_output_tokens":50}));
+text(await tools.write_stdin({session_id:62887,chars:"\u0003",yield_time_ms:1000,max_output_tokens:100}));
+const results = await Promise.allSettled([
+tools.exec_command({cmd:"node --test","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Run the whole existing Node suite after final map behavior fixes.","max_output_tokens":1400}),
+tools.exec_command({cmd:"npm run build","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Build the final Task 4 Leaflet integration.","max_output_tokens":700}),
+tools.exec_command({cmd:"npm run lint","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Lint final Task 4 changes.","max_output_tokens":300})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value : String(r.reason));
+text(await tools.exec_command({cmd:"node .superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Briefly start the local fixture to verify final zoom-control touch target dimensions.","max_output_tokens":100,"yield_time_ms":10000}));
+
+[276] tool exec result: Script completed
+Wall time 20.2 seconds
+Output:
+
+{"chunk_id":"9bfcd7","wall_time_seconds":0.1893931,"exit_code":0,"original_token_count":0,"output":""}
+{"chunk_id":"413510","wall_time_seconds":0.0151279,"exit_code":1,"original_token_count":22,"output":"2:47:36 AM [vite] (client) hmr update /src/components/map/PlaceMap.tsx, /src/index.css\n"}
+{"chunk_id":"bd407b","wall_time_seconds":1.7011015999999999,"exit_code":0,"original_token_count":508,"output":"✔ accepts a sourced pilot record with explicit unknown facts (3.3656ms)\n✔ rejects barangays and categories outside the pilot contract (0.5082ms)\n✔ rejects duplicate stable place keys before importing (0.3088ms)\n✔ rejects malformed, non-finite, and out-of-range coordinates (0.2992ms)\n✔ requires evidence for each claimed public fact including access and services (0.5164ms)\n✔ rejects OSM evidence for service claims and malformed source metadata (0.3518ms)\n✔ rejects missing fields, malformed access, and duplicate source identities (0.3605ms)\n✔ validates every record before the first database request (29.6013ms)\n✔ repeated imports keep place/source IDs stable and publish only after evidence is written (48.2115ms)\n✔ failed source writes leave places unpublished and redact database error details (10.9594ms)\n✔ the reviewed pilot JSON satisfies the same validator used before import (3.7759ms)\n✔ refuses to overwrite places after moderation or a field check (9.6905ms)\n2:47:40 AM [vite] (client) Re-optimizing dependencies because vite config has changed\n✔ published directory reads retain unknowns and map field evidence into Place (442.0296ms)\n✔ detail reads constrain the id and map actual coordinates (5.6723ms)\n✔ missing published place returns null (12.9993ms)\n✔ failed reads reject instead of becoming an empty directory (23.6056ms)\n✔ official evidence never becomes an in-person visit in freshness details (156.5194ms)\n✔ unknown access fields stay visible (24.2899ms)\n✔ source panel identifies checked fields and rejects executable source links (20.8281ms)\nWebSocket server error: Port 24678 is already in use\n2:47:40 AM [vite] (client) Re-optimizing dependencies because vite config has changed\n✔ unknown coordinates show an honest fallback without a map surface (494.2339ms)\n✔ mapped listings retain a visible notice for records missing coordinates (0.741ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1480.8968\n"}
+{"chunk_id":"8d09ee","wall_time_seconds":3.9644337,"exit_code":0,"original_token_count":124,"output":"\n> muntinlupa-explorer@0.0.0 build\n> tsc -b && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 2024 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                        0.54 kB │ gzip:   0.34 kB\ndist/assets/index-Kh1SuVsD.css        46.65 kB │ gzip:  12.89 kB\ndist/assets/leaflet-src-Q5YaAz3a.js  148.60 kB │ gzip:  43.32 kB\ndist/assets/index-D1_cIjIQ.js        340.92 kB │ gzip: 105.93 kB\n\n✓ built in 506ms\n"}
+{"chunk_id":"049d75","wall_time_seconds":0.9353357,"exit_code":0,"original_token_count":11,"output":"\n> muntinlupa-explorer@0.0.0 lint\n> oxlint\n\n"}
+{"chunk_id":"8b3e83","wall_time_seconds":10.0131425,"session_id":19178,"original_token_count":19,"output":"Map browser fixture http://127.0.0.1:5175/__map-check (local tiles only)\n"}
+
+[277] tool js call: {"code":"var finalMapTab = await cua.createBrowserTab('iab', 'http://127.0.0.1:5175/__map-check', { visible: false });","title":"Verify final map control targets"}
+
+[278] tool js result: Wall time: 0.6946 seconds
+Output:
+Browser tab: 3, Title: "Map check", URL: "http://127.0.0.1:5175/__map-check".
+0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+	1 container
+		2 heading Map interaction check, Value: 1
+			3 text Map interaction check
+		4 button multiple
+		5 button single
+		6 button none
+		7 button shared
+		8 button Toggle map
+		9 button Toggle mobile width
+		10 button Fail tiles
+		11 button Recover tiles
+		12 text Selected:  none
+		13 container Public service locations
+			14 container Map of public service locations
+				15 container
+					16 checkbox Description: Muntinlupa Elementary School, Value: 0
+					17 checkbox Description: Tunasan Elementary School, Value: 0
+				18 container
+					19 container
+						20 button Zoom in
+						21 button Zoom out
+					22 container
+						23 text Fixture tiles | © 
+						24 link Description: OpenStreetMap contributors, Value: openstreetmap.org/copyright
+			25 container
+				26 text 2  mapped  listings .  1 listing without confirmed coordinates remains available in the list.
+			27 link Description: Report a map issue, Value: openstreetmap.org/fixthemap
+		28 content list
+			29 text Muntinlupa Elementary School
+			30 text Tunasan Elementary School
+			31 text Barangay office
+
+The focused UI element is 0 AXWebArea Map check, URL: 127.0.0.1:5175/__map-check
+
+[279] tool js call: {"code":"nodeRepl.write(await finalMapTab.playwright.locator('.leaflet-control-zoom a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })))); await finalMapTab.close();","title":"Confirm 44-pixel zoom controls and close the fixture tab"}
+
+[280] tool js result: Wall time: 0.0537 seconds
+Output:
+[ { height: 44, width: 44 }, { height: 44, width: 44 } ]
+
+[281] tool exec call: text(await tools.write_stdin({session_id:19178,chars:"\u0003",yield_time_ms:1000,max_output_tokens:100}));
+text(await tools.exec_command({cmd:"$mapTests = Get-Content -LiteralPath 'scripts/place-map.test.mjs' -Raw\n$mapTests.Replace('server: { middlewareMode: true }', 'server: { middlewareMode: true, hmr: false }') | Set-Content -LiteralPath 'scripts/place-map.test.mjs' -Encoding utf8","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Disable unused HMR in the new SSR test server so concurrent Node test files do not compete for the default websocket port.","max_output_tokens":50}));
+text(await tools.exec_command({cmd:"node --test","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Confirm the final full Node suite passes without the resolved test-server port warning.","max_output_tokens":1300}));
+text(await tools.exec_command({cmd:"git diff --stat\n git diff --check\n git status --short","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Inspect Task 4’s final scope and whitespace before reporting and committing.","max_output_tokens":700}));
+
+[282] tool exec result: Script completed
+Wall time 9.1 seconds
+Output:
+
+{"chunk_id":"cf9270","wall_time_seconds":0.0163044,"exit_code":1,"original_token_count":0,"output":""}
+{"chunk_id":"0a314b","wall_time_seconds":0.2035918,"exit_code":0,"original_token_count":0,"output":""}
+{"chunk_id":"c2c12f","wall_time_seconds":1.6834532,"exit_code":0,"original_token_count":508,"output":"✔ accepts a sourced pilot record with explicit unknown facts (2.6363ms)\n✔ rejects barangays and categories outside the pilot contract (0.4324ms)\n✔ rejects duplicate stable place keys before importing (0.2496ms)\n✔ rejects malformed, non-finite, and out-of-range coordinates (0.2958ms)\n✔ requires evidence for each claimed public fact including access and services (0.5179ms)\n✔ rejects OSM evidence for service claims and malformed source metadata (0.3452ms)\n✔ rejects missing fields, malformed access, and duplicate source identities (0.2758ms)\n✔ validates every record before the first database request (25.8974ms)\n✔ repeated imports keep place/source IDs stable and publish only after evidence is written (42.2929ms)\n✔ failed source writes leave places unpublished and redact database error details (10.4955ms)\n✔ the reviewed pilot JSON satisfies the same validator used before import (3.4252ms)\n✔ refuses to overwrite places after moderation or a field check (10.9851ms)\n2:48:26 AM [vite] (client) Re-optimizing dependencies because vite config has changed\n✔ published directory reads retain unknowns and map field evidence into Place (417.7685ms)\n✔ detail reads constrain the id and map actual coordinates (4.912ms)\n✔ missing published place returns null (5.8005ms)\n✔ failed reads reject instead of becoming an empty directory (14.2678ms)\n✔ official evidence never becomes an in-person visit in freshness details (135.5084ms)\n✔ unknown access fields stay visible (13.5224ms)\n✔ source panel identifies checked fields and rejects executable source links (21.5645ms)\<truncated omitted_approx_tokens="29" />ordinates show an honest fallback without a map surface (465.9432ms)\n✔ mapped listings retain a visible notice for records missing coordinates (0.6332ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1469.6034\n"}
+{"chunk_id":"964fc0","wall_time_seconds":0.3229894,"exit_code":0,"original_token_count":392,"output":"warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/main.tsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pages/ExplorePage.tsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pages/PlaceDetailPage.tsx', LF will be replaced by CRLF the next time Git touches it\n .env.example                  |  5 +++++\n package-lock.json             | 25 +++++++++++++++++++++++++\n package.json                  |  2 ++\n src/main.tsx                  |  2 ++\n src/pages/ExplorePage.tsx     |  5 +++--\n src/pages/PlaceDetailPage.tsx |  5 +++--\n 6 files changed, 40 insertions(+), 4 deletions(-)\nwarning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/main.tsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pages/ExplorePage.tsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pages/PlaceDetailPage.tsx', LF will be replaced by CRLF the next time Git touches it\nsrc/main.tsx:12: new blank line at EOF.\nsrc/pages/ExplorePage.tsx:121: new blank line at EOF.\nsrc/pages/PlaceDetailPage.tsx:110: new blank line at EOF.\n M .env.example\n M package-lock.json\n M package.json\n M src/main.tsx\n M src/pages/ExplorePage.tsx\n M src/pages/PlaceDetailPage.tsx\n?? scripts/place-map.test.mjs\n?? src/components/map/PlaceMap.tsx\n"}
+
+[283] tool exec call: const r = await tools.exec_command({cmd:"rg -n -A12 -B4 'ws\\??:|hmr\\??:|webSocketServer|hmr === false|ws === false' node_modules/vite/dist/node/index.d.ts node_modules/vite/dist/node/chunks/node.js | Select-Object -First 100\nGet-Content -LiteralPath 'scripts/place-map.test.mjs' -TotalCount 18","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","max_output_tokens":1800});text(r.output);
+
+[284] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+Warning: truncated output (original token count: 2581)
+Total output lines: 118
+
+node_modules/vite/dist/node/index.d.ts-599-  agent?: any;
+node_modules/vite/dist/node/index.d.ts-600-  /** Object to be passed to https.createServer(). */
+node_modules/vite/dist/node/index.d.ts-601-  ssl?: any;
+node_modules/vite/dist/node/index.d.ts-602-  /** If you want to proxy websockets. */
+node_modules/vite/dist/node/index.d.ts:603:  ws?: boolean;
+node_modules/vite/dist/node/index.d.ts-604-  /** Adds x- forward headers. */
+node_modules/vite/dist/node/index.d.ts-605-  xfwd?: boolean;
+node_modules/vite/dist/node/index.d.ts-606-  /** Verify SSL certificate. */
+node_modules/vite/dist/node/index.d.ts-607-  secure?: boolean;
+node_modules/vite/dist/node/index.d.ts-608-  /** Explicitly specify if we are proxying to another proxy. */
+node_modules/vite/dist/node/index.d.ts-609-  toProxy?: boolean;
+node_modules/vite/dist/node/index.d.ts-610-  /** Specify whether you want to prepend the target's path to the proxy path. */
+node_modules/vite/dist/node/index.d.ts-611-  prependPath?: boolean;
+node_modules/vite/dist/node/index.d.ts-612-  /** Specify whether you want to ignore the proxy path of the incoming request. */
+node_modules/vite/dist/node/index.d.ts-613-  ignorePath?: boolean;
+node_modules/vite/dist/node/index.d.ts-614-  /** Local interface string to bind for outgoing connections. */
+node_modules/vite/dist/node/index.d.ts-615-  localAddress?: string;
+--
+node_modules/vite/dist/node/index.d.ts-687-  end: [req: InstanceType<TIncomingMessage>, res: InstanceType<TServerResponse>, proxyRes: InstanceType<TIncomingMessage>];
+node_modules/vite/dist/node/index.d.ts-688-  close: [proxyRes: InstanceType<TIncomingMessage>, proxySocket: net.Socket, proxyHead: any];
+node_modules/vite/dist/node/index.d.ts-689-};
+node_modules/vite/dist/node/index.d.ts-690-type ProxyMethodArgs<TIncomingMessage extends typeof http.Incoming<truncated omitted_approx_tokens="839" />ndex.d.ts-2377-    clientFiles?: string[];
+node_modules/vite/dist/node/index.d.ts-2378-    /**
+node_modules/vite/dist/node/index.d.ts-2379-     * The files to be transformed and used in SSR. Supports glob patterns.
+node_modules/vite/dist/node/index.d.ts-2380-     */
+--
+node_modules/vite/dist/node/index.d.ts-2442-  /**
+node_modules/vite/dist/node/index.d.ts-2443-   * Run HMR tasks, by default the HMR propagation is done in parallel for all environments
+node_modules/vite/dist/node/index.d.ts-2444-   * @experimental
+node_modules/vite/dist/node/index.d.ts-2445-   */
+node_modules/vite/dist/node/index.d.ts:2446:  hotUpdateEnvironments?: (server: ViteDevServer, hmr: (environment: DevEnvironment) => Promise<void>) => Promise<void>;
+node_modules/vite/dist/node/index.d.ts-2447-  forwardConsole?: boolean | ForwardConsoleOptions;
+node_modules/vite/dist/node/index.d.ts-2448-}
+node_modules/vite/dist/node/index.d.ts-2449-interface ResolvedServerOptions extends Omit<RequiredExceptFor<ServerOptions$1, "host" | "https" | "proxy" | "hmr" | "ws" | "watch" | "origin" | "hotUpdateEnvironments">, "fs" | "middlewareMode" | "sourcemapIgnoreList" | "forwardConsole"> {
+import assert from 'node:assert/strict'
+import { after, before, test } from 'node:test'
+import { createServer } from 'vite'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+
+let vite
+let PlaceMap
+before(async () => {
+  vite = await createServer({ server: { middlewareMode: true, hmr: false }, appType: 'custom' })
+  ;({ PlaceMap } = await vite.ssrLoadModule('/src/components/map/PlaceMap.tsx'))
+})
+after(async () => { await vite?.close() })
+
+const places = [
+  { id: 'muntinlupa-es', name: 'Muntinlupa Elementary School', location: { lat: 14.3891958, lng: 121.0442405 } },
+  { id: 'tunasan-es', name: 'Tunasan Elementary School', location: { lat: 14.3811, lng: 121.0516 } },
+  { id: 'no-coordinate', name: 'Barangay office', location: null },
+
+[285] tool exec call: text(await tools.exec_command({
+cmd:"$mapSource = Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Raw\n$mapSource = $mapSource.Replace(\"    const layer = markerLayerRef.current`n    layer.clearLayers()\", \"    const layer = markerLayerRef.current`n    const focusedTitle = document.activeElement?.classList.contains('leaflet-marker-icon')`n      ? document.activeElement.getAttribute('aria-label') : null`n    layer.clearLayers()\")\n$mapSource = $mapSource.Replace(\"item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup() })\", \"item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup(); marker.getElement()?.focus({ preventScroll: true }) })\")\n$mapSource = $mapSource.Replace(\"        element?.setAttribute('aria-pressed', String(selected))\", \"        element?.setAttribute('aria-pressed', String(selected))`n        if (title === focusedTitle) element?.focus({ preventScroll: true })\")\nSet-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Value $mapSource -Encoding utf8\n$mapTests = Get-Content -LiteralPath 'scripts/place-map.test.mjs' -Raw\n$mapTests.Replace('middlewareMode: true, hmr: false', 'middlewareMode: true, hmr: false, ws: false') | Set-Content -LiteralPath 'scripts/place-map.test.mjs' -Encoding utf8\n$taskFiles = @('src/main.tsx','src/pages/ExplorePage.tsx','src/pages/PlaceDetailPage.tsx','src/components/map/PlaceMap.tsx','scripts/place-map.test.mjs')\nforeach ($taskFile in $taskFiles) { $taskText = Get-Content -LiteralPath $taskFile -Raw; Set-Content -LiteralPath $taskFile -Value ($taskText.TrimEnd() + \"`n\") -NoNewline -Encoding utf8 }",
+workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",sandbox_permissions:"require_escalated",justification:"Preserve keyboard focus when selected markers update, remove test-server websocket contention, and normalize touched-file trailing whitespace.","max_output_tokens":100}));
+text(await tools.exec_command({cmd:"node .superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara","sandbox_permissions":"require_escalated","justification":"Recheck the browser-observed focus-loss fix in the bounded local fixture.","max_output_tokens":100,"yield_time_ms":10000}));
+
+>>> TRANSCRIPT END
+
+Reviewed Codex session id: 01a1797d-320b-77e0-94f1-410d2f211c7c
+
+Some conversation entries were omitted.
+
+>>> PARENT TURN PERMISSION CONTEXT START
+
+The active permission profile for environment "local" has no explicit denied-read paths/globs.
+
+>>> PARENT TURN PERMISSION CONTEXT END
+
+The Codex agent has requested the following action:
+
+>>> APPROVAL REQUEST START
+
+Assess the exact planned action below. Use read-only tool checks when local state matters.
+
+Planned action JSON:
+
+{
+  "command": [
+    "C:\\Users\\ckzz2\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "-Command",
+    "$mapSource = Get-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Raw\n$mapSource = $mapSource.Replace(\"    const layer = markerLayerRef.current`n    layer.clearLayers()\", \"    const layer = markerLayerRef.current`n    const focusedTitle = document.activeElement?.classList.contains('leaflet-marker-icon')`n      ? document.activeElement.getAttribute('aria-label') : null`n    layer.clearLayers()\")\n$mapSource = $mapSource.Replace(\"item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup() })\", \"item.addEventListener('click', () => { onSelectPlace?.(place.id); map.closePopup(); marker.getElement()?.focus({ preventScroll: true }) })\")\n$mapSource = $mapSource.Replace(\"        element?.setAttribute('aria-pressed', String(selected))\", \"        element?.setAttribute('aria-pressed', String(selected))`n        if (title === focusedTitle) element?.focus({ preventScroll: true })\")\nSet-Content -LiteralPath 'src/components/map/PlaceMap.tsx' -Value $mapSource -Encoding utf8\n$mapTests = Get-Content -LiteralPath 'scripts/place-map.test.mjs' -Raw\n$mapTests.Replace('middlewareMode: true, hmr: false', 'middlewareMode: true, hmr: false, ws: false') | Set-Content -LiteralPath 'scripts/place-map.test.mjs' -Encoding utf8\n$taskFiles = @('src/main.tsx','src/pages/ExplorePage.tsx','src/pages/PlaceDetailPage.tsx','src/components/map/PlaceMap.tsx','scripts/place-map.test.mjs')\nforeach ($taskFile in $taskFiles) { $taskText = Get-Content -LiteralPath $taskFile -Raw; Set-Content -LiteralPath $taskFile -Value ($taskText.TrimEnd() + \"`n\") -NoNewline -Encoding utf8 }"
+  ],
+  "cwd": "C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",
+  "environment_id": "local",
+  "justification": "Preserve keyboard focus when selected markers update, remove test-server websocket contention, and normalize touched-file trailing whitespace.",
+  "sandbox_permissions": "require_escalated",
+  "tool": "exec_command",
+  "tty": false
+}
+
+>>> APPROVAL REQUEST END
