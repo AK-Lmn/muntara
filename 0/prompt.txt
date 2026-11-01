@@ -1,0 +1,5 @@
+[206] assistant: Domain: civic wayfinding. Audience: residents on phones. Mood: clear. Motion: none. Layout: map, status, directory. Reference: existing Muntara controls.
+
+[208] tool exec result: Script completed
+Wall time 2.4 seconds
+Output:
