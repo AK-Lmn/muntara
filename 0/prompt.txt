@@ -1,0 +1,1 @@
+I kinda don't like supabase, can u propose an alternative?
