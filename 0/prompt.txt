@@ -1,0 +1,96 @@
+[300] assistant: I’m checking the focus fix and its two-group regression case.
+
+[301] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/review-87cd724..8e86f99.diff'; Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-report.md' -Tail 65",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:5000}),
+  tools.exec_command({cmd:"rg -n 'focus|group|shared|coordinate' '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-browser-check.mjs' '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-check.jsx' 'src/components/map/PlaceMap.tsx'; Get-ChildItem -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map' | Where-Object {$_.Name -like '*focus*' -or $_.Name -like '*regression*'} | Select-Object Name,Length",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:2000}),
+  tools.exec_command({cmd:"git rev-parse HEAD; git status --short",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",sandbox_permissions:"require_escalated",justification:"Read follow-up revision and worktree state for independent review.",max_output_tokens:200})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value.output : String(r.reason));
+
+[302] tool exec result: Script completed
+Wall time 3.1 seconds
+Output:
+
+diff --git a/scripts/fixtures/place-map-focus.html b/scripts/fixtures/place-map-focus.html
+new file mode 100644
+index 0000000..eb823f4
+--- /dev/null
++++ b/scripts/fixtures/place-map-focus.html
+@@ -0,0 +1,12 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Map focus regression fixture</title>
++  </head>
++  <body>
++    <div id="root"></div>
++    <script type="module" src="./place-map-focus.tsx"></script>
++  </body>
++</html>
+diff --git a/scripts/fixtures/place-map-focus.tsx b/scripts/fixtures/place-map-focus.tsx
+new file mode 100644
+index 0000000..8c4ba31
+--- /dev/null
++++ b/scripts/fixtures/place-map-focus.tsx
+@@ -0,0 +1,37 @@
++import { StrictMode, useState } from 'react'
++import { createRoot } from 'react-dom/client'
++import { PlaceMap } from '../../src/components/map/PlaceMap'
++import type { Place } from '../../src/types'
++import 'leaflet/dist/leaflet.css'
++import '../../src/index.css'
++
++const base: Place = {
++  id: '', name: '', category: 'government', barangay: 'Tunasan', address: null,
++  location: null, description: '', services: [], publicPhone: null, publicEmail: null,
++  sources: [], nearbyLandmarks: [], tags: [], alternateNames: [], photoPlaceholderCount: 0,
++  access: { entranceNotes: '', wheelchairAccess: 'unknown', parkingNotes: null, hoursNote: null, additionalNotes: null },
++  verification: { state: 'awaiting_review', lastCheckedAt: null, method: null, checkedBy: null, corroborations: 0 },
++}
++const firstLocation = { lat: 14.3891958, lng: 121.0442405 }
++const secondLocation = { lat: 14.3811, lng: 121.0516 }
++const places: Place[] = [
++  { ...base, id: 'first-a', name: 'First group A', location: firstLocation },
++  { ...base, id: 'first-b', name: 'First group B', location: firstLocation },
++  { ...base, id: 'second-a', name: '<truncated omitted_approx_tokens="3430" />d}/>}</div><ul>{places.map(place=><li key={place.id}>{place.name}</li>)}</ul></main>};createRoot(document.getElementById('root')).render(<React.StrictMode><Check/></React.StrictMode>);`
+.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-check.jsx:3:function Check(){const[selected,setSelected]=useState(null);const[shown,setShown]=useState(true);const[epoch,setEpoch]=useState(0);const[mode,setMode]=useState('multiple');const[width,setWidth]=useState('100%');const visible=mode==='single'?[places[0]]:mode==='none'?[places[2]]:mode==='shared'?[places[0],{...places[1],location:places[0].location},places[2]]:places;return <main style={{maxWidth:'900px',margin:'auto',padding:'16px',background:'white',color:'#0f172a'}}><h1>Map interaction check</h1><div style={{display:'flex',flexWrap:'wrap',gap:'8px'}}>{['multiple','single','none','shared'].map(value=><button className="tap-target border rounded px-2" key={value} onClick={()=>setMode(value)}>{value}</button>)}<button className="tap-target border rounded px-2" onClick={()=>setShown(!shown)}>Toggle map</button><button className="tap-target border rounded px-2" onClick={()=>setWidth(width==='320px'?'100%':'320px')}>Toggle mobile width</button><button className="tap-target border rounded px-2" onClick={async()=>{await fetch('/__map-check/fail');setEpoch(epoch+1)}}>Fail tiles</button><button className="tap-target border rounded px-2" onClick={()=>fetch('/__map-check/recover')}>Recover tiles</button></div><p role="status">Selected: {selected??'none'}</p><div style={{width,maxWidth:'100%'}}>{shown&&<PlaceMap key={epoch} places={visible} selectedPlaceId={selected} onSelectPlace={setSelected}/>}</div><ul>{places.map(place=><li key={place.id}>{place.name}</li>)}</ul></main>};createRoot(document.getElementById('root')).render(<React.StrictMode><Check/></React.StrictMode>);
+
+Name                Length
+----                ------
+check-map-focus.mjs    699
+
+
+8e86f9989260100c76f183314cd2fc2ba6b5d18d
+
+[303] tool exec call: const results = await Promise.allSettled([
+  tools.exec_command({cmd:"Get-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/check-map-focus.mjs'",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:700}),
+  tools.exec_command({cmd:"git diff --check 87cd72492f29e50a60cec2d0783a675886d449ed 8e86f9989260100c76f183314cd2fc2ba6b5d18d",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",sandbox_permissions:"require_escalated",justification:"Check the focused review fix diff for whitespace errors.",max_output_tokens:100})
+]);
+for (const r of results) text(r.status === "fulfilled" ? `${r.value.exit_code}: ${r.value.output}` : String(r.reason));
+
+[304] tool exec result: Script completed
+Wall time 1.8 seconds
+Output:
+
+0: import { createServer } from 'vite'
+
+// Use an embedded test tile so this regression fixture never requests OSM tiles.
+const tile = '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#e2e8f0"/></svg>'
+process.env.VITE_MAP_TILE_URL = `data:image/svg+xml,${encodeURIComponent(tile)}`
+process.env.VITE_MAP_ATTRIBUTION = 'Local regression tiles (test only)'
+const server = await createServer({ server: { host: '127.0.0.1', port: 5175, strictPort: true } })
+await server.listen()
+console.log('Map focus fixture: http://127.0.0.1:5175/scripts/fixtures/place-map-focus.html')
+process.once('SIGINT', async () => { await server.close(); process.exit(0) })
+
+0:
+
+[305] assistant: Approve Task 4. The P2 focus defect is fixed.
+
+[PlaceMap.tsx:82](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/src/components/map/PlaceMap.tsx:82) now restores focus using the stable coordinate-group key. Equal labels cannot redirect focus.
+
+The [regression fixture](C:/Users/ckzz2/.codex/worktrees/muntara-pilot/muntara/scripts/fixtures/place-map-focus.tsx:17) creates two separate groups of two listings. The report records the first-group selection failing before the fix and retaining the correct focused, pressed marker afterward. No new defects found; diff whitespace check passed.
+
+I did not rerun the suite or browser. Nine Slate token-lint findings, shared-shell dark contrast, live Supabase, and remote tile availability remain known debt or unverified gates.
