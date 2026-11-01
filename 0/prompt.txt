@@ -1,0 +1,3 @@
+[371] tool wait_agent call: {"timeout_ms":60000}
+
+[372] tool wait_agent result: {"message":"Wait completed.","timed_out":false}
