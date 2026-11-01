@@ -1,0 +1,459 @@
+[105] tool send_message call: {"target":"public_boundary_task1","message":"REDACTED"}
+
+[106] tool exec call: const r = await tools.web__run({search_query:[
+  {q:"site:cgis.muntinlupacity.gov.ph catalogue public schools health centers Muntinlupa Tunasan Poblacion GIS"},
+  {q:"site:muntinlupacity.gov.ph/departments-offices Poblacion \"Address\" government office"},
+  {q:"site:deped.gov.ph/wp-content/uploads Muntinlupa 2025 school address Tunasan Poblacion"},
+  {q:"site:ntp.doh.gov.ph/view-facility/ \"Poblacion\" \"Muntinlupa\""}
+],response_length:"long"});
+text(r);
+
+[107] tool exec result: Script completed
+Wall time 2.1 seconds
+Output:
+
+Muntinlupa GIS Portal (https://cgis.muntinlupacity.gov.ph/catalogue/)
+citeturn13search0 [wordlim: 200] Crawled: last week; Image: gis-operator1 gis-operator1 ... Schools Map ... Health_Centers ... 📍 National Road, Putatan, Muntinlupa City, Philippines
+
+View
+
+  * Image
+
+Barangay Boundary
+
+
+Image: gis-operator1gis-operator1
+
+View
+
+  * Image
+
+Schools Map
+
+
+Image: gis-operator1gis-operator1
+
+View
+
+  * Image
+
+Health_Centers
+
+
+Image: gis-operator1gis-operator1
+
+View
+
+  * Image
+
+Contour 5m Aster
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Police Stations
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Schools
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Road Network
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Land_Use_2016_2026
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Hospitals
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Fire Stations Location
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Fissures
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+West Valley Fault
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Evacuation 2020
+
+
+Image: gis-administratorgis-administrator
+
+View
+
+  * Image
+
+Orthophoto Map
+
+
+Image: gisusergisuser
+
+View
+
+  * Image
+
+5Meter Fissure Buffer Muntinlupa
+
+
+Image: gisusergisuser
+
+View
+
+  * Image
+
+5meter Buffer Muntinlupa
+
+
+Image: gisusergisuser
+
+View
+
+Image: Muntinlupa Buildings
+
+📍 National Road, Putatan, Muntinlupa City, Philippines
+
+f OfficialRuffyBiazon | OfficialMuntinlupaCity
+
+☎ 8 862-2525
+
+✉ pio@muntinlupacity.gov.ph
+
+Office Hours:
+
+8:00 AM to 5:00 PM | Monday to Friday--------------------------------------------------------------------------------
+<table id="e1"> (https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2025-B1-CB-003.pdf)
+citeturn13search12 [wordlim: 200] Published: last year;<truncated omitted_approx_tokens="5545" />-affairs-and-development-office/)
+citeturn13search9 [wordlim: 200] Crawled: 3 days ago; Address: ... E-mail: cado@muntinlupacity.gov.ph / cado.munti@yahoo.com ... Functions prescribed CADO's existing Vision, Mission and Functional Statement: "Undertake special projects for purposes of developing, strengthening and maintaining linkages with various local public sector," also in line with provisions under Section 17, (b) of the Local Government Code of the Philippines 1991 (RA7160) and in reference to the Magna Carta for Homeowners and Homeowners Association (RA9004) reiterating applicable duties and responsibilities of DHSUD as per Section 20 which overall affects Section 18 or relationship to LGU's of homeowners and homeowners associations.
+--------------------------------------------------------------------------------
+Muntinlupa City Public Library (MCPL) – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-public-library/)
+citeturn13search10 [wordlim: 200] Crawled: 3 weeks ago; Address: ... 2nd Floor Plaza Central Building, Poblacion, Muntinlupa City, 1776 Philippines. ... The Muntinlupa City Public Library (MCPL) was formally inaugurated year 1998 when EDUCATION was the topmost priority of the City Government.
+--------------------------------------------------------------------------------
+General Services Office – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/general-services-office/)
+citeturn13search11 [wordlim: 200] Crawled: 2 weeks ago; Address: ... To provide a prompt and efficient services to the requisitioning departments and offices of the City Government of Muntinlupa and to its constituents as well. ... Deliver / issue office supplies and materials allocated to every department / offices and effectively examine and confirm all submitted inventory form, and to maintain cleanliness and beautification of City Hall premises.
+
+[108] tool exec call: const r = await tools.web__run({open:[
+  {ref_id:"turn13search0"},
+  {ref_id:"turn13search13"},
+  {ref_id:"turn13search14"},
+  {ref_id:"turn13search4"},
+  {ref_id:"turn12search4"},
+  {ref_id:"turn10search4"}
+],response_length:"long"});
+text(r);
+
+[109] tool exec result: Script completed
+Wall time 2.0 seconds
+Output:
+
+Muntinlupa GIS Portal (https://cgis.muntinlupacity.gov.ph/catalogue/)
+citeturn14view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn13search0","lineno":null}); Total lines: 11
+L0: 【0†Image】
+L1: 
+L2: 📍 National Road, Putatan, Muntinlupa City, Philippines
+L3: 
+L4: f OfficialRuffyBiazon | OfficialMuntinlupaCity
+L5: 
+L6: ☎ 8 862-2525
+L7: 
+L8: ✉ 【1†[email protected]】
+L9: 
+L10: Office Hours: 8:00 AM to 5:00 PM | Monday to Friday
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn14view1 [wordlim: 200] Source: open({"ref_id":"turn13search13","lineno":null}); Total lines: 1
+L0: Failed to fetch https://www.deped.gov.ph/wp-content/uploads/Deped-Announcement-on-PPP-Indicative-List-of-Schools-Annex-A-2025-12-08_1.pdf: (403) Forbidden
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn14view2 [wordlim: 200] Source: open({"ref_id":"turn13search14","lineno":null}); Total lines: 1
+L0: Failed to fetch https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List_2026-B1-CB-007.pdf: (403) Forbidden
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn14view3 [wordlim: 200] Source: open({"ref_id":"turn13search4","lineno":null}); Total lines: 1
+L0: Failed to fetch https://ntp.doh.gov.ph/view-facility/?id=11789: Cache miss
+--------------------------------------------------------------------------------
+Brgy. Tunasan – City Government of Muntinlupa (https://muntinlupacity.gov.ph/barangays/brgy-tunasan/)
+citeturn14view4 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({"ref_id":"turn12search4","lineno":null}); Total lines: 133
+L0: Open Menu Close Menu
+L1: 
+L2:     * 【0†HOME】
+L3:     * 【1†THE CITY】
+L4:       * 【2<truncated omitted_approx_tokens="4134" /> ID’s
+L81: 
+L82: 3. Payment Transaction
+L83:   * Permit Fees –payment of fees associated with the issuance/renewal of permits and clearances
+L84:   * Fines and Penalties – payment of fines related to violations of local ordinances or regulations
+L85: 
+L86: 4. Verification Transaction
+L87: 
+L88:   * Document Verification – verification of submitted documents for accuracy and compliance before issuing permits
+L89:   * Background checks – conducting background checks for certain permits such as business clearances.
+L90: 
+L91: 5. Feedback and Complaint Transactions
+L92:   * Feedback Submission – residents providing feedback on services or suggesting improvements
+L93:   * Complaint Filing – residents filing complaints regarding service delivery or violations of regulations
+L94: 
+L95: 6. Information Transactions
+L96: 
+L97:   * Inquiry Services – residents seeking information about the requirements, processes and status of their applications.
+L98:   * Public Consultations – engaging with community members during consultations or information sessions
+L99: 
+L100: 7. Community Service Transactions
+L101:   * Social Assistance Requests – applications for social services or assistance programs available through the barangay
+L102:   * Volunteer Registration – signing up for community service or volunteer programs organized by the barangay.
+L103: 
+L104: These transactions are essential for ensuring the efficient operation of service within Barangay Poblacion and promoting community engagement.
+L105: 
+L106: * * *
+L107: 
+L108: Contact Details
+L109: 
+L110: Phone Numbers:
+L111:   * 8832-1632 ( Sec Office)
+L112:   * 8862-4120 (Admin Office)
+L113:   * 8834-7314 (BESO Dept)
+L114:   * 8478-1527 (Treasury Office)
+L115: 
+L116: Email Address: 【14†[email protected]】
+L117: Facebook Page: Barangay Poblacion Muntinlupa
+L118: 
+L119: 
+L120: 
+L121: 
+L122: 
+L123: Copyright © 2022 City Government of Muntinlupa (Management Information Systems Office)
+
+[110] tool exec call: const results = await Promise.all([
+  tools.exec_command({cmd:"Get-Content -Raw src/types/index.ts; Get-Content -Raw src/lib/mockApi.ts",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:6000}),
+  tools.exec_command({cmd:"Get-Content -Raw src/App.tsx; Get-Content -Raw src/pages/ExplorePage.tsx",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7000}),
+  tools.exec_command({cmd:"Get-Content -Raw src/pages/PlaceDetailPage.tsx; Get-Content -Raw src/components/places/PlaceCard.tsx; Get-Content -Raw src/components/places/AccessInfoPanel.tsx; Get-Content -Raw src/components/map/MapPlaceholder.tsx",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:8000})
+]);
+for (let i=0;i<results.length;i++) text(JSON.stringify({index:i,...results[i]}));
+
+[111] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+Warning: truncated output (original token count: 10282)
+Total output lines: 3
+
+{"index":0,"chunk_id":"f1ac23","wall_time_seconds":0.6112587,"exit_code":0,"original_token_count":4641,"output":"/**\r\n * Core data model for Muntinlupa Explorer.\r\n *\r\n * NOTE ON DATA TRUST: Nothing in this app should ever claim to be verified\r\n * real-world information unless it was actually checked by a human against\r\n * the physical location. The types below exist specifically to make that\r\n * distinction impossible to skip — every place and every route carries an\r\n * explicit VerificationStatus, and UI components are expected to render it\r\n * rather than hide it.\r\n */\r\n\r\n/** Broad category used for filtering and map markers. */\r\nexport type PlaceCategory =\r\n  | 'government'\r\n  | 'health'\r\n  | 'education'\r\n  | 'transport'\r\n  | 'food'\r\n  | 'park_recreation'\r\n  | 'worship'\r\n  | 'shopping'\r\n  | 'emergency_services'\r\n  | 'lodging'\r\n  | 'other'\r\n\r\n/**\r\n * How confident we are in a piece of information, and why.\r\n * This is intentionally more granular than a boolean \"verified\" flag.\r\n */\r\nexport type VerificationState =\r\n  /** Checked in person (or via an authoritative source) within the freshness window. */\r\n  | 'verified'\r\n  /** Submitted or edited by a community member; not yet independently checked. */\r\n  | 'community_reported'\r\n  /** A correction or new entry is sitting in the moderation queue. */\r\n  | 'awaiting_review'\r\n  /** Was verified previously, but enough time has passed that it may be stale. */\r\n  | 'needs_recheck'\r\n  /** Explicitly flagged as possibly wrong (e.g. a correction was accepted and old copy lingers, or reports conflict). */\r\n  | 'disputed'\r\n\r\nexport interface VerificationMeta {\r\n  state: VerificationState\r\n  /** ISO date string of the last time this was actually checked against reality. Null if never. */\r\n  la<truncated omitted_approx_tokens="9039" />\r\n  return (\r\n    <div\r\n      className={cn(\r\n        'relative w-full overflow-hidden rounded-2xl border border-dashed border-slate-300 bg-[linear-gradient(0deg,transparent_24%,rgba(31,155,124,0.08)_25%,rgba(31,155,124,0.08)_26%,transparent_27%,transparent_74%,rgba(31,155,124,0.08)_75%,rgba(31,155,124,0.08)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,rgba(31,155,124,0.08)_25%,rgba(31,155,124,0.08)_26%,transparent_27%,transparent_74%,rgba(31,155,124,0.08)_75%,rgba(31,155,124,0.08)_76%,transparent_77%,transparent)] bg-slate-100 [background-size:25%_25%]',\r\n        className,\r\n      )}\r\n    >\r\n      <div className=\"absolute left-2 top-2 z-10 flex items-center gap-1.5 rounded-lg bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-800\">\r\n        <MapPinned size={13} />\r\n        Placeholder map — no live map service connected\r\n      </div>\r\n\r\n      <div className=\"relative aspect-[4/3] w-full sm:aspect-[16/9]\">\r\n        {places.map((place) => {\r\n          const { x, y } = project(place.location)\r\n          const isSelected = place.id === selectedPlaceId\r\n          return (\r\n            <button\r\n              key={place.id}\r\n              type=\"button\"\r\n              onClick={() => onSelectPlace?.(place.id)}\r\n              style={{ left: `${x}%`, top: `${y}%` }}\r\n              className={cn(\r\n                'absolute -translate-x-1/2 -translate-y-full rounded-full border-2 border-white shadow-md transition-transform',\r\n                'flex h-7 w-7 items-center justify-center text-white',\r\n                isSelected ? 'z-20 scale-125 bg-accent-500' : 'z-10 bg-brand-600 hover:scale-110',\r\n              )}\r\n              aria-label={`${place.name} marker`}\r\n              title={place.name}\r\n            >\r\n              <MapPinned size={14} />\r\n            </button>\r\n          )\r\n        })}\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n\r\n"}
+
+[112] tool exec call: const r = await tools.exec_command({cmd:"$names = 'supabase','docker','deno','node','npm'; foreach ($name in $names) { $command = Get-Command $name -ErrorAction SilentlyContinue; [PSCustomObject]@{Name=$name; Source=if ($command) {$command.Source} else {'missing'}} };",workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:1000});
+text(r.output);
+
+[113] tool exec result: Script completed
+Wall time 2.1 seconds
+Output:
+
+
+Name     Source
+----     ------
+supabase missing
+docker   missing
+deno     missing
+node     C:\Program Files\nodejs\node.exe
+npm      C:\Program Files\nodejs\npm.ps1
+
+[114] tool exec call: const r = await tools.web__run({search_query:[
+  {q:"site:muntinlupacity.gov.ph/departments-offices/ \"Tunasan, Muntinlupa City\" -GSO"},
+  {q:"site:muntinlupacity.gov.ph/departments-offices/ \"Poblacion, Muntinlupa City\""},
+  {q:"site:ntp.doh.gov.ph/view-facility/ \"Muntinlupa\" \"Public\" health center"},
+  {q:"site:deped.gov.ph/wp-content/uploads/ \"Muntinlupa City\" \"Poblacion\" school address"}
+],response_length:"long"});
+text(r);
+
+[115] tool exec result: Script completed
+Wall time 3.0 seconds
+Output:
+
+7c4ca423b32bb9aa3369c14c18a6eef0387dcc0ea09aba2903d035bbefe3ec22.xlsx (https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf)
+citeturn15search12 [wordlim: 200] Published: 5.4 years ago; <tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>228501</td><td>Poblacion Elementary School</td><td>Phase 1, Southville 3, Poblacion, Muntinlupa City</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr> ... <tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>305470</td><td>Muntinlupa National High School</td><td>NBP Reservation, Bldg. 1</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely HS</td></tr>
+<table id="e1">
+<tr>
+<th>Region</th>
+<th>Division</th>
+<th>District</th>
+<th>BEIS School ID</th>
+<th>School Name</th>
+<th>Street Address</th>
+<th>Municipality</th>
+<th>Legislative District</th>
+<th>Barangay</th>
+<th>Sector</th>
+<th>Urban/Rural</th>
+<th>School Subclassification</th>
+<th>Modified Curricular Offering Classification</th>
+</tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136903</td><td>Muntinlupa ES</td><td>Rizal street</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136904</td><td>Putatan Elementary School</td><td>San Guillermo street</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>PUTATAN</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136905</td><td>Soldiers' Hills ES</td><td>Blk 26 Soldiers Hills Village</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td<truncated omitted_approx_tokens="4923" />earch7 [wordlim: 200] Crawled: 2 weeks ago; 2F Laguerta Bulilit Center, Centennial Avenue, Laguerta, Barangay Tunasan, City of Muntinlupa
+--------------------------------------------------------------------------------
+Muntinlupa Scholarship Division – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/muntinlupa-scholarship-division/)
+citeturn15search8 [wordlim: 200] Crawled: today; 2nd floor Plaza Central Building, Poblacion, Muntinlupa ... The Muntinlupa Scholarship Division (MSD) oversees the implementation of Ordinances No. 17-107 and No. 2020-054 as an attached agency of the City Government of Muntinlupa.
+--------------------------------------------------------------------------------
+Muntinlupa City Department of Disaster Resilience and Management – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/muntinlupa-city-department-of-disaster-resilience-and-management/)
+citeturn15search9 [wordlim: 200] Crawled: 2 weeks ago; Hall of Justice Compound, Resilience Building, Susana Heights, Tunasan, Muntinlupa City
+--------------------------------------------------------------------------------
+City Security Office – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/city-security-office/)
+citeturn15search10 [wordlim: 200] Crawled: 2 weeks ago; 2nd Floor, Motorpool Building, Pacwood Site, Tunasan, Muntinlupa City ... The City Security Office commits to provide the schools/offices and the Muntinlupa Residents a quality security and safety services by:
+--------------------------------------------------------------------------------
+Public Order and Safety Office (POSO) – City Government of Muntinlupa (https://muntinlupacity.gov.ph/departments-offices/public-order-and-safety-office-poso/)
+citeturn15search11 [wordlim: 200] Crawled: 3 days ago; 3rd Floor, Plaza Central Bldg., National Road, Poblacion, Muntinlupa City
+
+[116] tool exec call: const r = await tools.web__run({search_query:[
+  {q:"site:ntp.doh.gov.ph/view-facility \"POBLACION\" \"Muntinlupa City\" health center"},
+  {q:"site:ntp.doh.gov.ph/view-facility \"Poblacion Health Center\" Muntinlupa"},
+  {q:"site:muntinlupacity.gov.ph \"Poblacion Health Center\" address"},
+  {q:"site:muntinlupacity.gov.ph/departments-offices/ \"Tunasan\" \"Contact Information\""}
+],response_length:"long"});
+text(r);
+
+[117] tool exec result: Script completed
+Wall time 3.1 seconds
+Output:
+
+Brgy. Tunasan – City Government of Muntinlupa (https://muntinlupacity.gov.ph/barangays/brgy-tunasan/)
+citeturn16search0 [wordlim: 200] Crawled: 2 days ago; We envision Barangay Tunasan, City of Muntinlupa as Service Provider and sports Recreation Hub of the South, with God-fearing and self-reliant, disciplined, healthy, and educated people in a participative community, working together to a progressive economy, supported by a well-built and disaster-resilient infrastructure, in an attractive and clean environment, under a pro-active, transparent, and efficient Barangay Local Governance. ... Among the first establishment in Barangay Tunasan are Advan Philippines, Tri-Phil, Levi’s (now Essence), Rothschild, Senga, FAPI and BOC. ... Contact Information
+
+# Brgy. Tunasan
+
+Vision
+
+We envision Barangay Tunasan, City of Muntinlupa as Service Provider and sports Recreation Hub of the South, with God-fearing and self-reliant, disciplined, healthy, and educated people in a participative community, working together to a progressive economy, supported by a well-built and disaster-resilient infrastructure, in an attractive and clean environment, under a pro-active, transparent, and efficient Barangay Local Governance.
+
+Mission
+
+In order to fulfill its vision, we are committed to:
+
+  * To establish the identity of Barangay Tunasan as a Sports Recreation Hub of the South.
+  * To transform our barangay into a more peaceful, clean, progressive and disaster resilient community.
+  * To encourage the development of business and industries for employment and livelihood within the barangay.
+  * To provide our constituents with basic services such as education, health, among others, through effective and efficient governance.
+
+Goals
+
+  * Improve barangay administration by providing relevant and perceived necessary trainings for Barangay Officials and functionaries to improve competencies.
+  * Formulate a 3-ye<truncated omitted_approx_tokens="6404" />ing, Muntinlupa City Hall, Putatan, Muntinlupa City, 1772</td>
+<td>(02) 8862-6472 Loc. 1042-1044</td>
+</tr>
+<tr>
+<td>GSO Warehouse</td>
+<td>Central Records Building (on-going construction), Pacwood Site, Tunasan, Muntinlupa City, 1773</td>
+<td>None</td>
+</tr>
+</table>--------------------------------------------------------------------------------
+GENERAL SERVICES OFFICE (https://muntinlupacity.gov.ph/wp-content/uploads/2026/03/CC-GSO.pdf)
+citeturn16search15 [wordlim: 200] Published: 6 months ago; 1042-1044 --- | --- | --- Office GSO Warehouse | Address Central Records Building (on-going construction), Pacwood Site, Tunasan, Muntinlupa City, 1773 | Contact Information None
+List of Offices 
+ 
+Office General Services Office | Address 2/F Main Building, Muntinlupa City Hall, Putatan, Muntinlupa City, 1772 | Contact Information (02) 8862-6472 Loc. 1042-1044 --- | --- | --- Office GSO Warehouse | Address Central Records Building (on-going construction), Pacwood Site, Tunasan, Muntinlupa City, 1773 | Contact Information None--------------------------------------------------------------------------------
+GM
+C5
+i!
+at
+RXfUBLIXA M; ptl,tplliAs
+PAMAHALAANG L (https://www.muntinlupacity.gov.ph/wp-content/uploads/2023/02/no.-18-361.pdf)
+citeturn16search16 [wordlim: 200] Published: 7 months ago; Email address: sangguniangpanlungsod2k I 6@gmail.com ... FOR THE PROJECT CONSTRUCTION OF POBLACION HEALTH CENTER
+--------------------------------------------------------------------------------
+1. PROCESSING OF REQUEST FOR FINANCIAL ASSISTANCE (https://muntinlupacity.gov.ph/wp-content/uploads/2026/03/YASDO-CC-UPDATED.pdf)
+citeturn16search17 [wordlim: 200] Published: 6 months ago; Tunasan, Muntinlupa City | Contact Tel.No.: (02) 8862-8428 E-mail : yasdo@muntinlupacity.gov.ph Facebook : yasdomuntinlupaofficial --- | --- | --- Office YASDO – Satellite Office | Address Ground Floor, Ayala Malls SouthPark, Alabang Munintlupa City | Contact None
+
+[118] tool exec call: const r = await tools.web__run({search_query:[
+  {q:"site:deped.gov.ph/wp-content/uploads/ \"Itaas ES\" \"Muntinlupa\" \"Poblacion\" address"},
+  {q:"site:deped.gov.ph/wp-content/uploads/ \"Itaas Elementary School\" \"Muntinlupa\" address"},
+  {q:"site:deped.gov.ph/wp-content/uploads/ \"Muntinlupa ES\" \"Rizal\" Poblacion school ID"},
+  {q:"site:deped.gov.ph/wp-content/uploads/ \"Tunasan ES\" \"Poblacion ES\" Muntinlupa"}
+],response_length:"medium"});
+text(r);
+
+[119] tool exec result: Script completed
+Wall time 2.2 seconds
+Output:
+
+7c4ca423b32bb9aa3369c14c18a6eef0387dcc0ea09aba2903d035bbefe3ec22.xlsx (https://www.deped.gov.ph/wp-content/uploads/2021/06/SY-2020-2021-Masterlist-of-Schools-Address-only-1-1.pdf)
+citeturn17search2 [wordlim: 200] Published: 5.4 years ago; <tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136903</td><td>Muntinlupa ES</td><td>Rizal street</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr> ... <tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>228501</td><td>Poblacion Elementary School</td><td>Phase 1, Southville 3, Poblacion, Muntinlupa City</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr>
+<table id="e1">
+<tr>
+<th>Region</th>
+<th>Division</th>
+<th>District</th>
+<th>BEIS School ID</th>
+<th>School Name</th>
+<th>Street Address</th>
+<th>Municipality</th>
+<th>Legislative District</th>
+<th>Barangay</th>
+<th>Sector</th>
+<th>Urban/Rural</th>
+<th>School Subclassification</th>
+<th>Modified Curricular Offering Classification</th>
+</tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136903</td><td>Muntinlupa ES</td><td>Rizal street</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>POBLACION</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136904</td><td>Putatan Elementary School</td><td>San Guillermo street</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>PUTATAN</td><td>Public</td><td>Urban</td><td>DepEd Managed</td><td>Purely ES</td></tr>
+<tr><td>NCR</td><td>Muntinlupa City</td><td>Muntinlupa C</td><td>136905</td><td>Soldiers' Hills ES</td><td>Blk 26 Soldiers Hills Village</td><td>CITY OF MUNTINLUPA</td><td>Lone District</td><td>PUTATAN</td><td>Public</td><td<truncated omitted_approx_tokens="2733" />untinlupa ES</td><td>NCR</td><td>NCR Fourth District</td><td>City of Muntinlupa</td><td>Muntinlupa City</td></tr>
+<tr><td>136910</td><td>Bayanan Elementary School Unit I</td><td>NCR</td><td>NCR Fourth District</td><td>City of Muntinlupa</td><td>Muntinlupa City</td></tr>
+<tr><td>136912</td><td>Cupang ES</td><td>NCR</td><td>NCR Fourth District</td><td>City of Muntinlupa</td><td>Muntinlupa City</td></tr>
+<tr><td>136914</td><td>Sucat Elementary School</td><td>NCR</td><td>NCR Fourth District</td><td>City of Muntinlupa</td><td>Muntinlupa City</td></tr>
+<tr><td>136858</td><td>Dagat-dagatan Elementary School</td><td>NCR</td><td>NCR Third District</td><td>City of Navotas</td><td>Navotas</td></tr>
+--------------------------------------------------------------------------------
+ALLOCATON LIST (https://www.deped.gov.ph/wp-content/uploads/ANNEX-C.1_Allocation-List_2025c-020.pdf)
+citeturn17search7 [wordlim: 200] Published: 1.3 years ago; <table id="e1"> ... <th>No.of ES</th> ... <td>NCR</td><td>Muntinlupa City</td><td>Lone</td><td>10</td><td>1</td><td>Muntinlupa City District I</td><td>Kathan St., Poblacion, Muntinlupa City</td><td>757</td>
+--------------------------------------------------------------------------------
+Muntinlupa City, NCR - Schools - National Inventory Dashboard (https://nid.deped.gov.ph/public-dashboard/region/NCR/division/Muntinlupa%20City?filter=submitted)
+citeturn17search0 [wordlim: 200] Published: last month; Crawled: last month; 136901  | Itaas ES  | Submitted  | 3 Projects136903  | Muntinlupa ES  | Submitted  | 2 Projects ... 228501  | Poblacion ES  | Submitted  | 3 Projects
+--------------------------------------------------------------------------------
+NCR - NEP: All courses (https://ncr2.lms.deped.gov.ph/moodle/course/index.php?categoryid=464)
+citeturn17search1 [wordlim: 200] Crawled: 3 weeks ago; ### 136901 - Itaas Elementary School### 136903 - Muntinlupa ES ... ### 228501 - Poblacion Elementary School
