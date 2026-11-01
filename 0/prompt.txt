@@ -1,0 +1,289 @@
+[191] assistant: Using the execution and verification skills for Task 4. I’ll inspect the map contract and tile policy first.
+
+[192] tool exec call: const paths = [
+"C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\using-superpowers\\SKILL.md",
+"C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\executing-plans\\SKILL.md",
+"C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\test-driven-development\\SKILL.md",
+"C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\verification-before-completion\\SKILL.md",
+"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara\\.superpowers\\sdd\\2026-10-27-muntara-public-directory-map\\task-4-brief.md"
+];
+const r = await tools.exec_command({cmd: paths.map(p => `Get-Content -LiteralPath '${p}'`).join("\n"),workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:9000});
+text(r.output);
+
+[193] tool exec result: Script completed
+Wall time 0.9 seconds
+Output:
+
+Warning: truncated output (original token count: 9654)
+Total output lines: 869
+
+---
+name: using-superpowers
+description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, ignore this skill.
+</SUBAGENT-STOP>
+
+<EXTREMELY-IMPORTANT>
+If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+
+IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+
+This is not negotiable. You cannot rationalize your way out of this.
+</EXTREMELY-IMPORTANT>
+
+## The Rule
+
+**Invoke relevant or requested skills BEFORE any response or action** — including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
+
+**Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
+
+Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
+
+## Skill Priority
+
+When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.
+
+- "Let's build X" → superpowers:brainstorming first, then implementation skills.
+- "Fix this bug" → superpowers:systematic-debugging first, then domain skills.
+
+## Red Flags
+
+These thoughts mean STOP—you're rationalizing:
+
+| Thought | Reality |
+|---------|---------|
+| "This is just a simple question" | Questions are tasks. Check for skills. |
+| "I need more context first" | Skill check comes BEFORE clarifying questions. |
+| "<truncated omitted_approx_tokens="8039" />to `https://www.openstreetmap.org/fixthemap`.
+- Interactive viewport requests only. Never prefetch, bulk-download, or offer offline tiles. Let the browser honor caching headers and default Referer behavior.
+- OSM standard tiles are best-effort with no SLA and may be blocked without notice. Keep provider/attribution configurable; document replacement with a provider whose current terms fit public pilot use. Do not invent a support email or imply production reliability.
+
+## Work and checks
+
+1. Install exact Leaflet pins and keep lockfile in sync.
+2. Implement stable Leaflet lifecycle: create once in `useEffect`; retain map, tile layer, and markers in refs; update markers when data/selection changes; remove the map on unmount.
+3. Skip records with null coordinates. Marker click calls `onSelectPlace(id)` and selected marker state follows props. Keep list and detail usable if map initialization or tile loading fails; show a clear map error state with issue link.
+4. Import Leaflet CSS in `src/main.tsx`. Fit valid pilot coordinates; use suitable zoom for a single point. Keep attribution visible and tile configuration switchable through Vite env values with safe defaults.
+5. Explore list remains usable when markers are absent or tiles fail. Detail view may show a focused map for the selected place only when coordinates exist.
+6. Verify multiple points, selection, null coordinates, tile failure, mobile sizing, attribution, and cleanup. Use real data coordinates from the reviewed JSON, without making repeated automated tile requests.
+7. Run focused checks plus `npm run build` and `npm run lint`. Record exact results and provider limits in `.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-4-report.md`.
+
+Do not add offline support or route calculations. Do not change correction/admin code or public shell beyond required map integration. Update the ledger, commit Task 4 only, and stop for a fresh independent review before Task 5.
+
+[194] tool exec call: const results = await Promise.allSettled([
+tools.exec_command({cmd:"Get-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\test-driven-development\\writing-good-tests.md'\nGet-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ponytail\\SKILL.md'\nGet-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\skills\\ux-ui-agent-skills\\SKILL.md'","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7000}),
+tools.exec_command({cmd:"rg --files -g AGENTS.md -g package.json -g '*Map*' -g '*.test.mjs'\nGet-Content -LiteralPath 'src/components/map/MapPlaceholder.tsx'\nGet-Content -LiteralPath 'src/pages/ExplorePage.tsx'\nGet-Content -LiteralPath 'src/pages/PlaceDetailPage.tsx'\nGet-Content -LiteralPath 'package.json'\nGet-Content -LiteralPath '.env.example'\nGet-Content -LiteralPath 'src/main.tsx'","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:7000}),
+tools.web__run({open:[{ref_id:"https://operations.osmfoundation.org/policies/tiles/"},{ref_id:"https://leafletjs.com/reference.html"}],response_length:"long"})
+]);
+for (const r of results) text(r.status === "fulfilled" ? r.value : String(r.reason));
+
+[195] tool exec result: Script completed
+Wall time 2.2 seconds
+Output:
+
+Warning: truncated output (original token count: 16328)
+Total output lines: 423
+
+{"chunk_id":"b7418f","wall_time_seconds":0.5924788,"exit_code":0,"original_token_count":4190,"output":"# Writing Good Tests\r\n\r\n**Load this reference when:** writing or changing tests, adding mocks, or\r\nadding cleanup/helper methods for tests.\r\n\r\n## Overview\r\n\r\nA test exists to catch a specific break. Two principles govern everything\r\nhere:\r\n\r\n```\r\n1. Every test names the break it catches\r\n2. Every test exercises the real thing\r\n```\r\n\r\nStrict TDD produces both naturally: a test written first and watched\r\nfailing against real code has already proven it can fail, and only earns\r\na mock when the real dependency proves slow or external.\r\n\r\n## Principle 1: Name the Break\r\n\r\nBefore writing the test body, answer: **what production change should\r\nmake this test fail — and is that change a bug or a decision?** A test\r\nearns its place by catching a wrong branch, missing side effect, wrong\r\nargument, boundary case, or broken contract.\r\n\r\n**Derive expectations independently.** Use literals and hand-checked\r\nfixtures; table-driven tests with literal `want` values are the preferred\r\nshape. An expectation computed by the code under test — or its helpers —\r\npasses no matter what that code does:\r\n\r\n```typescript\r\n// ❌ Mirror assertion: the same builder computes both sides — always true\r\nconst expected = buildSearchQuery({ tag: 'urgent' });\r\nexpect(buildSearchQuery({ tag: 'urgent' })).toBe(expected);\r\n\r\n// ✅ Hand-derived literal\r\nexpect(buildSearchQuery({ tag: 'urgent' })).toBe('tag:\"urgent\"');\r\n```\r\n\r\n**No change detectors.** If only intentional decisions can fail a test —\r\na constant's value, exact message wording, private structure — it fires\r\non redesign and sleeps through bugs. Test the behavior that depends on\r\nthe decision: not <truncated omitted_approx_tokens="9039" />s) the map.
+L249: `dblclick`  | `【86†MouseEvent】`  | Fired when the user double-clicks (or double-taps) the map.
+L250: `mousedown`  | `【86†MouseEvent】`  | Fired when the user pushes the mouse button on the map.
+L251: `mouseup`  | `【86†MouseEvent】`  | Fired when the user releases the mouse button on the map.
+L252: `mouseover`  | `【86†MouseEvent】`  | Fired when the mouse enters the map.
+L253: `mouseout`  | `【86†MouseEvent】`  | Fired when the mouse leaves the map.
+L254: `mousemove`  | `【86†MouseEvent】`  | Fired while the mouse moves over the map.
+L255: `contextmenu`  | `【86†MouseEvent】`  | Fired when the user pushes the right mouse button on the map, prevents default browser context menu from showing if there are listeners on this event. Also fired on mobile when the user holds a single touch for a second (also called long press).
+L256: `keypress`  | `【87†KeyboardEvent】`  | Fired when the user presses a key from the keyboard that produces a character value while the map is focused.
+L257: `keydown`  | `【87†KeyboardEvent】`  | Fired when the user presses a key from the keyboard while the map is focused. Unlike the `keypress` event, the `keydown` event is fired for keys that produce a character value and for keys that do not produce a character value.
+L258: `keyup`  | `【87†KeyboardEvent】`  | Fired when the user releases a key from the keyboard while the map is focused.
+L259: `preclick`  | `【86†MouseEvent】`  | Fired before mouse click on the map (sometimes useful when you want something to happen on click before any existing click handlers start running).
+L260: #### Other Events
+L261: 
+L262: Event  | Data  | Description
+L263: --- | --- | ---
+L264: `zoomanim`  | `【88†ZoomAnimEvent】`  | Fired at least once per zoom animation. For continuous zoom, like pinch zooming, fired once per frame during zoom.
+L265: ### Methods
+L266: 
+L267: Method  | Returns  | Description
+L268: --- | --- | ---
+
+[196] tool exec call: const r = await tools.exec_command({
+cmd:"Get-Content -LiteralPath 'package.json'\nGet-Content -LiteralPath 'src/pages/ExplorePage.tsx'\nGet-Content -LiteralPath 'src/pages/PlaceDetailPage.tsx'\nGet-Content -LiteralPath 'src/index.css'\nGet-Content -LiteralPath 'scripts/place-api.test.mjs' -TotalCount 100\nGet-Content -LiteralPath '.superpowers/sdd/2026-10-27-muntara-public-directory-map/task-3-browser-check.mjs' -TotalCount 120",
+workdir:"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:5700});
+text(r.output);
+
+[197] tool exec result: Script completed
+Wall time 1.2 seconds
+Output:
+
+Warning: truncated output (original token count: 6083)
+Total output lines: 488
+
+{
+  "name": "muntinlupa-explorer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "import:osm": "node scripts/import-osm.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}
+import { useEffect, useMemo, useState } from 'react'
+import { Search } from 'lucide-react'
+import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+import { PlaceCard } from '@/components/places/PlaceCard'
+import { CATEGORY_META } from '@/components/places/categoryMeta'
+import { Button } from '@/components/ui/Button'
+import { Chip } from '@/components/ui/Chip'
+import { TextInput } from '@/components/ui/TextInput'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { VerificationBadge } from '@/components/verification/VerificationBadge'
+import { fetchPlaces } from '@/lib/placeApi'
+import type { PilotBarangay, Place, PlaceCategory, VerificationState } from '@/types'
+
+const PILOT_CATEGORIES: PlaceCategory[] = ['government', 'health', 'education']
+const BARANGAYS: PilotBarangay[] = ['Tunasan', 'Poblacion']
+const VERIFICATION_FILTERS: VerificationState[] = [
+  'verified', 'community_reported', 'awaiting_review', 'needs_recheck', 'disputed',
+]
+
+export function ExplorePage() {
+  const [places,<truncated omitted_approx_tokens="4739" />_email: place.publicEmail,
+  entrance_notes: place.access.entranceNotes, wheelchair_access: place.access.wheelchairAccess,
+  parking_notes: place.access.parkingNotes, hours_note: place.access.hoursNote, additional_notes: place.access.additionalNotes,
+  nearby_landmarks: [], tags: [], alternate_names: [], verification_state: 'awaiting_review',
+  last_checked_at: null, verification_method: null, checked_by: null, corroborations: 0, photo_placeholder_count: 0,
+  place_sources: place.sources.map((source, sourceIndex) => ({ id: `source-${index}-${sourceIndex}`,
+    field_key: source.fieldKey, source_name: source.sourceName, source_url: source.sourceUrl,
+    source_type: source.sourceType, checked_at: source.checkedAt })),
+}))
+const api = httpServer((request, response) => {
+  response.setHeader('access-control-allow-origin', '*')
+  response.setHeader('access-control-allow-headers', 'apikey,authorization,content-type,x-client-info,accept-profile')
+  response.setHeader('access-control-allow-methods', 'GET,OPTIONS')
+  if (request.method === 'OPTIONS') { response.writeHead(204); response.end(); return }
+  const url = new URL(request.url, 'http://localhost')
+  const id = url.searchParams.get('id')?.replace(/^eq\./, '')
+  const rows = id ? places.filter((place) => place.id === id) : places
+  response.writeHead(200, { 'content-type': 'application/json' })
+  response.end(JSON.stringify(rows))
+})
+await new Promise((resolve) => api.listen(0, '127.0.0.1', resolve))
+process.env.VITE_SUPABASE_URL = `http://127.0.0.1:${api.address().port}`
+process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_browser-fixture'
+const vite = await viteServer({ server: { host: '127.0.0.1', port: 5174, strictPort: true } })
+await vite.listen()
+console.log('Task 3 fixture preview: http://127.0.0.1:5174 (reviewed JSON over a local simulated REST endpoint; not Supabase)')
+process.on('SIGINT', async () => { await vite.close(); api.close(); process.exit() })
+
+[198] tool exec call: const r = await tools.exec_command({cmd:"rg -n 'MapPlaceholder|data-theme' src\nGet-Content -LiteralPath 'src/pages/RouteDetailPage.tsx' -TotalCount 130\nGet-Content -LiteralPath 'src/main.tsx'\nGet-Content -LiteralPath 'src/types/index.ts' -TotalCount 130\nGet-Content -LiteralPath '.env.example'\nGet-Content -LiteralPath 'vite.config.ts'\nGet-Content -LiteralPath 'C:\\Users\\ckzz2\\.codex\\plugins\\cache\\openai-curated-remote\\vercel\\0.54.1\\skills\\react-best-practices\\SKILL.md'","workdir":"C:\\Users\\ckzz2\\.codex\\worktrees\\muntara-pilot\\muntara",max_output_tokens:3700});text(r.output);
+
+[199] tool exec result: Script completed
+Wall time 0.8 seconds
+Output:
+
+Warning: truncated output (original token count: 4722)
+Total output lines: 466
+
+src\index.css:69:  :root[data-theme='dark'] body {
+src\index.css:85:  :root[data-theme='dark'] .glass-panel {
+src\pages\ExplorePage.tsx:3:import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+src\pages\ExplorePage.tsx:101:            <MapPlaceholder places={filtered} selectedPlaceId={selectedPlaceId} onSelectPlace={setSelectedPlaceId} className="h-auto" />
+src\components\map\MapPlaceholder.tsx:5:interface MapPlaceholderProps {
+src\components\map\MapPlaceholder.tsx:38:export function MapPlaceholder({ places, selectedPlaceId, onSelectPlace, className }: MapPlaceholderProps) {
+src\pages\PlaceDetailPage.tsx:4:import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+src\pages\PlaceDetailPage.tsx:70:      {place.location ? <MapPlaceholder places={[place]} selectedPlaceId={place.id} /> : (
+src\pages\RouteDetailPage.tsx:4:import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+src\pages\RouteDetailPage.tsx:70:      <MapPlaceholder places={endpointPlaces} />
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { ArrowLeft, Accessibility, AlertTriangle, Route as RouteIcon } from 'lucide-react'
+import { MapPlaceholder } from '@/components/map/MapPlaceholder'
+import { RouteVerificationBadge } from '@/components/routes/RouteVerificationBadge'
+import { Card } from '@/components/ui/Card'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { fetchPlaces, fetchRoutes } from '@/lib/mockApi'
+import type { Place, WalkingRoute } from '@/types'
+
+const WHEELCHAIR_LABEL: Record<WalkingRoute['wheelchairFriendly'], string> = {
+  yes: 'Wheelchair-friendly',
+  no: 'Not wheelchair-friendly',
+  partial: 'Partially wheelchair-friendly',
+  unknown: 'Wheelchair-friendliness not yet confirmed',
+}
+
+export function RouteDetailPage() {
+  const { <truncated omitted_approx_tokens="2739" />ing-conditional-render` - Use ternary, not && for conditionals
+- `rendering-usetransition-loading` - Prefer useTransition for loading state
+- `rendering-resource-hints` - Use React DOM resource hints for preloading
+- `rendering-script-defer-async` - Use defer or async on script tags
+
+### 7. JavaScript Performance (LOW-MEDIUM)
+
+- `js-batch-dom-css` - Group CSS changes via classes or cssText
+- `js-index-maps` - Build Map for repeated lookups
+- `js-cache-property-access` - Cache object properties in loops
+- `js-cache-function-results` - Cache function results in module-level Map
+- `js-cache-storage` - Cache localStorage/sessionStorage reads
+- `js-combine-iterations` - Combine multiple filter/map into one loop
+- `js-length-check-first` - Check array length before expensive comparison
+- `js-early-exit` - Return early from functions
+- `js-hoist-regexp` - Hoist RegExp creation outside loops
+- `js-min-max-loop` - Use loop for min/max instead of sort
+- `js-set-map-lookups` - Use Set/Map for O(1) lookups
+- `js-tosorted-immutable` - Use toSorted() for immutability
+- `js-flatmap-filter` - Use flatMap to map and filter in one pass
+- `js-request-idle-callback` - Defer non-critical work to browser idle time
+
+### 8. Advanced Patterns (LOW)
+
+- `advanced-effect-event-deps` - Don't put `useEffectEvent` results in effect deps
+- `advanced-event-handler-refs` - Store event handlers in refs
+- `advanced-init-once` - Initialize app once per app load
+- `advanced-use-latest` - useLatest for stable callback refs
+
+## How to Use
+
+Read individual rule files for detailed explanations and code examples:
+
+```
+rules/async-parallel.md
+rules/bundle-barrel-imports.md
+```
+
+Each rule file contains:
+- Brief explanation of why it matters
+- Incorrect code example with explanation
+- Correct code example with explanation
+- Additional context and references
+
+## Full Compiled Document
+
+For the complete guide with all rules expanded: `AGENTS.md`
+
+[200] tool send_message call: {"target":"/root","message":"REDACTED"}
