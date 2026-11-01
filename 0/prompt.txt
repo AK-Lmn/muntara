@@ -1,0 +1,1 @@
+[202] assistant: The real map will use existing civic colors and mobile layout. I’m adding focused empty-location checks before the component.
